@@ -1,20 +1,9 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-const userSchema = mongoose.Schema({
-  profilePicture: String, // File path of the profile picture
-  fullName: String,
-  gender: String,
-  age: Number,
-  contactNumber: String,
-  emailAddress: String,
-  joinedDate: Date,
-  role: String,
-  yearsOfExperience: Number,
-  category: String,
-  specialization: String,
-  clinicTimings: String,
-  consultationFee: Number,
-  workSchedule: String,
+const userSchema = new mongoose.Schema({
+  username: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  role: { type: String, required: true, enum: ['admin', 'doctor', 'patient'] },
 });
 
-module.exports = mongoose.model('User', userSchema);
+export default mongoose.model('User', userSchema);
