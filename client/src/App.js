@@ -11,6 +11,7 @@ import DoctorManagement from './components/Admin/pages/DoctorManagement';
 import ManageAppointments from './components/Admin/pages/ManageAppointments';  // Adding this as an example route
 import InventoryPage from './components/Admin/pages/InventoryPage';
 import MaintenancePage from './components/Admin/pages/MaintenancePage';
+import RolesManagement from './components/Admin/pages/RolesManagement';
 
 function App() {
   return (
@@ -42,6 +43,14 @@ function App() {
         <Route 
           path="/maintenance-management" 
           element={<ProtectedRoute role="admin"><MaintenancePage /></ProtectedRoute>} 
+        />
+          <Route
+          path="/roles-management"
+          element={
+            <ProtectedRoute role="admin">
+              <RolesManagement />
+            </ProtectedRoute>
+          }
         />
 
         {/* Redirect to login if route is not found */}

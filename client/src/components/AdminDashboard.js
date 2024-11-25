@@ -31,6 +31,9 @@ const AdminDashboard = () => {
   const handleNavigateToMaintenanceManagement = () => {
     navigate("/maintenance-management");
   };
+  const handleNavigateToRolesManagement = () => {
+    navigate("/roles-management");
+  };
 
 
   return (
@@ -95,7 +98,20 @@ const AdminDashboard = () => {
         >
           Maintenance management
         </button>
-
+        <button
+          style={{
+            padding: "10px 20px",
+            marginRight: "10px",
+            backgroundColor: "#007BFF",
+            color: "#FFF",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+          onClick={handleNavigateToRolesManagement}
+        >
+          User management
+        </button>
         <button
           style={{
             padding: "10px 20px",

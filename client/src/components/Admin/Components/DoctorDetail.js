@@ -5,7 +5,7 @@ const DoctorDetail = ({ doctor, onEdit, onDelete }) => {
     <div style={{ padding: '20px', border: '1px solid #ddd', borderRadius: '10px', marginTop: '20px' }}>
       <h2>{doctor.fullName}</h2>
       <img
-        src={doctor.profilePicture}
+        src={doctor.profilePicture || "default-profile.png"}  // Default image if profilePicture is missing
         alt="Doctor"
         style={{
           width: "150px",
@@ -18,11 +18,12 @@ const DoctorDetail = ({ doctor, onEdit, onDelete }) => {
         <p><b>Specialization:</b> {doctor.specialization}</p>
         <p><b>Contact:</b> {doctor.contactNumber}</p>
         <p><b>Years of Experience:</b> {doctor.yearsOfExperience}</p>
-        <p><b>Address:</b> {doctor.address}</p>
-        <p><b>Hospital:</b> {doctor.hospital}</p>
-        <p><b>Qualifications:</b> {doctor.qualifications}</p>
-        <p><b>Bio:</b> {doctor.bio}</p>
-        <p><b>Languages Spoken:</b> {doctor.languages}</p>
+        <p><b>Department:</b> {doctor.department}</p>
+        <p><b>Qualifications:</b> {doctor.qualification}</p>
+        <p><b>Gender:</b> {doctor.gender}</p>
+        <p><b>Availability:</b> {doctor.availability}</p>
+        <p><b>Consultation Method:</b> {doctor.consultationMethod}</p>
+        <p><b>Doctor's Fee:</b> ${doctor.doctorsFee}</p>
       </div>
 
       {/* Edit and Delete buttons */}

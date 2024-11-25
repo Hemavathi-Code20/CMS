@@ -7,22 +7,23 @@ const DoctorTable = ({ doctors, onCardClick }) => {
         <div
           key={doctor._id}
           style={{
-            border: "1px solid #ccc",
+            border: "1px solid #333",
             padding: "20px",
             borderRadius: "8px",
-            width: "200px",
+            width: "180px",
             textAlign: "center",
             cursor: "pointer",
           }}
           onClick={() => onCardClick(doctor._id)}
         >
           <img
-            src={doctor.profilePicture}
+            src={doctor.profilePicture || "default-profile.png"} // Default image if profilePicture is missing
             alt="Doctor"
-            style={{ width: "100px", height: "100px", borderRadius: "50%" }}
+            style={{ width: "150px", height: "150px", borderRadius: "50%" }}
           />
           <h3>{doctor.fullName}</h3>
           <p>{doctor.specialization}</p>
+          <p>{doctor.department}</p>
         </div>
       ))}
     </div>

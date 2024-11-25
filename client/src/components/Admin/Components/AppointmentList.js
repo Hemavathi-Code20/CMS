@@ -49,7 +49,7 @@ function AppointmentList() {
       doctorspeciality: appointment.doctorspeciality
     });
     setIsModalOpen(true);
-    setIsUpdateMode(false);
+    setIsUpdateMode(false); // Set to false by default when viewing details
   };
 
   const handleChange = (e) => {

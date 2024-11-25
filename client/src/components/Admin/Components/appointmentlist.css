@@ -1,180 +1,61 @@
-/* General styling for the container */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-  }
-  
-  /* Appointments container */
-  .appointments-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-    justify-content: center;
-  }
-  
-  /* Appointment card styling */
-  .appointment-card {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 300px;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .appointment-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-  
-  .appointment-card-header {
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-  }
-  
-  .appointment-card-header h3 {
-    margin: 0;
-    font-size: 1.2rem;
-    color: #333;
-  }
-  
-  .appointment-card-header p {
-    margin: 0;
-    font-size: 0.9rem;
-    color: #666;
-  }
-  
-  .appointment-card-body p {
-    margin: 5px 0;
-    font-size: 0.9rem;
-  }
-  
-  .appointment-card-footer {
-    text-align: right;
-  }
-  
-  .appointment-card-footer button {
-    background-color: #ff4d4d;
-    border: none;
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .appointment-card-footer button:hover {
-    background-color: #e04343;
-  }
-  
-  /* Modal styling */
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .modal-content {
-    background-color: #ffffff;
-    border-radius: 8px;
-    width: 500px;
-    padding: 20px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    position: relative;
-  }
-  
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .modal-header h2 {
-    margin: 0;
-    font-size: 1.5rem;
-    color: #333;
-  }
-  
-  .close-icon {
-    font-size: 1.5rem;
-    font-weight: bold;
-    cursor: pointer;
-    color: #666;
-    transition: color 0.3s ease;
-  }
-  
-  .close-icon:hover {
-    color: red;
-  }
-  
-  /* Form fields in modal */
-  .modal-content form input,
-  .modal-content form select {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-  }
-  
-  .modal-content form select {
-    cursor: pointer;
-  }
-  
-  .modal-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-  }
-  
-  .modal-actions button {
-    padding: 10px 15px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .modal-actions button[type="submit"] {
-    background-color: #4caf50;
-    color: #fff;
-  }
-  
-  .modal-actions button[type="submit"]:hover {
-    background-color: #45a049;
-  }
-  
-  .modal-actions button:not([type="submit"]) {
-    background-color: #ddd;
-  }
-  
-  .modal-actions button:not([type="submit"]):hover {
-    background-color: #ccc;
-  }
-  
-  /* Responsive styles */
-  @media (max-width: 768px) {
-    .modal-content {
-      width: 90%;
-    }
-  
-    .appointment-card {
-      width: 90%;
-    }
-  }
-  
+.appointments-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.appointment-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  width: 300px;
+  cursor: pointer;
+}
+
+.appointment-card-header {
+  font-weight: bold;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  width: 500px;
+  border-radius: 10px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-icon {
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.modal-actions button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
