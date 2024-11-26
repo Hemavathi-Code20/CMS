@@ -9,6 +9,8 @@ import appointmentRoutes from "./routes/Admin/appointmentRoutes.js";
 import inventoryRoutes from "./routes/Admin/inventoryRoutes.js";
 import maintenanceRoutes from "./routes/Admin/maintenanceRoutes.js";
 import roleRoutes from "./routes/Admin/roleRoutes.js";
+import bookappointmentRoutes from './routes/Patient/bookappointmentRoutes.js';
+import fixappointmentRoutes from './routes/Doctor/fixappointmentRoutes.js';
 
 const app = express();
 
@@ -44,6 +46,9 @@ const startServer = async () => {
     app.use("/api/admin/inventory", inventoryRoutes); // Inventory routes
     app.use("/api/admin/maintenance", maintenanceRoutes);
     app.use("/api/admin/roles", roleRoutes);
+
+    app.use("/api/patient", bookappointmentRoutes);
+    app.use("/api/doctor", fixappointmentRoutes);
 
     // Start server
     app.listen(config.PORT, () => {
