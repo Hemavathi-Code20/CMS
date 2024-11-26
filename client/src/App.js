@@ -14,6 +14,8 @@ import MaintenancePage from "./components/Admin/pages/MaintenancePage";
 import RolesManagement from "./components/Admin/pages/RolesManagement";
 import AppointmentPage from "./components/Doctor/pages/AppointmentPage";
 import BookAppointmentPage from "./components/Patient/pages/BookAppointmentPage";
+import ManageRecordPage from "./components/Doctor/pages/ManageRecordPage";
+import PatientRecordPage from "./components/Patient/pages/PatientRecordPage";
 
 function App() {
   return (
@@ -92,9 +94,16 @@ function App() {
           }
         />
 
-<Route path="/appointments" element={<AppointmentPage />} />
-               <Route path="/book-appointment" element={<BookAppointmentPage />} />
-
+        <Route path="/appointments" element={<AppointmentPage />} />
+        <Route path="/book-appointment" element={<BookAppointmentPage />} />
+        <Route
+          path="/doctor-dashboard/manage-record"
+          element={<ManageRecordPage />} // Route for ManageRecordPage (Doctor)
+        />
+        <Route
+          path="/patient-dashboard/view-record"
+          element={<PatientRecordPage />} // Route for PatientRecordPage (Patient)
+        />
         {/* Redirect to login if route is not found */}
         <Route path="*" element={<Login />} />
       </Routes>

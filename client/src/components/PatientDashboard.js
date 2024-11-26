@@ -3,14 +3,47 @@ import { Link } from "react-router-dom";
 
 const PatientDashboard = () => {
   return (
-    <div>
-      <h1>Welcome to Patient Dashboard</h1>
-      <p>Access your appointments and schedule new ones.</p>
-      <Link to="/book-appointment">
-        <button style={{ padding: "10px 20px", fontSize: "16px", cursor: "pointer" }}>
-          Book Appointment
-        </button>
-      </Link>
+    <div style={{ padding: "20px" }}>
+      <h1>Welcome to Your Patient Dashboard</h1>
+      <p>Access your appointments, view medical records, and book new appointments.</p>
+      
+      <div>
+        <Link to="/book-appointment">
+          <button
+            style={{
+              padding: "10px 20px",
+              fontSize: "16px",
+              cursor: "pointer",
+              margin: "10px 0",
+              backgroundColor: "#4CAF50",
+              color: "white",
+              border: "none",
+              borderRadius: "5px"
+            }}
+          >
+            Book Appointment
+          </button>
+        </Link>
+      </div>
+
+      <div>
+        <Link to="/patient-dashboard/view-record">
+          <button
+            style={{
+              padding: "10px 20px",
+              fontSize: "16px",
+              cursor: "pointer",
+              margin: "10px 0",
+              backgroundColor: "#008CBA",
+              color: "white",
+              border: "none",
+              borderRadius: "5px"
+            }}
+          >
+            View Medical Records
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };

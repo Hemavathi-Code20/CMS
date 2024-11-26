@@ -24,7 +24,7 @@ const Home = () => {
           Login as Doctor
         </button>
         <button onClick={() => handleSelect('patient')} style={buttonStyle}>
-          Register/Login as Patient
+          Login or Registre as Patient
         </button>
       </div>
     </div>
