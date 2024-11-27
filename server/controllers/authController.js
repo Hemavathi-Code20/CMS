@@ -18,36 +18,6 @@ export const initializeUsers = async () => {
   }
 };
 
-// Patient registration
-export const registerPatient = async (req, res) => {
-  const { patientId, username, password } = req.body;
-
-  // Check if all required fields for patient are provided
-  if (!patientId || !username || !password) {
-    return res.status(400).json({ message: 'Patient ID, username, and password are required' });
-  }
-
-  // Check if user already exists
-  const existingUser = await User.findOne({ username });
-  if (existingUser) {
-    return res.status(400).json({ message: 'User already exists' });
-  }
-
-  // Hash the password before saving
-  const hashedPassword = bcrypt.hashSync(password, 10);
-
-  // Create new patient user
-  const newUser = new User({
-    patientId,
-    username,
-    password: hashedPassword,
-    role: 'patient',
-  });
-
-  await newUser.save();
-  res.status(201).json({ message: 'Patient registered successfully' });
-};
-
 // Login function
 export const login = async (req, res) => {
   const { username, password } = req.body;

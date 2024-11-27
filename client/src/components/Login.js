@@ -6,7 +6,7 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const role = location.state?.role || 'admin'; // Default to admin if no role is passed
+  const role = location.state?.role || 'admin'; 
   const [credentials, setCredentials] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
 
@@ -20,7 +20,6 @@ const Login = () => {
       // Redirect based on role
       if (data.role === 'admin') navigate('/admin');
       else if (data.role === 'doctor') navigate('/doctor');
-      else navigate('/patient');
     } catch {
       setError('Invalid credentials');
     }
