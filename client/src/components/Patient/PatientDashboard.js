@@ -18,7 +18,7 @@ const PatientDashboard = () => {
               backgroundColor: "#4CAF50",
               color: "white",
               border: "none",
-              borderRadius: "5px"
+              borderRadius: "5px",
             }}
           >
             Book Appointment
@@ -37,10 +37,29 @@ const PatientDashboard = () => {
               backgroundColor: "#008CBA",
               color: "white",
               border: "none",
-              borderRadius: "5px"
+              borderRadius: "5px",
             }}
           >
             View Medical Records
+          </button>
+        </Link>
+      </div>
+
+      <div>
+        <Link to="/patient-dashboard/edit-profile">
+          <button
+            style={{
+              padding: "10px 20px",
+              fontSize: "16px",
+              cursor: "pointer",
+              margin: "10px 0",
+              backgroundColor: "#FFA500",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+            }}
+          >
+            Edit Profile
           </button>
         </Link>
       </div>

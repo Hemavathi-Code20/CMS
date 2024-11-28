@@ -2,10 +2,10 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/Login";
-import Register from "./components/Register";
-import AdminDashboard from "./components/AdminDashboard";
-import DoctorDashboard from "./components/DoctorDashboard";
-import PatientDashboard from "./components/PatientDashboard";
+import Register from "./components/Patient/pages/Register";
+import AdminDashboard from "./components/Admin/AdminDashboard";
+import DoctorDashboard from "./components/Doctor/DoctorDashboard";
+import PatientDashboard from "./components/Patient/PatientDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import DoctorManagement from "./components/Admin/pages/DoctorManagement";
 import ManageAppointments from "./components/Admin/pages/ManageAppointments"; // Adding this as an example route
@@ -16,6 +16,7 @@ import AppointmentPage from "./components/Doctor/pages/AppointmentPage";
 import BookAppointmentPage from "./components/Patient/pages/BookAppointmentPage";
 import ManageRecordPage from "./components/Doctor/pages/ManageRecordPage";
 import PatientRecordPage from "./components/Patient/pages/PatientRecordPage";
+import PatientProfile from "./components/Patient/Components/PatientProfile";
 
 function App() {
   return (
@@ -43,13 +44,10 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="/patient-dashboard" element={<PatientDashboard />} />
         <Route
-          path="/patient"
-          element={
-            <ProtectedRoute role="patient">
-              <PatientDashboard />
-            </ProtectedRoute>
-          }
+          path="/patient-dashboard/edit-profile"
+          element={<PatientProfile />}
         />
 
         {/* Admin Routes */}

@@ -9,11 +9,12 @@ import appointmentRoutes from "./routes/Admin/appointmentRoutes.js";
 import inventoryRoutes from "./routes/Admin/inventoryRoutes.js";
 import maintenanceRoutes from "./routes/Admin/maintenanceRoutes.js";
 import roleRoutes from "./routes/Admin/roleRoutes.js";
-import bookappointmentRoutes from './routes/Patient/bookappointmentRoutes.js';
-import fixappointmentRoutes from './routes/Doctor/fixappointmentRoutes.js';
-import managerecordRoutes from './routes/Doctor/managerecordRoutes.js';
-import patientrecordRoutes from './routes/Patient/patientrecordRoutes.js';
-
+import bookappointmentRoutes from "./routes/Patient/bookappointmentRoutes.js";
+import fixappointmentRoutes from "./routes/Doctor/fixappointmentRoutes.js";
+import managerecordRoutes from "./routes/Doctor/managerecordRoutes.js";
+import patientrecordRoutes from "./routes/Patient/patientrecordRoutes.js";
+import patientRoutes from "./routes/Patient/patientRoutes.js";
+import profileRoutes from "./routes/Patient/profileRoutes.js";
 
 const app = express();
 
@@ -55,6 +56,9 @@ const startServer = async () => {
 
     app.use("/api/patient", patientrecordRoutes);
     app.use("/api/doctor", managerecordRoutes);
+
+    app.use("/api/patient", patientRoutes);
+    app.use("/api/patient/profile", profileRoutes);
 
     // Start server
     app.listen(config.PORT, () => {
