@@ -4,29 +4,29 @@ const patientSchema = new mongoose.Schema({
   patientId: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   fullname: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
   phone: {
     type: String,
-    default: ''
+    default: '',
   },
   address: {
     type: String,
-    default: ''
-  }
+    default: '',
+  },
 });
 
 const Patient = mongoose.model('Patient', patientSchema);

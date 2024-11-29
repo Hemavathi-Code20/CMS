@@ -21,7 +21,8 @@ const Register = () => {
     try {
       const response = await axios.post('http://localhost:5000/api/patient/patientregister', formData);
       alert(`Registration successful! Your Patient ID: ${response.data.patientId}`);
-      navigate('/patient/login');
+      localStorage.setItem('patientId', response.data.patientId); // Save patientId in localStorage
+      navigate('/patient-dashboard');
     } catch (err) {
       setError(err.response?.data?.message || 'An error occurred');
     }

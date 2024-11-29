@@ -7,7 +7,6 @@ const PatientDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Retrieve the patient's ID from local storage or a context provider
   const patientId = localStorage.getItem('patientId') || 'PAT0000001'; // Replace with secure token retrieval
 
   useEffect(() => {
@@ -15,9 +14,9 @@ const PatientDashboard = () => {
       try {
         const response = await axios.get(`http://localhost:5000/api/patient/profile/${patientId}`);
         setProfile(response.data);
-        setLoading(false);
-      } catch (error) {
-        setError('Failed to fetch profile. Please try again later.');
+      } catch (err) {
+        setError(err.response?.data?.message || 'Failed to fetch profile. Please try again later.');
+      } finally {
         setLoading(false);
       }
     };
@@ -25,77 +24,63 @@ const PatientDashboard = () => {
     fetchProfile();
   }, [patientId]);
 
+  const buttonStyle = (bgColor) => ({
+    padding: '10px 20px',
+    fontSize: '16px',
+    cursor: 'pointer',
+    margin: '10px 0',
+    backgroundColor: bgColor,
+    color: 'white',
+    border: 'none',
+    borderRadius: '5px',
+    textDecoration: 'none',
+    display: 'inline-block',
+  });
+
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div style={{ textAlign: 'center', marginTop: '50px' }}>
+        <p>Loading...</p>
+      </div>
+    );
   }
 
   if (error) {
-    return <p style={{ color: 'red' }}>{error}</p>;
+    return (
+      <div style={{ textAlign: 'center', marginTop: '50px', color: 'red' }}>
+        <p>{error}</p>
+      </div>
+    );
   }
 
   if (!profile) {
-    return <p>No profile found.</p>; // Handle the case where profile data is not returned
+    return (
+      <div style={{ textAlign: 'center', marginTop: '50px' }}>
+        <p>No profile found.</p>
+      </div>
+    );
   }
 
   return (
     <div style={{ padding: '20px' }}>
-      <h1>Welcome to Your Patient Dashboard</h1>
-      <p>Access your appointments, view medical records, and book new appointments.</p>
+      <h1>Welcome, {profile.name || 'Patient'}</h1>
+      <p>Access your appointments, view medical records, and manage your profile.</p>
 
       <div>
-        <Link to="/book-appointment">
-          <button
-            style={{
-              padding: '10px 20px',
-              fontSize: '16px',
-              cursor: 'pointer',
-              margin: '10px 0',
-              backgroundColor: '#4CAF50',
-              color: 'white',
-              border: 'none',
-              borderRadius: '5px',
-            }}
-          >
-            Book Appointment
-          </button>
+        <Link to="/book-appointment" style={buttonStyle('#4CAF50')}>
+          Book Appointment
         </Link>
       </div>
 
       <div>
-        <Link to="/patient-dashboard/view-record">
-          <button
-            style={{
-              padding: '10px 20px',
-              fontSize: '16px',
-              cursor: 'pointer',
-              margin: '10px 0',
-              backgroundColor: '#008CBA',
-              color: 'white',
-              border: 'none',
-              borderRadius: '5px',
-            }}
-          >
-            View Medical Records
-          </button>
+        <Link to="/patient-dashboard/view-record" style={buttonStyle('#008CBA')}>
+          View Medical Records
         </Link>
       </div>
 
       <div>
-        <Link to={`/patient/profile/${profile.patientId}/edit`}>
-          <button
-            style={{
-              padding: '10px 20px',
-              fontSize: '16px',
-              cursor: 'pointer',
-              margin: '10px 0',
-              backgroundColor: '#FFA500',
-              color: 'white',
-              border: 'none',
-              borderRadius: '5px',
-            }}
-          >
-            Edit Profile
-          </button>
+        <Link to={`/patient/profile/${profile.patientId}/edit`} style={buttonStyle('#FFA500')}>
+          Edit Profile
         </Link>
       </div>
     </div>

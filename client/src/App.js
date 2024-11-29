@@ -46,8 +46,8 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/patient-dashboard" element={<PatientDashboard />} />
-        <Route path="/patient/profile/:id/edit" element={<PatientProfile />} />
+       <Route path="/patient-dashboard" element={<PatientDashboard />} />
+<Route path="/patient/profile/:id/edit" element={<PatientProfile />} />
 
         {/* Admin Routes */}
         <Route
