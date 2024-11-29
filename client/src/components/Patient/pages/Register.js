@@ -1,51 +1,64 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    password: "",
-    profilePicture: "",
-  });
-
+  const [formData, setFormData] = useState({ fullname: '', email: '', password: '' });
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setFormData({ ...formData, profilePicture: reader.result });
-    };
-    if (file) reader.readAsDataURL(file);
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.fullname || !formData.email || !formData.password) {
+      setError('All fields are required');
+      return;
+    }
+
     try {
-      const response = await axios.post("http://localhost:5000/api/patient/patientregister", formData);
-      if (response.data.success) {
-        navigate("/patient-dashboard");
-      }
-    } catch (error) {
-      console.error(error.response.data.message);
+      const response = await axios.post('http://localhost:5000/api/patient/patientregister', formData);
+      alert(`Registration successful! Your Patient ID: ${response.data.patientId}`);
+      navigate('/patient/login');
+    } catch (err) {
+      setError(err.response?.data?.message || 'An error occurred');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="file" accept="image/*" onChange={handleFileChange} required />
-      <input type="text" name="fullName" placeholder="Full Name" onChange={handleChange} required />
-      <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-      <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
-      <button type="submit">Register</button>
-    </form>
+    <div className="register-form">
+      <h2>Patient Registration</h2>
+      {error && <p className="error">{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="fullname"
+          placeholder="Full Name"
+          value={formData.fullname}
+          onChange={handleChange}
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+        />
+        <button type="submit">Register</button>
+      </form>
+      <p>
+        Already have an account? <a href="/patient/login">Login here</a>
+      </p>
+    </div>
   );
 };
 

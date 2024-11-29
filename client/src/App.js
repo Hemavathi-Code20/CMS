@@ -1,14 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
-import Login from "./components/Login";
+import Login from "./components/Login"; // Generic login page
+import PatientLogin from "./components/Patient/pages/Login"; // Patient-specific login page
 import Register from "./components/Patient/pages/Register";
 import AdminDashboard from "./components/Admin/AdminDashboard";
 import DoctorDashboard from "./components/Doctor/DoctorDashboard";
 import PatientDashboard from "./components/Patient/PatientDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import DoctorManagement from "./components/Admin/pages/DoctorManagement";
-import ManageAppointments from "./components/Admin/pages/ManageAppointments"; // Adding this as an example route
+import ManageAppointments from "./components/Admin/pages/ManageAppointments";
 import InventoryPage from "./components/Admin/pages/InventoryPage";
 import MaintenancePage from "./components/Admin/pages/MaintenancePage";
 import RolesManagement from "./components/Admin/pages/RolesManagement";
@@ -24,7 +25,8 @@ function App() {
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login />} /> {/* Generic login for admin/doctor */}
+        <Route path="/patient/login" element={<PatientLogin />} /> {/* Patient-specific login */}
         <Route path="/register" element={<Register />} />
 
         {/* Protected Routes */}
@@ -45,10 +47,7 @@ function App() {
           }
         />
         <Route path="/patient-dashboard" element={<PatientDashboard />} />
-        <Route
-          path="/patient-dashboard/edit-profile"
-          element={<PatientProfile />}
-        />
+        <Route path="/patient/profile/:id/edit" element={<PatientProfile />} />
 
         {/* Admin Routes */}
         <Route
@@ -92,16 +91,14 @@ function App() {
           }
         />
 
+        {/* Doctor Routes */}
         <Route path="/appointments" element={<AppointmentPage />} />
+        <Route path="/doctor-dashboard/manage-record" element={<ManageRecordPage />} />
+
+        {/* Patient Routes */}
         <Route path="/book-appointment" element={<BookAppointmentPage />} />
-        <Route
-          path="/doctor-dashboard/manage-record"
-          element={<ManageRecordPage />} // Route for ManageRecordPage (Doctor)
-        />
-        <Route
-          path="/patient-dashboard/view-record"
-          element={<PatientRecordPage />} // Route for PatientRecordPage (Patient)
-        />
+        <Route path="/patient-dashboard/view-record" element={<PatientRecordPage />} />
+
         {/* Redirect to login if route is not found */}
         <Route path="*" element={<Login />} />
       </Routes>

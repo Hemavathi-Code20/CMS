@@ -1,125 +1,292 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import Modal from "react-modal";
 
-const PatientProfile = ({ patient, updatePatient }) => {
-  const [formData, setFormData] = useState({ ...patient });
+Modal.setAppElement("#root");
 
-  // Handle input changes
-  const handleChange = (e) => {
+const PatientProfile = () => {
+  const { id } = useParams(); // Get the patient ID from the route parameter
+  const [profile, setProfile] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editFormData, setEditFormData] = useState({
+    fullname: "",
+    preferredPronouns: "",
+    age: "",
+    gender: "",
+    phone: "",
+    email: "",
+    city: "",
+    state: "",
+    country: "",
+    occupation: "",
+    generalDoctor: "",
+    doctorSpecialty: "",
+    insuranceProvider: "",
+    policyNumber: "",
+  });
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/patient/profile/${id}`
+        );
+        const data = response.data;
+
+        // Ensure appointmentDates is an array
+        data.appointmentDates = Array.isArray(data.appointmentDates)
+          ? data.appointmentDates
+          : [];
+
+        setProfile(data);
+        setEditFormData({
+          fullname: data.fullname,
+          preferredPronouns: data.preferredPronouns || "",
+          age: data.age || "",
+          gender: data.gender || "",
+          phone: data.phone || "",
+          email: data.email,
+          city: data.city || "",
+          state: data.state || "",
+          country: data.country || "",
+          occupation: data.occupation || "",
+          generalDoctor: data.generalDoctor || "",
+          doctorSpecialty: data.doctorSpecialty || "",
+          insuranceProvider: data.insuranceProvider || "",
+          policyNumber: data.policyNumber || "",
+        });
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+        setError("Error fetching profile");
+        setLoading(false);
+      }
+    };
+
+    fetchProfile();
+  }, [id]);
+
+  const handleEditChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setEditFormData({ ...editFormData, [name]: value });
   };
 
-  // Handle form submission (send updated data to parent component or API)
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    updatePatient(formData); // Pass updated data to parent or API
-    alert("Profile updated successfully!");
+  const handleUpdate = async () => {
+    try {
+      console.log("Update data being sent:", editFormData);
+      const response = await axios.put(
+        `http://localhost:5000/api/patient/profile/${profile.patientId}`,
+        {
+          ...editFormData,
+        }
+      );
+      console.log("Response from server:", response.data);
+
+      if (response.data) {
+        setProfile(response.data);
+        setIsModalOpen(false);
+        alert("Profile updated successfully!");
+      } else {
+        alert("Failed to update profile. Please try again.");
+      }
+    } catch (error) {
+      console.error("Update error:", error);
+      setError(error.response?.data?.message || "Error updating profile");
+    }
   };
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p style={{ color: "red" }}>{error}</p>;
+  if (!profile) return <p>No profile found.</p>;
 
   return (
-    <div style={{ padding: "20px", maxWidth: "600px", margin: "0 auto" }}>
-      <h2>Edit Profile</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Patient ID:</label>
-          <input
-            type="text"
-            name="patientId"
-            value={formData.patientId} // Display the patient ID
-            readOnly // Making the Patient ID read-only as it's auto-generated
-            style={{
-              display: "block",
-              margin: "10px 0",
-              padding: "5px",
-              backgroundColor: "#f0f0f0",
-            }}
-          />
-        </div>
-        <div>
-          <label>Full Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            style={{ display: "block", margin: "10px 0", padding: "5px" }}
-          />
-        </div>
-        <div>
-          <label>Preferred Pronouns:</label>
-          <input
-            type="text"
-            name="pronouns"
-            value={formData.pronouns}
-            onChange={handleChange}
-            style={{ display: "block", margin: "10px 0", padding: "5px" }}
-          />
-        </div>
-        <div>
-          <label>Age:</label>
-          <input
-            type="number"
-            name="age"
-            value={formData.age}
-            onChange={handleChange}
-            style={{ display: "block", margin: "10px 0", padding: "5px" }}
-          />
-        </div>
-        <div>
-          <label>Gender:</label>
-          <input
-            type="text"
-            name="gender"
-            value={formData.gender}
-            onChange={handleChange}
-            style={{ display: "block", margin: "10px 0", padding: "5px" }}
-          />
-        </div>
-        <div>
-          <label>Contact Number:</label>
-          <input
-            type="text"
-            name="contactNumber"
-            value={formData.contactNumber}
-            onChange={handleChange}
-            style={{ display: "block", margin: "10px 0", padding: "5px" }}
-          />
-        </div>
-        <div>
-          <label>Location:</label>
-          <input
-            type="text"
-            name="location"
-            value={formData.location}
-            onChange={handleChange}
-            style={{ display: "block", margin: "10px 0", padding: "5px" }}
-          />
-        </div>
-        <div>
-          <label>Occupation:</label>
-          <input
-            type="text"
-            name="occupation"
-            value={formData.occupation}
-            onChange={handleChange}
-            style={{ display: "block", margin: "10px 0", padding: "5px" }}
-          />
-        </div>
-        <button
-          type="submit"
-          style={{
-            padding: "10px 20px",
-            fontSize: "16px",
-            backgroundColor: "#4CAF50",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
-        >
-          Save Changes
-        </button>
-      </form>
+    <div>
+      <h2>Patient Profile</h2>
+      {/* Render profile information */}
+      <p>Patient ID: {profile.patientId}</p> {/* Display the generated PATIENTID */}
+      <p>Full Name: {profile.fullname}</p>
+      <p>Preferred Pronouns: {profile.preferredPronouns}</p>
+      <p>Age: {profile.age}</p>
+      <p>Gender: {profile.gender}</p>
+      <p>Contact Number: {profile.phone}</p>
+      <p>Email: {profile.email}</p>
+      <p>Location: {`${profile.city}, ${profile.state}, ${profile.country}`}</p>
+      <p>Occupation: {profile.occupation}</p>
+      <p>General Doctor: {profile.generalDoctor}</p>
+      <p>Doctor Specialty: {profile.doctorSpecialty}</p>
+      <p>
+        Insurance: {`${profile.insuranceProvider} (Policy #${profile.policyNumber})`}
+      </p>
+      <div>
+        <h3>Appointment Dates</h3>
+        {/* Check if appointmentDates exists and is not empty before mapping */}
+        {profile.appointmentDates && profile.appointmentDates.length > 0 ? (
+          <ul>
+            {profile.appointmentDates.map((date, index) => (
+              <li key={index}>{new Date(date).toLocaleDateString()}</li>
+            ))}
+          </ul>
+        ) : (
+          <p>No appointment dates available.</p>
+        )}
+      </div>
+      {/* Edit button with pencil icon */}
+      <button
+        onClick={() => setIsModalOpen(true)}
+        style={{ margin: "10px", cursor: "pointer" }}
+      >
+        ✏️ Edit
+      </button>
+      {/* Modal for editing profile details */}
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={() => setIsModalOpen(false)}
+        contentLabel="Edit Profile"
+      >
+        <h2>Edit Profile</h2>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        <form>
+          <div>
+            <label>Full Name:</label>
+            <input
+              type="text"
+              name="fullname"
+              value={editFormData.fullname}
+              onChange={handleEditChange}
+            />
+          </div>
+          <div>
+            <label>Preferred Pronouns:</label>
+            <input
+              type="text"
+              name="preferredPronouns"
+              value={editFormData.preferredPronouns}
+              onChange={handleEditChange}
+            />
+          </div>
+          <div>
+            <label>Age:</label>
+            <input
+              type="number"
+              name="age"
+              value={editFormData.age}
+              onChange={handleEditChange}
+            />
+          </div>
+          <div>
+            <label>Gender:</label>
+            <input
+              type="text"
+              name="gender"
+              value={editFormData.gender}
+              onChange={handleEditChange}
+            />
+          </div>
+          <div>
+            <label>Contact Number:</label>
+            <input
+              type="text"
+              name="phone"
+              value={editFormData.phone}
+              onChange={handleEditChange}
+            />
+          </div>
+          <div>
+            <label>Email:</label>
+            <input
+              type="email"
+              name="email"
+              value={editFormData.email}
+              onChange={handleEditChange}
+            />
+          </div>
+          <div>
+            <label>City:</label>
+            <input
+              type="text"
+              name="city"
+              value={editFormData.city}
+              onChange={handleEditChange}
+            />
+          </div>
+          <div>
+            <label>State:</label>
+            <input
+              type="text"
+              name="state"
+              value={editFormData.state}
+              onChange={handleEditChange}
+            />
+          </div>
+          <div>
+            <label>Country:</label>
+            <input
+              type="text"
+              name="country"
+              value={editFormData.country}
+              onChange={handleEditChange}
+            />
+          </div>
+          <div>
+            <label>Occupation:</label>
+            <input
+              type="text"
+              name="occupation"
+              value={editFormData.occupation}
+              onChange={handleEditChange}
+            />
+          </div>
+          <div>
+            <label>General Doctor:</label>
+            <input
+              type="text"
+              name="generalDoctor"
+              value={editFormData.generalDoctor}
+              onChange={handleEditChange}
+            />
+          </div>
+          <div>
+            <label>Doctor Specialty:</label>
+            <input
+              type="text"
+              name="doctorSpecialty"
+              value={editFormData.doctorSpecialty}
+              onChange={handleEditChange}
+            />
+          </div>
+          <div>
+            <label>Insurance Provider:</label>
+            <input
+              type="text"
+              name="insuranceProvider"
+              value={editFormData.insuranceProvider}
+              onChange={handleEditChange}
+            />
+          </div>
+          <div>
+            <label>Policy Number:</label>
+            <input
+              type="text"
+              name="policyNumber"
+              value={editFormData.policyNumber}
+              onChange={handleEditChange}
+            />
+          </div>
+          <button type="button" onClick={handleUpdate}>
+            Save Changes
+          </button>
+          <button
+            type="button"
+            onClick={() => setIsModalOpen(false)}
+            style={{ marginLeft: "10px" }}
+          >
+            Cancel
+          </button>
+        </form>
+      </Modal>
     </div>
   );
 };
