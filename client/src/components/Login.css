@@ -1,0 +1,83 @@
+/* General styles for the page */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form-container {
+  display: flex;
+  width: 850px;
+  height: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+  animation: slideIn 0.6s ease-out;
+}
+
+.image-side {
+  flex: 1;
+  position: relative;
+}
+
+.login-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.form-side {
+  flex: 1;
+  padding: 40px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 80px;
+}
+label {
+  font-size: 13px;
+}
+input {
+  width: 95%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button.login-button {
+  text-transform: uppercase;
+  margin-left: 40%;
+  width: 20%;
+  padding: 12px;
+  background-color: teal !important;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Hover effect on image side */
+.image-side:hover .login-image {
+  opacity: 1;
+}

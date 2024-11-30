@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles/Home.css";
 import logo from "../assets/logo.png";
-import homebg from "../assets/home-bg.jpg";
+import homebg from "../assets/homebg.jpg";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const Home = () => {
         </div>
 
         <div className="navbar-buttons">
-          <button onClick={toggleDropdown} className="login-button">
+          <button onClick={toggleDropdown} className="login-buttons">
             Login
           </button>
 
@@ -55,14 +55,6 @@ const Home = () => {
             Register
           </button>
         </div>
-      </div>
-
-      <div className="center-container">
-        <h1>Clinic Management System</h1>
-        <p>
-          Manage your clinic with ease, whether you're a patient or a healthcare
-          provider.
-        </p>
       </div>
     </div>
   );

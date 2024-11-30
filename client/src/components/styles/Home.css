@@ -1,132 +1,101 @@
-
 .home-container {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.home-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  margin-left: 50%;
+}
+
+.navbar-buttons {
+  display: flex;
+  align-items: center;
+  margin-right: 2%;
+}
+
+.login-buttons,
+.register-button {
+  padding: 8px 18px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+
+.login-buttons {
+  background-color: teal !important;
+  color: white;
+}
+
+.register-button {
+  background-color: #007bff !important;
+  color: white;
+}
+.dropdown {
+  position: absolute;
+  top: 70px;
+  right: 130px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown button {
+  padding: 10px 15px;
+  font-size: 15px;
+  margin: 8px 0;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  color: #333 !important;
+  background-color: #fff !important;
+  box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.3), 4px 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 768px) {
+  .logo-container img {
+    width: 120px;
   }
-  
-  .background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-  }
-  
-  .home-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-  }
-  
-  .logo {
-    width: 80px;
-    height: 80px;
-    margin-left: 50%;
-  }
-  
+
   .navbar-buttons {
-    display: flex;
-    align-items: center;
-    margin-right: 2%;
-  }
-  
-  .login-button,
-  .register-button {
-    padding: 8px 18px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 10px;
-    margin-left: 20px;
-  }
-  
-  .login-button {
-    background-color: teal !important;
-    color: white;
-  }
-  
-  .register-button {
-    background-color: #007bff !important;
-    color: white;
-  }
-  .dropdown {
-    position: absolute;
-    top: 70px;
-    right: 130px;
-    display: flex;
     flex-direction: column;
+    align-items: center;
   }
-  
-  .dropdown button {
-    padding: 10px 15px;
-    font-size: 15px;
-    margin: 8px 0;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    color: #333 !important;
-    background-color: #fff !important;
-    box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.3), 4px 4px 10px rgba(0, 0, 0, 0.7);
+
+  .login-buttons,
+  .register-button {
+    margin-left: 0;
+    margin-bottom: 10px;
   }
-  
-  .center-container {
-    text-align: center;
-    color: white;
-    margin-top: 200px;
-  }
-  
-  .center-container h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-  }
-  
-  .center-container p {
-    color: #333;
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-  }
-  
-  @media (max-width: 768px) {
-    .logo-container img {
-      width: 120px;
-    }
-  
-    .navbar-buttons {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .login-button,
-    .register-button {
-      margin-left: 0;
-      margin-bottom: 10px;
-    }
-  
-    .center-container h1 {
-      font-size: 2.2rem;
-    }
-  
-    .center-container p {
-      font-size: 1rem;
-    }
-  }
-  
+}
