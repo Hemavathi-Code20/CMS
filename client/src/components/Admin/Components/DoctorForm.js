@@ -45,7 +45,7 @@ const DoctorForm = ({ onSubmit, initialData = {} }) => {
       <label>
         Profile Picture:
         <input
-          type="text"
+          type="file"
           name="profilePicture"
           value={formData.profilePicture}
           onChange={handleChange}
