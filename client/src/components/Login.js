@@ -44,7 +44,7 @@ const Login = () => {
         </div>
         <div className="form-side">
           <form onSubmit={handleLogin}>
-            <h2>Login as {role.charAt(0).toUpperCase() + role.slice(1)}</h2>
+            <h2 className="heading">Login as {role.charAt(0).toUpperCase() + role.slice(1)}</h2>
             <div>
               <label>Username</label>
               <input
