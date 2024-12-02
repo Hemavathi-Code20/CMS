@@ -124,7 +124,7 @@ const AdminDashboard = () => {
           setIsSidebarVisible(!isSidebarVisible);
         }}
       >
-        {isSidebarVisible ? <FaArrowRight /> : <FaArrowLeft />}
+        {isSidebarVisible ? <FaArrowLeft /> : <FaArrowRight />}
       </button>
 
       <aside ref={sidebarRef} className={`sidebar ${isSidebarVisible ? "visible" : ""}`}>

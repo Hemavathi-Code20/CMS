@@ -1,0 +1,67 @@
+.doctor-detail-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.doctor-name {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 1.5rem;
+}
+
+.doctor-profile {
+  display: flex;
+}
+
+.profile-picture {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #aaa;
+  transition: border-color 0.3s ease;
+}
+
+.profile-picture:hover {
+  border-color: #34495e;
+}
+
+.doctor-info {
+  margin-left: 18%;
+  flex-grow: 1;
+  color: #34495e;
+}
+
+.doctor-action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.edit-button,
+.delete-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.edit-button {
+    background: linear-gradient(135deg, #0077b6, #00b4d8);
+}
+
+.edit-button:hover {
+  transform: translateY(-2px);
+}
+
+.delete-button {
+  background-color: #f44336;
+}
+
+.delete-button:hover {
+  transform: translateY(-2px);
+}

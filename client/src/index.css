@@ -5,3 +5,32 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f2f2f2;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3498db;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2980b9;
+  box-shadow: 0 0 15px rgba(52, 152, 219, 0.7);
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-corner {
+  background: #f2f2f2;
+}
