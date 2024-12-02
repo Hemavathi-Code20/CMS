@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Line, Bar } from "react-chartjs-2";
 import {
@@ -12,6 +12,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { FaArrowAltCircleRight, FaArrowLeft, FaArrowRight, FaBars, FaRegArrowAltCircleLeft, FaTimes } from "react-icons/fa"; // Import icons
 import "./AdminDashboard.css";
 import logo from "../../assets/logo.png";
 
@@ -28,6 +29,7 @@ ChartJS.register(
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
+  const sidebarRef = useRef(null); // Create a reference for the sidebar
   const [dashboardData, setDashboardData] = useState([]);
   const [stats, setStats] = useState({
     doctors: 10,
@@ -59,6 +61,23 @@ const AdminDashboard = () => {
     localStorage.removeItem("token");
     navigate("/login");
   };
+
+  const handleOutsideClick = (event) => {
+    if (
+      sidebarRef.current &&
+      !sidebarRef.current.contains(event.target) &&
+      isSidebarVisible
+    ) {
+      setIsSidebarVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [isSidebarVisible]);
 
   const chartDataLine = {
     labels: dashboardData.map((item) => item.date),
@@ -100,12 +119,15 @@ const AdminDashboard = () => {
     >
       <button
         className="toggle-button"
-        onClick={() => setIsSidebarVisible(!isSidebarVisible)}
+        onClick={(e) => {
+          e.stopPropagation(); // Prevent closing sidebar when clicking toggle
+          setIsSidebarVisible(!isSidebarVisible);
+        }}
       >
-        {isSidebarVisible ? "🡰" : "🡲"}
+        {isSidebarVisible ? <FaArrowRight /> : <FaArrowLeft />}
       </button>
 
-      <aside className="sidebar">
+      <aside ref={sidebarRef} className={`sidebar ${isSidebarVisible ? "visible" : ""}`}>
         <div className="sidebar-logo">
           <img src={logo} alt="logo-image" />
         </div>

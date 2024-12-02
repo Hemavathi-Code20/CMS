@@ -32,7 +32,6 @@
 }
 .main-content h2 {
   font-size: 20px;
-  font-style: italic;
 }
 
 .sidebar-logo img {
@@ -64,6 +63,8 @@
 }
 
 .toggle-button {
+  display: flex;
+  align-items: center;
   position: absolute;
   top: 20px;
   right: 20px;
