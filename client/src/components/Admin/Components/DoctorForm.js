@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./DoctorForm.css"; // Ensure this CSS file is imported
+import "./DoctorForm.css";
 
 const DoctorForm = ({ onSubmit, initialData = {} }) => {
   const formDataFromProps = initialData || {};
@@ -28,7 +28,6 @@ const DoctorForm = ({ onSubmit, initialData = {} }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "profilePicture") {
-      // Convert the uploaded file to a temporary URL
       setFormData({
         ...formData,
         [name]: URL.createObjectURL(e.target.files[0]),

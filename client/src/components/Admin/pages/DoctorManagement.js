@@ -108,7 +108,6 @@ const DoctorManagement = () => {
         Add Record
       </button>
 
-      {/* Add Doctor Modal */}
       {isAdding && (
         <div className="modal-overlay">
           <div className="modal-content">
@@ -123,7 +122,6 @@ const DoctorManagement = () => {
         </div>
       )}
 
-      {/* Doctor Detail Modal */}
       {showDoctorDetail && selectedDoctor && (
         <div className="doctor-detail-modal-overlay">
           <div className="doctor-detail-modal-content">
@@ -142,7 +140,6 @@ const DoctorManagement = () => {
         </div>
       )}
 
-      {/* Doctor Table */}
       {loading ? (
         <p>Loading...</p>
       ) : (

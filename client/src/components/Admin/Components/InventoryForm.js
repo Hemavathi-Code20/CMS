@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import './Inventory.css'; // Importing CSS file for styling
+import React, { useState, useEffect } from "react";
+import "./Inventory.css";
 
 const InventoryForm = ({ onAddItem, onUpdateItem, selectedItem }) => {
   const [item, setItem] = useState({
-    image: '', // New field for image
-    itemName: '',
-    itemCode: '',
-    category: '',
-    supplierName: '',
+    itemName: "",
+    itemCode: "",
+    category: "",
+    supplierName: "",
     quantity: 0,
     unitPrice: 0,
-    expiryDate: '',
-    supplierContact: '',
-    stockStatus: '',
+    expiryDate: "",
+    supplierContact: "",
+    stockStatus: "",
+    purchaseDate: "",
+    reorderLevel: 10,
   });
 
   useEffect(() => {
@@ -29,185 +30,181 @@ const InventoryForm = ({ onAddItem, onUpdateItem, selectedItem }) => {
     });
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setItem((prevItem) => ({
-        ...prevItem,
-        image: reader.result, // Save image as base64 string
-      }));
-    };
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (selectedItem) {
-      onUpdateItem(item); // Update item
+      onUpdateItem(item);
     } else {
-      onAddItem(item); // Add new item
+      onAddItem(item);
     }
     setItem({
-      image: '', // Reset image field
-      itemName: '',
-      itemCode: '',
-      category: '',
-      supplierName: '',
+      itemName: "",
+      itemCode: "",
+      category: "",
+      supplierName: "",
       quantity: 0,
       unitPrice: 0,
-      expiryDate: '',
-      supplierContact: '',
-      stockStatus: '',
+      expiryDate: "",
+      supplierContact: "",
+      stockStatus: "",
+      purchaseDate: "",
+      reorderLevel: 10,
     });
   };
 
   return (
     <form className="inventory-form" onSubmit={handleSubmit}>
-      <h2>{selectedItem ? 'Update Item' : 'Add New Item'}</h2>
-
-      {/* New Image Upload Field */}
-      <div className="form-group">
-        <label htmlFor="image">Item Image:</label>
-        <input
-          type="file"
-          id="image"
-          name="image"
-          accept="image/*"
-          onChange={handleImageChange}
-        />
-        {item.image && (
-          <img
-            src={item.image}
-            alt="Preview"
-            style={{ width: '100px', marginTop: '10px' }}
+      <div className="form-grid">
+        <label>
+          Item Name:{" "}
+          <input
+            type="text"
+            id="itemName"
+            name="itemName"
+            value={item.itemName}
+            onChange={handleChange}
+            required
           />
-        )}
-      </div>
+        </label>
 
-      <div className="form-group">
-        <label htmlFor="itemName">Item Name:</label>
-        <input
-          type="text"
-          id="itemName"
-          name="itemName"
-          value={item.itemName}
-          onChange={handleChange}
-          placeholder="Enter item name"
-          required
-        />
-      </div>
+        <label>
+          Item Code:{" "}
+          <input
+            type="text"
+            id="itemCode"
+            name="itemCode"
+            value={item.itemCode}
+            onChange={handleChange}
+            required
+          />
+        </label>
 
-      <div className="form-group">
-        <label htmlFor="itemCode">Item Code:</label>
-        <input
-          type="text"
-          id="itemCode"
-          name="itemCode"
-          value={item.itemCode}
-          onChange={handleChange}
-          placeholder="Enter item code"
-          required
-        />
-      </div>
+        <label>
+          Category:{" "}
+          <select
+            id="category"
+            name="category"
+            value={item.category}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Category</option>
+            <option value="Medical Equipment">Medical Equipment</option>
+            <option value="Pharmaceuticals">Pharmaceuticals</option>
+            <option value="Office Supplies">Office Supplies</option>
+            <option value="Patient Care Supplies">Patient Care Supplies</option>
+            <option value="Surgical Instruments">Surgical Instruments</option>
+            <option value="Diagnostic Equipment">Diagnostic Equipment</option>
+            <option value="Personal Protective Equipment (PPE)">
+              Personal Protective Equipment (PPE)
+            </option>
+            <option value="Cleaning Supplies">Cleaning Supplies</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Imaging & Radiology">Imaging & Radiology</option>
+            <option value="Laboratory Equipment">Laboratory Equipment</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
 
-      <div className="form-group">
-        <label htmlFor="category">Category:</label>
-        <input
-          type="text"
-          id="category"
-          name="category"
-          value={item.category}
-          onChange={handleChange}
-          placeholder="Enter category"
-          required
-        />
-      </div>
+        <label>
+          Supplier Name:{" "}
+          <input
+            type="text"
+            id="supplierName"
+            name="supplierName"
+            value={item.supplierName}
+            onChange={handleChange}
+            required
+          />
+        </label>
 
-      <div className="form-group">
-        <label htmlFor="supplierName">Supplier Name:</label>
-        <input
-          type="text"
-          id="supplierName"
-          name="supplierName"
-          value={item.supplierName}
-          onChange={handleChange}
-          placeholder="Enter supplier name"
-          required
-        />
-      </div>
+        <label>
+          Quantity:{" "}
+          <input
+            type="number"
+            id="quantity"
+            name="quantity"
+            value={item.quantity}
+            onChange={handleChange}
+            required
+          />
+        </label>
 
-      <div className="form-group">
-        <label htmlFor="quantity">Quantity:</label>
-        <input
-          type="number"
-          id="quantity"
-          name="quantity"
-          value={item.quantity}
-          onChange={handleChange}
-          placeholder="Enter quantity"
-          required
-        />
-      </div>
+        <label>
+          Unit Price:{" "}
+          <input
+            type="number"
+            id="unitPrice"
+            name="unitPrice"
+            value={item.unitPrice}
+            onChange={handleChange}
+            required
+          />
+        </label>
 
-      <div className="form-group">
-        <label htmlFor="unitPrice">Unit Price:</label>
-        <input
-          type="number"
-          id="unitPrice"
-          name="unitPrice"
-          value={item.unitPrice}
-          onChange={handleChange}
-          placeholder="Enter unit price"
-          required
-        />
-      </div>
+        <label>
+          Expiry Date:{" "}
+          <input
+            type="date"
+            id="expiryDate"
+            name="expiryDate"
+            value={item.expiryDate}
+            onChange={handleChange}
+            required
+          />
+        </label>
 
-      <div className="form-group">
-        <label htmlFor="expiryDate">Expiry Date:</label>
-        <input
-          type="date"
-          id="expiryDate"
-          name="expiryDate"
-          value={item.expiryDate}
-          onChange={handleChange}
-          required
-        />
-      </div>
+        <label>
+          Supplier Contact:{" "}
+          <input
+            type="text"
+            id="supplierContact"
+            name="supplierContact"
+            value={item.supplierContact}
+            onChange={handleChange}
+            required
+          />
+        </label>
 
-      <div className="form-group">
-        <label htmlFor="supplierContact">Supplier Contact:</label>
-        <input
-          type="text"
-          id="supplierContact"
-          name="supplierContact"
-          value={item.supplierContact}
-          onChange={handleChange}
-          placeholder="Enter supplier contact"
-          required
-        />
-      </div>
+        <label>
+          Stock Status:{" "}
+          <select
+            id="stockStatus"
+            name="stockStatus"
+            value={item.stockStatus}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Stock Status</option>
+            <option value="In Stock">In Stock</option>
+            <option value="Out of Stock">Out of Stock</option>
+            <option value="Low Stock">Low Stock</option>
+          </select>
+        </label>
 
-      <div className="form-group">
-        <label htmlFor="stockStatus">Stock Status:</label>
-        <select
-          id="stockStatus"
-          name="stockStatus"
-          value={item.stockStatus}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Select Stock Status</option>
-          <option value="In Stock">In Stock</option>
-          <option value="Out of Stock">Out of Stock</option>
-        </select>
-      </div>
+        <label>
+          Purchase Date:{" "}
+          <input
+            type="date"
+            id="purchaseDate"
+            name="purchaseDate"
+            value={item.purchaseDate}
+            onChange={handleChange}
+          />
+        </label>
 
-      <button className="submit-button" type="submit">
-        {selectedItem ? 'Update Item' : 'Add Item'}
-      </button>
+        <label>
+          Reorder Level:{" "}
+          <input
+            type="number"
+            id="reorderLevel"
+            name="reorderLevel"
+            value={item.reorderLevel}
+            onChange={handleChange}
+          />
+        </label>
+      </div>
+      <button type="submit">{selectedItem ? "Update" : "Add Item"}</button>
     </form>
   );
 };
