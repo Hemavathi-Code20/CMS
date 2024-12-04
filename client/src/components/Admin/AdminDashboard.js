@@ -12,8 +12,15 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { FaArrowAltCircleRight, FaArrowLeft, FaArrowRight, FaBars, FaRegArrowAltCircleLeft, FaTimes } from "react-icons/fa"; // Import icons
-import "./AdminDashboard.css";
+import {
+  FaArrowAltCircleRight,
+  FaArrowLeft,
+  FaArrowRight,
+  FaBars,
+  FaRegArrowAltCircleLeft,
+  FaTimes,
+} from "react-icons/fa"; // Import icons
+import "../styles/AdminDashboard.css";
 import logo from "../../assets/logo.png";
 
 ChartJS.register(
@@ -127,7 +134,10 @@ const AdminDashboard = () => {
         {isSidebarVisible ? <FaArrowLeft /> : <FaArrowRight />}
       </button>
 
-      <aside ref={sidebarRef} className={`sidebar ${isSidebarVisible ? "visible" : ""}`}>
+      <aside
+        ref={sidebarRef}
+        className={`sidebar ${isSidebarVisible ? "visible" : ""}`}
+      >
         <div className="sidebar-logo">
           <img src={logo} alt="logo-image" />
         </div>

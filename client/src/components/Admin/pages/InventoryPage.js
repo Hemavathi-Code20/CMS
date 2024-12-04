@@ -3,7 +3,7 @@ import { MdClose } from "react-icons/md";
 import InventoryForm from "../Components/InventoryForm";
 import InventoryTable from "../Components/InventoryTable";
 import axios from "axios";
-import "./Inventorypage.css";
+import "../../styles/Inventorypage.css";
 
 const InventoryPage = () => {
   const [inventory, setInventory] = useState([]);
@@ -66,7 +66,7 @@ const InventoryPage = () => {
 
   const closeModal = () => {
     setIsAdding(false);
-    setSelectedItem(null); 
+    setSelectedItem(null);
   };
 
   return (

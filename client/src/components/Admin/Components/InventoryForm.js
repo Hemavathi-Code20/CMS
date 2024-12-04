@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Inventory.css";
+import "../../styles/Inventory.css";
 
 const InventoryForm = ({ onAddItem, onUpdateItem, selectedItem }) => {
   const [item, setItem] = useState({

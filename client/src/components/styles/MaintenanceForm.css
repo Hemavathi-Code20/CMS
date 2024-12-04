@@ -1,4 +1,4 @@
-.doctor-form {
+.maintenance-form {
   width: 100%;
   padding: 10px;
 }
@@ -26,18 +26,6 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.form-grid input[type="file"] {
-  border: none;
-  padding: 0;
-  outline: none;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
-}
-
-.form-grid input[type="file"]:hover {
-  opacity: 0.8;
-}
-
 label {
   font-weight: 600;
   color: grey;
@@ -54,7 +42,7 @@ form button {
   background: linear-gradient(135deg, #008080, #3dfef4) !important;
   text-transform: uppercase;
   padding: 10px 20px;
-  margin-left: 90%;
+  margin-left: 85% !important;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -68,14 +56,4 @@ form button:hover {
 
 form button:active {
   transform: translateY(0);
-}
-
-.form-grid input[type="file"]::file-selector-button {
-  background: linear-gradient(135deg, #008080, #3dfef4) !important;
-  color: white;
-  border: none;
-  padding: 8px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
 }

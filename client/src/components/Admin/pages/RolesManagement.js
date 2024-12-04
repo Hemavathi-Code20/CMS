@@ -1,79 +1,160 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { MdClose } from "react-icons/md"; // Import the close icon
 import RolesForm from "../Components/RolesForm";
 import RolesTable from "../Components/RolesTable";
+import RolesDetail from "../Components/RolesDetail";
+import "../../styles/RolesManagement.css";
 
 const RolesManagement = () => {
   const [roles, setRoles] = useState([]);
   const [selectedRole, setSelectedRole] = useState(null);
+  const [isAdding, setIsAdding] = useState(false);
+  const [showRoleDetail, setShowRoleDetail] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchRoles();
   }, []);
 
   const fetchRoles = async () => {
+    setLoading(true);
     try {
-      const response = await axios.get("http://localhost:5000/api/admin/roles");
-      setRoles(response.data);
+      const res = await fetch("http://localhost:5000/api/admin/roles");
+      const data = await res.json();
+      setRoles(data);
     } catch (error) {
-      console.error("Error fetching roles : ", error);
+      console.error("Failed to fetch roles:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
-  const addRoles = async (newRole) => {
+  const handleAddRole = async (role) => {
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/admin/roles",
-        newRole
+      const res = await fetch("http://localhost:5000/api/admin/roles", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(role),
+      });
+      if (res.ok) {
+        fetchRoles(); // Refresh the list after adding
+        closeAddModal();
+      }
+    } catch (error) {
+      console.error("Failed to add role:", error);
+    }
+  };
+
+  const handleUpdateRole = async (role) => {
+    try {
+      const res = await fetch(
+        `http://localhost:5000/api/admin/roles/${role._id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(role),
+        }
       );
-      setRoles([...roles, response.data]);
+      if (res.ok) {
+        fetchRoles(); // Refresh the list after updating
+        closeAddModal();
+      }
     } catch (error) {
-      console.error("Error adding Roles : ", error);
+      console.error("Failed to update role:", error);
     }
   };
 
-  const updateRoles = async (updatedRoles) => {
+  const handleDeleteRole = async (id) => {
     try {
-      const response = await axios.put(
-        `http://localhost:5000/api/admin/roles/${updatedRoles._id}`,
-        updatedRoles
-      );
-      setRoles(
-        roles.map((roles) =>
-          roles._id === updatedRoles._id ? response.data : roles
-        )
-      );
-      setSelectedRole(null); // Clear the form after updating
+      const res = await fetch(`http://localhost:5000/api/admin/roles/${id}`, {
+        method: "DELETE",
+      });
+      if (res.ok) {
+        fetchRoles(); // Refresh the list after deleting
+        closeDetailModal();
+      }
     } catch (error) {
-      console.error("Error updating role:", error);
+      console.error("Failed to delete role:", error);
     }
   };
 
-  const deleteRoles = async (id) => {
-    try {
-      await axios.delete(`http://localhost:5000/api/admin/roles/${id}`);
-      setRoles(roles.filter((roles) => roles._id !== id));
-    } catch (error) {
-      console.error("Error deleting roles:", error);
+  const closeAddModal = () => {
+    setIsAdding(false);
+    fetchRoles(); // Ensure the list is updated
+  };
+
+  const closeDetailModal = () => {
+    setShowRoleDetail(false);
+    fetchRoles(); // Ensure the list is updated
+  };
+
+  const handleEditClick = () => {
+    if (selectedRole) {
+      setIsAdding(true);
+      setShowRoleDetail(false); // Close RolesDetail modal if open
     }
   };
 
-  const handleEditRoles = (roles) => {
-    setSelectedRole(roles); // Set the selected item for editing
-  };
   return (
-    <div>
-      <h1>User Management</h1>
-      <RolesForm
-        onAddRole={addRoles}
-        onUpdateRole={updateRoles}
-        selectedRole={selectedRole}
-      />
-      <RolesTable
-        roles={roles}
-        onUpdateRole={handleEditRoles}
-        onDeleteRole={deleteRoles}
-      />
+    <div className="roles-management">
+      <h1>Roles Management</h1>
+      <button
+        className="record-button"
+        onClick={() => {
+          setIsAdding(true);
+          setSelectedRole(null);
+        }}
+      >
+        Add User
+      </button>
+
+      {isAdding && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <button className="close-button" onClick={closeAddModal}>
+              <MdClose size={24} />
+            </button>
+            <RolesForm
+              onSubmit={selectedRole ? handleUpdateRole : handleAddRole}
+              initialData={selectedRole}
+            />
+          </div>
+        </div>
+      )}
+
+      {showRoleDetail && selectedRole && (
+        <div className="role-detail-modal-overlay">
+          <div className="role-detail-modal-content">
+            <button
+              className="role-detail-close-button"
+              onClick={closeDetailModal}
+            >
+              <MdClose size={24} />
+            </button>
+            <RolesDetail
+              role={selectedRole}
+              onEdit={handleEditClick}
+              onDelete={() => handleDeleteRole(selectedRole._id)}
+            />
+          </div>
+        </div>
+      )}
+
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        !isAdding &&
+        !showRoleDetail && (
+          <RolesTable
+            roles={roles}
+            onCardClick={(id) => {
+              const role = roles.find((rol) => rol._id === id);
+              setSelectedRole(role);
+              setShowRoleDetail(true);
+            }}
+          />
+        )
+      )}
     </div>
   );
 };

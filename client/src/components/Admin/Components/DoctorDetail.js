@@ -1,5 +1,5 @@
 import React from "react";
-import "./DoctorDetails.css"; // Ensure you have a CSS file for additional styling
+import "../../styles/DoctorDetails.css";
 
 const DoctorDetail = ({ doctor, onEdit, onDelete }) => {
   if (!doctor) {
@@ -47,8 +47,12 @@ const DoctorDetail = ({ doctor, onEdit, onDelete }) => {
       </div>
 
       <div className="doctor-action-buttons">
-        <button onClick={onEdit} className="edit-button">Edit</button>
-        <button onClick={onDelete} className="delete-button">Delete</button>
+        <button onClick={onEdit} className="edit-button">
+          Edit
+        </button>
+        <button onClick={onDelete} className="delete-button">
+          Delete
+        </button>
       </div>
     </div>
   );

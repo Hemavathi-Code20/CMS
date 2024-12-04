@@ -1,5 +1,5 @@
 import React from "react";
-import "./DoctorTable.css";
+import "../../styles/DoctorTable.css";
 
 const DoctorTable = ({ doctors, onCardClick }) => {
   return (
@@ -13,9 +13,8 @@ const DoctorTable = ({ doctors, onCardClick }) => {
           <h3>{doctor.fullName}</h3>
           <img
             src={doctor.profilePicture || "default-profile.png"}
-            alt="Doctor"
+            alt={`${doctor.fullName} doctor`}
           />
-
           <p>{doctor.qualification}</p>
           <p className="specialization">{doctor.specialization}</p>
           <p>{doctor.department}</p>

@@ -1,11 +1,11 @@
-.inventory-management {
+.maintenance-management {
   min-height: 100vh;
   animation: fadeIn 1.2s ease-in-out;
   padding: 1rem;
   overflow: hidden;
 }
 
-.inventory-management h1 {
+.maintenance-management h1 {
   text-transform: uppercase;
   text-align: center;
   color: #0077b6;
@@ -19,8 +19,8 @@
 .add-button {
   color: #fff;
   text-transform: uppercase;
-  margin-left: 90%;
-  font-size: 14px;
+  margin-left: 80% !important;
+  font-size: 13px;
   font-weight: 600;
   background: linear-gradient(135deg, #0077b6, #00b4d8);
   border: none;
@@ -31,15 +31,13 @@
 }
 
 .add-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1);
   background: linear-gradient(135deg, #00b4d8, #0077b6);
   background-color: #00b4d8;
 }
 
 .add-button:active {
   transform: scale(0.98);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 @keyframes fadeIn {
@@ -81,9 +79,9 @@
 .modal-content {
   border-radius: 10px;
   width: 100% !important;
-  max-width: 1200px;
-  height: auto;
-  min-height: 550px;
+  max-width: 800px !important;
+  height: 50% !important;
+  min-height: 300px !important;
 }
 
 .close-button {

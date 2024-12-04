@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "./DoctorForm.css";
+import "../../styles/DoctorForm.css";
 
-const DoctorForm = ({ onSubmit, initialData = {} }) => {
+const DoctorForm = ({ onSubmit, initialData }) => {
   const formDataFromProps = initialData || {};
   const [formData, setFormData] = useState({
     profilePicture: formDataFromProps.profilePicture || "",
@@ -27,19 +27,44 @@ const DoctorForm = ({ onSubmit, initialData = {} }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === "profilePicture") {
-      setFormData({
-        ...formData,
-        [name]: URL.createObjectURL(e.target.files[0]),
-      });
-    } else {
-      setFormData({ ...formData, [name]: value });
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleProfilePictureChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setFormData((prevItem) => ({
+        ...prevItem,
+        profilePicture: reader.result, // Save image as base64 string
+      }));
+    };
+    if (file) {
+      reader.readAsDataURL(file);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(formData);
+    setFormData({
+      profilePicture: "",
+      doctorId: "",
+      fullName: "",
+      gender: "",
+      contactNumber: "",
+      department: "",
+      specialization: "",
+      qualification: "",
+      yearsOfExperience: "",
+      email: "",
+      availability: "",
+      consultationMethod: "",
+      doctorsFee: "",
+    });
   };
 
   return (
@@ -47,7 +72,12 @@ const DoctorForm = ({ onSubmit, initialData = {} }) => {
       <div className="form-grid">
         <label>
           Profile Picture:
-          <input type="file" name="profilePicture" onChange={handleChange} />
+          <input
+            type="file"
+            name="profilePicture"
+            accept="image/*"
+            onChange={handleProfilePictureChange}
+          />
         </label>
         <label>
           Doctor ID:
@@ -56,6 +86,7 @@ const DoctorForm = ({ onSubmit, initialData = {} }) => {
             name="doctorId"
             value={formData.doctorId}
             onChange={handleChange}
+            required
           />
         </label>
         <label>
@@ -65,11 +96,17 @@ const DoctorForm = ({ onSubmit, initialData = {} }) => {
             name="fullName"
             value={formData.fullName}
             onChange={handleChange}
+            required
           />
         </label>
         <label>
           Gender:
-          <select name="gender" value={formData.gender} onChange={handleChange}>
+          <select
+            name="gender"
+            value={formData.gender}
+            onChange={handleChange}
+            required
+          >
             <option value="">Select Gender</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
@@ -83,6 +120,7 @@ const DoctorForm = ({ onSubmit, initialData = {} }) => {
             name="contactNumber"
             value={formData.contactNumber}
             onChange={handleChange}
+            required
           />
         </label>
         <label>
@@ -91,6 +129,7 @@ const DoctorForm = ({ onSubmit, initialData = {} }) => {
             name="department"
             value={formData.department}
             onChange={handleChange}
+            required
           >
             <option value="">Select Department</option>
             <option value="Cardiology">Cardiology</option>
@@ -117,6 +156,7 @@ const DoctorForm = ({ onSubmit, initialData = {} }) => {
             name="specialization"
             value={formData.specialization}
             onChange={handleChange}
+            required
           >
             <option value="">Select Specialization</option>
             <option value="Surgery">Surgery</option>
@@ -151,6 +191,7 @@ const DoctorForm = ({ onSubmit, initialData = {} }) => {
             name="qualification"
             value={formData.qualification}
             onChange={handleChange}
+            required
           />
         </label>
         <label>
@@ -160,6 +201,7 @@ const DoctorForm = ({ onSubmit, initialData = {} }) => {
             name="yearsOfExperience"
             value={formData.yearsOfExperience}
             onChange={handleChange}
+            required
           />
         </label>
         <label>
@@ -169,6 +211,7 @@ const DoctorForm = ({ onSubmit, initialData = {} }) => {
             name="email"
             value={formData.email}
             onChange={handleChange}
+            required
           />
         </label>
         <label>
@@ -177,6 +220,7 @@ const DoctorForm = ({ onSubmit, initialData = {} }) => {
             name="availability"
             value={formData.availability}
             onChange={handleChange}
+            required
           >
             <option value="">Select Availability</option>
             <option value="Full-time">Full-time</option>
@@ -190,6 +234,7 @@ const DoctorForm = ({ onSubmit, initialData = {} }) => {
             name="consultationMethod"
             value={formData.consultationMethod}
             onChange={handleChange}
+            required
           >
             <option value="">Select Consultation Method</option>
             <option value="In-person">In-person</option>
@@ -204,10 +249,11 @@ const DoctorForm = ({ onSubmit, initialData = {} }) => {
             name="doctorsFee"
             value={formData.doctorsFee}
             onChange={handleChange}
+            required
           />
         </label>
+        <button type="submit">Submit</button>
       </div>
-      <button type="submit">Submit</button>
     </form>
   );
 };

@@ -3,7 +3,7 @@ import { MdClose } from "react-icons/md"; // Import the close icon
 import DoctorTable from "../Components/DoctorTable";
 import DoctorForm from "../Components/DoctorForm";
 import DoctorDetail from "../Components/DoctorDetail";
-import "./DoctorManagement.css";
+import "../../styles/DoctorManagement.css";
 
 const DoctorManagement = () => {
   const [doctors, setDoctors] = useState([]);

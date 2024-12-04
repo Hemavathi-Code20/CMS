@@ -1,5 +1,5 @@
 import React from "react";
-import "./InventoryTable.css";
+import "../../styles/InventoryTable.css";
 
 const InventoryTable = ({ items, onUpdateItem, onDeleteItem }) => {
   const handleEdit = (item) => {
@@ -13,7 +13,7 @@ const InventoryTable = ({ items, onUpdateItem, onDeleteItem }) => {
   const formatDate = (date) => {
     if (!date) return "-";
     const d = new Date(date);
-    return d.toLocaleDateString();
+    return d.toLocaleDateString("en-CA"); // This ensures the format is YYYY-MM-DD.
   };
 
   return (
@@ -44,7 +44,7 @@ const InventoryTable = ({ items, onUpdateItem, onDeleteItem }) => {
             <td>{item.quantity}</td>
             <td>{item.unitPrice}</td>
             <td>{formatDate(item.expiryDate)}</td>
-            <td>{item.purchaseDate !== undefined ? item.purchaseDate : "-"}</td>
+            <td>{formatDate(item.purchaseDate)}</td> {/* Updated here */}
             <td>{item.reorderLevel !== undefined ? item.reorderLevel : "-"}</td>
             <td>{item.supplierContact}</td>
             <td>{item.stockStatus}</td>
@@ -53,13 +53,13 @@ const InventoryTable = ({ items, onUpdateItem, onDeleteItem }) => {
                 style={{ color: "teal" }}
                 onClick={() => handleEdit(item)}
               >
-                <i class="fa-solid fa-pen-to-square"></i>
+                <i className="fa-solid fa-pen-to-square"></i>
               </button>
               <button
                 style={{ color: "rgb(251, 90, 90)" }}
                 onClick={() => handleDelete(item._id)}
               >
-                <i class="fa-solid fa-trash"></i>
+                <i className="fa-solid fa-trash"></i>
               </button>
             </td>
           </tr>

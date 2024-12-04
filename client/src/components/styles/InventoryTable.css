@@ -23,7 +23,7 @@ tbody tr {
 }
 
 tbody td {
-  padding: 30px 15px;
+  padding: 30px 10px !important;
 }
 
 tbody tr:hover {
