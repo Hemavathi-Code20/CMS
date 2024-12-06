@@ -3,7 +3,7 @@ import { MdClose } from "react-icons/md"; // Import the close icon
 import RolesForm from "../Components/RolesForm";
 import RolesTable from "../Components/RolesTable";
 import RolesDetail from "../Components/RolesDetail";
-import "../../styles/RolesManagement.css";
+import "./mainpage.css";
 
 const RolesManagement = () => {
   const [roles, setRoles] = useState([]);
@@ -96,8 +96,8 @@ const RolesManagement = () => {
   };
 
   return (
-    <div className="roles-management">
-      <h1>Roles Management</h1>
+    <div className="management-page">
+      <h1>User Management </h1>
       <button
         className="record-button"
         onClick={() => {
@@ -123,10 +123,10 @@ const RolesManagement = () => {
       )}
 
       {showRoleDetail && selectedRole && (
-        <div className="role-detail-modal-overlay">
-          <div className="role-detail-modal-content">
+        <div className="detail-modal-overlay">
+          <div className="detail-modal-content">
             <button
-              className="role-detail-close-button"
+              className="detail-close-button"
               onClick={closeDetailModal}
             >
               <MdClose size={24} />

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { MdClose } from "react-icons/md";
 import MaintenanceForm from "../Components/MaintenanceForm";
 import MaintenanceList from "../Components/MaintenanceList";
-import "../../styles/MaintenancePage.css";
+import "./mainpage.css";
 
 const MaintenancePage = () => {
   const [refresh, setRefresh] = useState(false);
@@ -22,10 +22,10 @@ const MaintenancePage = () => {
   };
 
   return (
-    <div className="maintenance-management">
-      <h1>Maintenance Management</h1>
+    <div className="management-page">
+      <h1>Maintenance </h1>
       <button
-        className="add-button"
+        className="record-button"
         onClick={() => {
           setEditData(null); // Clear any previous data
           setIsModalOpen(true); // Open the modal

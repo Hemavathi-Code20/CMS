@@ -1,11 +1,65 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const BookAppointmentSchema = new mongoose.Schema({
-  patientName: { type: String, required: true },
-  doctorName: { type: String, required: true },
-  date: { type: String, required: true },
-  time: { type: String, required: true },
+  // Patient Information
+  fullName: { type: String, required: true },
+  gender: { type: String, required: true },
+  contactNumber: { type: String, required: true },
+
+  // Appointment Details
+  appointmentType: {
+    type: String,
+    enum: ["New Consultation", "Follow-Up", "Teleconsultation"],
+    required: true,
+  },
+  consultationMode: {
+    type: String,
+    enum: ["In-person", "Virtual/Telemedicine"],
+    required: true,
+  },
+  preferredDoctor: { type: String },
+  urgencyLevel: {
+    type: String,
+    enum: ["Routine", "Urgent", "Emergency"],
+    required: true,
+  },
+  preferredDate: { type: String, required: true },
+  preferredTimeSlot: { type: String, required: true },
+  reasonForAppointment: { type: String, required: true },
+  symptoms: { type: String },
+  department: {
+    type: String,
+    enum: [
+      "Cardiology",
+      "Pediatrics",
+      "Dermatology",
+      "Neurology",
+      "Orthopedics",
+      "Gastroenterology",
+      "Oncology",
+      "Endocrinology",
+      "Nephrology",
+      "Ophthalmology",
+      "ENT",
+      "Pulmonology",
+      "Psychiatry",
+      "General Medicine",
+      "Other",
+    ],
+    required: true,
+  },
+  preferredCommunicationMethod: {
+    type: String,
+    enum: ["Call", "Email", "SMS"],
+    required: true,
+  },
+
+  // Agreement
+  termsAndConditionsAccepted: { type: Boolean, required: true },
 });
 
-const BookAppointment = mongoose.model("BookAppointment", BookAppointmentSchema);
+const BookAppointment = mongoose.model(
+  "BookAppointment",
+  BookAppointmentSchema
+);
 export default BookAppointment;

@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    patientId: '',
-    password: '',
-  });
-  const [error, setError] = useState('');
+  const [formData, setFormData] = useState({ patientId: "", password: "" });
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -18,19 +15,20 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/patient/login', formData);
+      const response = await axios.post(
+        "http://localhost:5000/api/patient/login",
+        formData
+      );
       if (response.data.success) {
-        alert('Login successful');
-        navigate('/patient-dashboard');
+        localStorage.setItem("patientId", response.data.patientId);
+        navigate("/patient-dashboard");
       } else {
-        setError(response.data.message || 'Invalid credentials');
+        setError(response.data.message);
       }
-    } catch (error) {
-      console.error('Login error:', error.response?.data?.message);
-      setError(error.response?.data?.message || 'An error occurred');
+    } catch (err) {
+      setError(err.response?.data?.message || "An error occurred");
     }
   };
-  
 
   return (
     <div className="login-form">

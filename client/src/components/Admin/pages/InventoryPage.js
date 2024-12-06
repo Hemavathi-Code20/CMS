@@ -3,7 +3,7 @@ import { MdClose } from "react-icons/md";
 import InventoryForm from "../Components/InventoryForm";
 import InventoryTable from "../Components/InventoryTable";
 import axios from "axios";
-import "../../styles/Inventorypage.css";
+import "./mainpage.css";
 
 const InventoryPage = () => {
   const [inventory, setInventory] = useState([]);
@@ -70,10 +70,10 @@ const InventoryPage = () => {
   };
 
   return (
-    <div className="inventory-management">
-      <h1>Inventory Management</h1>
+    <div className="management-page">
+      <h1>Inventory </h1>
       <button
-        className="add-button"
+        className="record-button"
         onClick={() => {
           setIsAdding(true);
           setSelectedItem(null);

@@ -34,7 +34,7 @@ const Login = () => {
 
   return (
     <div className="login-page">
-      <div className="form-container">
+      <div className="form-login-container">
         <div className="image-side">
           <img
             src={role === "admin" ? admin : doctor}
@@ -42,7 +42,7 @@ const Login = () => {
             className="login-image"
           />
         </div>
-        <div className="form-side">
+        <div className="form-login-side">
           <form onSubmit={handleLogin}>
             <h2 className="heading">Login as {role.charAt(0).toUpperCase() + role.slice(1)}</h2>
             <div>
@@ -65,7 +65,7 @@ const Login = () => {
                 }
               />
             </div>
-            <button type="submit" className="login-button">
+            <button type="submit" className="button-login">
               Login
             </button>
             {error && <p className="error-message">{error}</p>}

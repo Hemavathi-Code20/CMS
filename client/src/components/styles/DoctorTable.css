@@ -5,6 +5,7 @@
   padding: 20px;
 }
 .doctor-card {
+  margin-top: 3%;
   background: linear-gradient(135deg, #e0eafc, #94c0fc);
   width: 22%;
   border-radius: 12px;

@@ -8,7 +8,9 @@ const BookAppointmentPage = () => {
   // Fetch the patient's booked appointments
   const fetchAppointments = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/patient/bookappointments");
+      const response = await axios.get(
+        "http://localhost:5000/api/patient/bookappointments"
+      );
       console.log("Appointments fetched:", response.data); // Log to check the data returned
       setAppointments(response.data);
     } catch (error) {
@@ -22,8 +24,8 @@ const BookAppointmentPage = () => {
 
   const handleStatusChange = (id, newStatus) => {
     // Update the status of the appointment directly in the UI (optimistic UI update)
-    setAppointments(prevAppointments =>
-      prevAppointments.map(appointment =>
+    setAppointments((prevAppointments) =>
+      prevAppointments.map((appointment) =>
         appointment._id === id
           ? { ...appointment, status: newStatus }
           : appointment
@@ -40,10 +42,19 @@ const BookAppointmentPage = () => {
       {appointments.length === 0 ? (
         <p>No appointments booked yet.</p>
       ) : (
-        <table style={{ width: "100%", border: "1px solid #ccc", marginTop: "20px", padding: "10px" }}>
+        <table
+          style={{
+            width: "100%",
+            border: "1px solid #ccc",
+            marginTop: "20px",
+            padding: "10px",
+          }}
+        >
           <thead>
             <tr>
               <th>Doctor Name</th>
+              <th>Appointment Type</th>
+              <th>Reason for appointment</th>
               <th>Date</th>
               <th>Time</th>
               <th>Status</th>
@@ -52,9 +63,11 @@ const BookAppointmentPage = () => {
           <tbody>
             {appointments.map((appointment) => (
               <tr key={appointment._id}>
-                <td>{appointment.doctorName}</td>
-                <td>{appointment.date}</td>
-                <td>{appointment.time}</td>
+                <td>{appointment.preferredDoctor}</td>
+                <td>{appointment.appointmentType}</td>
+                <td>{appointment.reasonForAppointment}</td>
+                <td>{appointment.preferredDate}</td>
+                <td>{appointment.preferredTimeSlot}</td>
                 <td>{appointment.status || "Pending"}</td>
                 {/* Add status update buttons if the appointment is not confirmed or canceled */}
               </tr>

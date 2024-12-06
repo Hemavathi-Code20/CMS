@@ -4,8 +4,8 @@ import axios from "axios";
 const FixAppointment = () => {
   const [appointments, setAppointments] = useState([]);
   const [updatedData, setUpdatedData] = useState({
-    date: "",
-    time: "",
+    preferredDate: "",
+    preferredTimeSlot: "",
   });
   const [isRescheduleMode, setIsRescheduleMode] = useState(false);
   const [selectedAppointmentId, setSelectedAppointmentId] = useState(null);
@@ -52,20 +52,20 @@ const FixAppointment = () => {
   const handleDateChange = (e) => {
     setUpdatedData({
       ...updatedData,
-      date: e.target.value,
+      preferredDate: e.target.value,
     });
   };
 
   const handleTimeChange = (e) => {
     setUpdatedData({
       ...updatedData,
-      time: e.target.value,
+      preferredTimeSlot: e.target.value,
     });
   };
 
   // Handle the reschedule submit
   const handleRescheduleSubmit = async () => {
-    if (!updatedData.date || !updatedData.time) {
+    if (!updatedData.preferredDate || !updatedData.preferredTimeSlot) {
       alert("Please enter a valid date and time");
       return;
     }
@@ -81,8 +81,8 @@ const FixAppointment = () => {
       setIsRescheduleMode(false);
       setSelectedAppointmentId(null);
       setUpdatedData({
-        date: "",
-        time: "",
+        preferredDate: "",
+        preferredTimeSlot: "",
       });
     } catch (error) {
       console.error("Error during rescheduling:", error.message);
@@ -99,10 +99,10 @@ const FixAppointment = () => {
         ) : (
           appointments.map((appointment) => (
             <div key={appointment._id} style={{ border: "1px solid #ccc", padding: "10px", margin: "10px 0" }}>
-              <p><strong>Patient Name:</strong> {appointment.patientName}</p>
-              <p><strong>Doctor Name:</strong> {appointment.doctorName}</p>
-              <p><strong>Date:</strong> {appointment.date}</p>
-              <p><strong>Time:</strong> {appointment.time}</p>
+              <p><strong>Full Name:</strong> {appointment.fullName}</p>
+              <p><strong>Preferred Doctor:</strong> {appointment.preferredDate}</p>
+              <p><strong>Preferred Date:</strong> {appointment.preferredDate}</p>
+              <p><strong>Preferred TimeSlot:</strong> {appointment.preferredTimeSlot}</p>
               <p><strong>Status:</strong> {appointment.status || "Pending"}</p>
 
               {/* Buttons for Confirm, Reschedule, Cancel */}
@@ -120,7 +120,7 @@ const FixAppointment = () => {
                     <label>Date:</label>
                     <input
                       type="date"
-                      value={updatedData.date}
+                      value={updatedData.preferredDate}
                       onChange={handleDateChange}
                     />
                   </div>
@@ -128,7 +128,7 @@ const FixAppointment = () => {
                     <label>Time:</label>
                     <input
                       type="time"
-                      value={updatedData.time}
+                      value={updatedData.preferredTimeSlot}
                       onChange={handleTimeChange}
                     />
                   </div>

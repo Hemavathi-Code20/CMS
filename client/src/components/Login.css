@@ -6,7 +6,7 @@
   padding: 10px;
 }
 
-.form-container {
+.form-login-container {
   display: flex;
   flex-direction: row;
   width: 850px;
@@ -28,7 +28,7 @@
   object-fit: cover;
 }
 
-.form-side {
+.form-login-side {
   flex: 1;
   padding: 40px;
 }
@@ -54,7 +54,7 @@ input {
   font-size: 15px;
 }
 
-button.login-button {
+button.button-login {
   text-align: center !important;
   text-transform: uppercase;
   margin-left: 34%;
@@ -63,7 +63,7 @@ button.login-button {
   background-color: teal !important;
   border: none;
   border-radius: 5px;
-  cursor: pointer; 
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
@@ -73,7 +73,6 @@ button.login-button {
   font-size: 14px;
 }
 
-/* Animations */
 @keyframes slideIn {
   from {
     transform: translateX(100%);
@@ -83,14 +82,12 @@ button.login-button {
   }
 }
 
-/* Hover effect on image side */
 .image-side:hover .login-image {
   opacity: 1;
 }
 
-/* Tablet (768px and below) */
 @media (max-width: 768px) {
-  .form-container {
+  .form-login-container {
     flex-direction: column;
     width: 90%;
     height: auto;
@@ -100,7 +97,7 @@ button.login-button {
     height: 250px;
   }
 
-  .form-side {
+  .form-login-side {
     padding: 20px;
   }
 
@@ -114,15 +111,14 @@ button.login-button {
     font-size: 14px;
   }
 
-  button.login-button {
+  button.button-login {
     margin-left: 35%;
     width: 30%;
   }
 }
 
-/* Mobile (480px and below) */
 @media (max-width: 480px) {
-  .form-container {
+  .form-login-container {
     flex-direction: column;
     width: 100%;
     height: auto;
@@ -147,7 +143,7 @@ button.login-button {
     padding: 8px;
   }
 
-  button.login-button {
+  button.button-login {
     width: 50%;
     margin-left: 25%;
     padding: 10px;

@@ -1,0 +1,304 @@
+.navbar {
+  position: absolute;
+  top: 0%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+.logo {
+  width: 80px;
+  height: 80px;
+  margin-left: 100%;
+}
+.navbar-links a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 20px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.navbar-links a::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(52, 152, 219, 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.navbar-links a:hover::after {
+  width: 300%;
+  height: 300%;
+}
+
+.hero-section {
+  position: relative;
+  background-image: url("../../assets/patient.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh;
+  animation: fadeIn 2s ease-in-out;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #333;
+  overflow: hidden;
+  filter: brightness(1.1);
+}
+
+.hero-content {
+  position: relative;
+  padding: 90px;
+}
+
+.hero-content h1 {
+  font-size: 1.3rem;
+  line-height: 2;
+  margin-bottom: 10%;
+  animation: slideInLeft 1s ease-out;
+  width: 500px !important;
+}
+
+.hero-buttons .button {
+  display: inline-block;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  background: linear-gradient(45deg, #3498db, #2980b9);
+  color: #fff;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out, transform 0.2s ease-in-out;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hero-buttons .button:hover {
+  background: linear-gradient(45deg, #2980b9, #1c6ea4);
+  transform: translateY(-5px) scale(1.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.doctor-card-section {
+  padding: 20px;
+}
+
+.doctor-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: center;
+}
+
+.doctor-card img {
+  border-radius: 50%;
+  margin-bottom: 15px;
+  transition: transform 0.3s, filter 0.3s;
+}
+
+.doctor-card:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.doctor-card:hover img {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+.doctor-card p {
+  font-size: 1rem !important;
+  color: rgb(252, 84, 84);
+  font-weight: 600;
+}
+
+.doctor-card:hover h3 {
+  color: #3498db;
+}
+.services-section {
+  min-height: 100vh;
+  padding: 30px !important;
+}
+
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.service {
+  background: linear-gradient(130deg, #8ee8ff, #e8e7e7);
+  padding: 20px;
+  border-radius: 15px;
+  width: 25%;
+  text-align: center;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s, box-shadow 0.4s;
+  cursor: pointer;
+}
+
+.service:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.15);
+}
+
+.service h3 {
+  color: #2c3e50;
+  font-size: 1.3rem;
+  transition: color 0.3s;
+}
+
+.service:hover h3 {
+  color: #27ae60;
+}
+
+.service p {
+  color: #7f8c8d;
+}
+
+/* Features Section */
+.features-section {
+  padding: 30px;
+  min-height: 100vh;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.feature-image {
+  width: 100%;
+  height: auto;
+  max-height: 150px; /* Adjust as needed */
+  object-fit: cover; /* Ensures the image covers the area */
+  border-radius: 8px; /* Optional, for rounded corners */
+  margin-bottom: 10px; /* Space between the image and text */
+}
+
+.feature {
+  background: linear-gradient(to bottom, #ecf0f1, #bdc3c7) !important;
+  padding: 20px;
+  border-radius: 12px;
+  width: 25%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.feature:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.feature h3 {
+  color: #1c6ea4;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.feature:hover h3 {
+  color: #3498db;
+}
+
+.contact-us-section {
+  font-size: 20px !important;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: url(https://img.freepik.com/free-photo/top-view-damaged-heart-shape-with-stethoscope-copy-space_23-2148635208.jpg?t=st=1733407894~exp=1733411494~hmac=bb89429fa27db90e1f99342c7c21dc3e8a015503c51a3019505c4e9567b660f1&w=1060);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.contact-container {
+  display: flex;
+  margin-left: 50%;
+  padding: 20px;
+  margin-top: 5%;
+}
+
+.right-content p {
+  color: #333;
+  font-size: 18px !important;
+}
+
+.right-content i {
+  font-size: 20px;
+  color: #1c6ea4;
+  margin-right: 10px;
+}
+
+.right-content a {
+  color: #2c3e50;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.right-content a:hover {
+  color: #0056b3;
+}
+
+/* Footer styling */
+.footer {
+  display: flex;
+  flex-direction: row;
+  color: #333;
+  padding: 20px;
+  font-size: 16px; /* Adjusted for better readability */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  position: relative;
+}
+
+.footer-logo {
+  position: absolute;
+  left: 5%;
+  width: 60px;
+  height: 60px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center; /* Center the text in the footer */
+  align-items: center; /* Align the items in the center */
+  width: 100%; /* Make sure it stretches full width */
+}
+
+.footer-text {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+}

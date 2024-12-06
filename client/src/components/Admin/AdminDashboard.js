@@ -19,7 +19,7 @@ import {
   FaBars,
   FaRegArrowAltCircleLeft,
   FaTimes,
-} from "react-icons/fa"; // Import icons
+} from "react-icons/fa"; 
 import "../styles/AdminDashboard.css";
 import logo from "../../assets/logo.png";
 

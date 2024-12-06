@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { MdClose } from "react-icons/md"; // Import the close icon
+import { MdClose } from "react-icons/md"; 
 import DoctorTable from "../Components/DoctorTable";
 import DoctorForm from "../Components/DoctorForm";
 import DoctorDetail from "../Components/DoctorDetail";
-import "../../styles/DoctorManagement.css";
+import "./mainpage.css";
 
 const DoctorManagement = () => {
   const [doctors, setDoctors] = useState([]);
@@ -37,7 +37,7 @@ const DoctorManagement = () => {
         body: JSON.stringify(doctor),
       });
       if (res.ok) {
-        fetchDoctors(); // Refresh the list after adding
+        fetchDoctors(); 
         closeAddModal();
       }
     } catch (error) {
@@ -56,7 +56,7 @@ const DoctorManagement = () => {
         }
       );
       if (res.ok) {
-        fetchDoctors(); // Refresh the list after updating
+        fetchDoctors(); 
         closeAddModal();
       }
     } catch (error) {
@@ -70,7 +70,7 @@ const DoctorManagement = () => {
         method: "DELETE",
       });
       if (res.ok) {
-        fetchDoctors(); // Refresh the list after deleting
+        fetchDoctors(); 
         closeDetailModal();
       }
     } catch (error) {
@@ -80,24 +80,24 @@ const DoctorManagement = () => {
 
   const closeAddModal = () => {
     setIsAdding(false);
-    fetchDoctors(); // Ensure the list is updated
+    fetchDoctors(); 
   };
 
   const closeDetailModal = () => {
     setShowDoctorDetail(false);
-    fetchDoctors(); // Ensure the list is updated
+    fetchDoctors(); 
   };
 
   const handleEditClick = () => {
     if (selectedDoctor) {
       setIsAdding(true);
-      setShowDoctorDetail(false); // Close DoctorDetail modal if open
+      setShowDoctorDetail(false); 
     }
   };
 
   return (
-    <div className="doctor-management">
-      <h1>Doctor Management</h1>
+    <div className="management-page">
+      <h1>Doctors</h1>
       <button
         className="record-button"
         onClick={() => {
@@ -123,10 +123,10 @@ const DoctorManagement = () => {
       )}
 
       {showDoctorDetail && selectedDoctor && (
-        <div className="doctor-detail-modal-overlay">
-          <div className="doctor-detail-modal-content">
+        <div className="detail-modal-overlay">
+          <div className="detail-modal-content">
             <button
-              className="doctor-detail-close-button"
+              className="detail-close-button"
               onClick={closeDetailModal}
             >
               <MdClose size={24} />
