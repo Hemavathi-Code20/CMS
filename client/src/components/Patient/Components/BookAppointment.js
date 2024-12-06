@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const BookAppointment = () => {
   const [formData, setFormData] = useState({
+    patientId: "",  // Initially empty
     fullName: "",
     gender: "",
     contactNumber: "",
@@ -10,18 +11,24 @@ const BookAppointment = () => {
     consultationMode: "",
     preferredDate: "",
     urgencyLevel: "",
-    preferredDate: "",
     preferredTimeSlot: "",
     reasonForAppointment: "",
     symptoms: "",
     department: "",
     preferredCommunicationMethod: "",
-    termsAndConditionsAccepted: false, // Set to false by default
+    termsAndConditionsAccepted: false,
   });
+
+  // Assuming patientId is stored in localStorage or passed as a prop (for example purposes)
+  useEffect(() => {
+    const patientId = localStorage.getItem("patientId");  // Or get it from props or context
+    if (patientId) {
+      setFormData((prevData) => ({ ...prevData, patientId }));
+    }
+  }, []);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    // Handle checkbox input
     if (type === "checkbox") {
       setFormData({ ...formData, [name]: checked });
     } else {
@@ -38,20 +45,19 @@ const BookAppointment = () => {
       );
       alert(response.data.message || "Appointment booked successfully!");
       setFormData({
+        patientId: formData.patientId, // Keep patientId after form reset
         fullName: "",
         gender: "",
         contactNumber: "",
         appointmentType: "",
         consultationMode: "",
-        preferredDoctor: "",
-        urgencyLevel: "",
         preferredDate: "",
         preferredTimeSlot: "",
         reasonForAppointment: "",
         symptoms: "",
         department: "",
         preferredCommunicationMethod: "",
-        termsAndConditionsAccepted: false, // Reset checkbox
+        termsAndConditionsAccepted: false,
       });
     } catch (error) {
       alert(error.response?.data?.message || "Error booking appointment.");
@@ -61,6 +67,16 @@ const BookAppointment = () => {
   return (
     <form onSubmit={handleSubmit}>
       <h2>Book an Appointment</h2>
+
+      <div>
+        <label>Patient ID:</label>
+        <input
+          type="text"
+          name="patientId"
+          value={formData.patientId}
+          readOnly
+        />
+      </div>
 
       <div>
         <label>Full Name:</label>

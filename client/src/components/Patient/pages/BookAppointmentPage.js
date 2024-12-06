@@ -4,12 +4,19 @@ import BookAppointment from "../Components/BookAppointment";
 
 const BookAppointmentPage = () => {
   const [appointments, setAppointments] = useState([]);
+  const patientId = localStorage.getItem("patientId"); // Retrieve the patient's ID from localStorage
 
   // Fetch the patient's booked appointments
   const fetchAppointments = async () => {
     try {
+      if (!patientId) {
+        console.error("No patient ID found");
+        return;
+      }
+      
+      // Send the patientId as a query parameter to the backend
       const response = await axios.get(
-        "http://localhost:5000/api/patient/bookappointments"
+        `http://localhost:5000/api/patient/bookappointments?patientId=${patientId}`
       );
       console.log("Appointments fetched:", response.data); // Log to check the data returned
       setAppointments(response.data);
@@ -19,8 +26,10 @@ const BookAppointmentPage = () => {
   };
 
   useEffect(() => {
-    fetchAppointments();
-  }, []);
+    if (patientId) {
+      fetchAppointments(); // Fetch the appointments when patientId is available
+    }
+  }, [patientId]);
 
   const handleStatusChange = (id, newStatus) => {
     // Update the status of the appointment directly in the UI (optimistic UI update)

@@ -5,6 +5,7 @@ import FixAppointment from "../../models/Doctor/FixAppointment.js";
 // Post a new appointment (Patient books appointment)
 router.post("/bookappointments", async (req, res) => {
   const {
+    patientId,
     fullName,
     gender,
     contactNumber,
@@ -22,6 +23,7 @@ router.post("/bookappointments", async (req, res) => {
   } = req.body;
   try {
     const newAppointment = new FixAppointment({
+      patientId,
       fullName,
       gender,
       contactNumber,
@@ -50,9 +52,15 @@ router.post("/bookappointments", async (req, res) => {
 });
 
 // Get all booked appointments for a patient
+// Get all booked appointments for a specific patient
 router.get("/bookappointments", async (req, res) => {
+  const patientId = req.query.patientId;  // Get patientId from query parameters
+  if (!patientId) {
+    return res.status(400).json({ message: "Patient ID is required" });
+  }
+
   try {
-    const appointments = await FixAppointment.find();
+    const appointments = await FixAppointment.find({ patientId: patientId }); // Filter by patientId
     res.status(200).json(appointments);
   } catch (error) {
     res
@@ -60,5 +68,6 @@ router.get("/bookappointments", async (req, res) => {
       .json({ message: "Error fetching appointments.", error: error.message });
   }
 });
+
 
 export default router;
