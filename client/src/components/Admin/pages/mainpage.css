@@ -52,16 +52,17 @@
   background: linear-gradient(135deg, #80a3fc, #fe4343) !important;
 }
 .modal-content {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(5px) !important;
   border-radius: 10px;
   width: 100% !important;
-  max-width: 1200px !important;
-  height: auto;
-  min-height: 550px !important;
+  height: 100% !important;
+  overflow: hidden !important;
 }
 
 .close-button {
   margin-left: 97%;
-  color: #333 !important;
+  color: #fff !important;
   cursor: pointer;
   background: none !important;
 }

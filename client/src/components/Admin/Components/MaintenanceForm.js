@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "../../styles/MaintenanceForm.css";
+import "./formstyles.css";
 
 const MaintenanceForm = ({ onAddSuccess, editData }) => {
   const [assetName, setAssetName] = useState("");
@@ -69,8 +69,8 @@ const MaintenanceForm = ({ onAddSuccess, editData }) => {
   };
 
   return (
-    <form className="maintenance-form" onSubmit={handleSubmit}>
-      <div className="form-grid">
+    <form className="fill-container" onSubmit={handleSubmit}>
+      <div className="fill-grid">
         <label>
           Asset Name:{" "}
           <input
@@ -134,7 +134,9 @@ const MaintenanceForm = ({ onAddSuccess, editData }) => {
           </select>
         </label>
       </div>
-      <button type="submit">{isEditMode ? "Update" : "Save"}</button>
+      <button className="en-button" type="submit">
+        {isEditMode ? "Update" : "Save"}
+      </button>
     </form>
   );
 };

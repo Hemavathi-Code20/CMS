@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "../../styles/BookAppointment.css";
 
 const BookAppointment = () => {
   const [formData, setFormData] = useState({
-    patientId: "",  // Initially empty
+    patientId: "", // Initially empty
     fullName: "",
     gender: "",
     contactNumber: "",
@@ -21,7 +22,7 @@ const BookAppointment = () => {
 
   // Assuming patientId is stored in localStorage or passed as a prop (for example purposes)
   useEffect(() => {
-    const patientId = localStorage.getItem("patientId");  // Or get it from props or context
+    const patientId = localStorage.getItem("patientId"); // Or get it from props or context
     if (patientId) {
       setFormData((prevData) => ({ ...prevData, patientId }));
     }
@@ -65,9 +66,7 @@ const BookAppointment = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Book an Appointment</h2>
-
+    <form className="book-appointment-container" onSubmit={handleSubmit}>
       <div>
         <label>Patient ID:</label>
         <input
@@ -265,7 +264,7 @@ const BookAppointment = () => {
         </label>
       </div>
 
-      <button type="submit">Book Appointment</button>
+      <button type="submit" className="appointment-button" >Book Appointment</button>
     </form>
   );
 };

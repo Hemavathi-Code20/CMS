@@ -237,7 +237,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-image: url(https://img.freepik.com/free-photo/top-view-damaged-heart-shape-with-stethoscope-copy-space_23-2148635208.jpg?t=st=1733407894~exp=1733411494~hmac=bb89429fa27db90e1f99342c7c21dc3e8a015503c51a3019505c4e9567b660f1&w=1060);
+  background-image: url(https://img.freepik.com/free-photo/health-still-life-with-copy-space_23-2148854031.jpg?semt=ais_hybrid);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -283,13 +283,6 @@
   position: relative;
 }
 
-.footer-logo {
-  position: absolute;
-  left: 5%;
-  width: 60px;
-  height: 60px;
-}
-
 .footer-content {
   display: flex;
   justify-content: center; /* Center the text in the footer */
@@ -298,7 +291,7 @@
 }
 
 .footer-text {
-  margin: 0;
+  margin: 0%;
   font-size: 17px;
   font-weight: 600;
 }

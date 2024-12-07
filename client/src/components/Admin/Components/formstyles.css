@@ -1,22 +1,32 @@
-.roles-form {
+.fill-container {
+  background-color: #fff;
   width: 100%;
-  padding: 10px;
+  max-width: 1000px;
+  padding: 50px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-left: 5%;
+  height: auto;
+  overflow: hidden !important;
+  max-height: 90vh;
 }
 
-.form-grid {
+.fill-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr) !important;
   gap: 10px;
 }
 
-.form-grid label {
+.fill-grid label {
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease-in-out;
 }
 
-.form-grid input,
-.form-grid select {
+.fill-grid input,
+.fill-grid select {
   font-size: 13px;
   padding: 10px;
   width: 80%;
@@ -26,7 +36,7 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.form-grid input[type="file"] {
+.fill-grid input[type="file"] {
   border: none;
   padding: 0;
   outline: none;
@@ -34,7 +44,7 @@
   transition: opacity 0.3s ease;
 }
 
-.form-grid input[type="file"]:hover {
+.fill-grid input[type="file"]:hover {
   opacity: 0.8;
 }
 
@@ -44,33 +54,28 @@ label {
   font-size: 14px;
   transition: color 0.3s ease;
 }
-
 label:hover {
-  color: #007bff;
+  color: rgb(90, 89, 89);
 }
-
-form button {
+.en-button {
   font-weight: bold;
   background: linear-gradient(135deg, #008080, #3dfef4) !important;
   text-transform: uppercase;
-  margin-left: 90% !important;
-  width: 120px !important;
+  margin-top: 1% !important;
+  align-self: flex-end;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   transition: background-color 0.3s ease, transform 0.2s ease-in-out;
 }
 
-form button:hover {
-  transform: translateY(-2px);
+.en-button:hover {
+  font-size: 14px;
+  background: linear-gradient(135deg, #3dfef4, #008080) !important;
 }
 
-form button:active {
-  transform: translateY(0);
-}
-
-.form-grid input[type="file"]::file-selector-button {
+.fill-grid input[type="file"]::file-selector-button {
   background: linear-gradient(135deg, #008080, #3dfef4) !important;
   color: white;
   border: none;

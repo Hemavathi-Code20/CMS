@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../styles/DoctorForm.css";
+import "./formstyles.css";
 
 const DoctorForm = ({ onSubmit, initialData }) => {
   const formDataFromProps = initialData || {};
@@ -39,7 +39,7 @@ const DoctorForm = ({ onSubmit, initialData }) => {
     reader.onloadend = () => {
       setFormData((prevItem) => ({
         ...prevItem,
-        profilePicture: reader.result, // Save image as base64 string
+        profilePicture: reader.result,
       }));
     };
     if (file) {
@@ -68,8 +68,8 @@ const DoctorForm = ({ onSubmit, initialData }) => {
   };
 
   return (
-    <form className="doctor-form" onSubmit={handleSubmit}>
-      <div className="form-grid">
+    <form className="fill-container" onSubmit={handleSubmit}>
+      <div className="fill-grid">
         <label>
           Profile Picture:
           <input
@@ -252,8 +252,10 @@ const DoctorForm = ({ onSubmit, initialData }) => {
             required
           />
         </label>
-        <button type="submit">Submit</button>
       </div>
+      <button type="submit" className="en-button">
+        {initialData ? "Update" : "Add record"}
+      </button>
     </form>
   );
 };

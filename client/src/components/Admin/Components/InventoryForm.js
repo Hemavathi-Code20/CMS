@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../styles/Inventory.css";
+import "./formstyles.css";
 
 const InventoryForm = ({ onAddItem, onUpdateItem, selectedItem }) => {
   const [item, setItem] = useState({
@@ -53,8 +53,8 @@ const InventoryForm = ({ onAddItem, onUpdateItem, selectedItem }) => {
   };
 
   return (
-    <form className="inventory-form" onSubmit={handleSubmit}>
-      <div className="form-grid">
+    <form className="fill-container" onSubmit={handleSubmit}>
+      <div className="fill-grid">
         <label>
           Item Name:{" "}
           <input
@@ -204,7 +204,9 @@ const InventoryForm = ({ onAddItem, onUpdateItem, selectedItem }) => {
           />
         </label>
       </div>
-      <button type="submit">{selectedItem ? "Update" : "Add Item"}</button>
+      <button className="en-button" type="submit">
+        {selectedItem ? "Update" : "Add Item"}
+      </button>
     </form>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import BookAppointment from "../Components/BookAppointment";
+import '../../styles/BookAppointmentPage.css'
 
 const BookAppointmentPage = () => {
   const [appointments, setAppointments] = useState([]);

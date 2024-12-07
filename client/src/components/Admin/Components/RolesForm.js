@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../styles/RolesForm.css"; // Assuming you have the appropriate styles
+import "./formstyles.css";
 
 const RolesForm = ({ onSubmit, initialData }) => {
   const formDataFromProps = initialData || {};
@@ -70,8 +70,8 @@ const RolesForm = ({ onSubmit, initialData }) => {
   };
 
   return (
-    <form className="roles-form" onSubmit={handleSubmit}>
-      <div className="form-grid">
+    <form className="fill-container" onSubmit={handleSubmit}>
+      <div className="fill-grid">
         <label>
           Profile Picture:
           <input
@@ -238,9 +238,10 @@ const RolesForm = ({ onSubmit, initialData }) => {
             onChange={handleChange}
           />
         </label>
-
-        <button type="submit">Submit</button>
       </div>
+      <button type="submit" className="en-button">
+        {initialData ? "Update" : "Add record"}
+      </button>
     </form>
   );
 };

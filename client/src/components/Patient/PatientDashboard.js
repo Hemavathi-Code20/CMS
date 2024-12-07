@@ -242,7 +242,6 @@ const PatientDashboard = () => {
 
       <footer className="footer">
         <div className="footer-content">
-          <img src={logo} className="footer-logo" alt="footer-logo" />
           <p className="footer-text">© 2024 CMS. All rights reserved.</p>
         </div>
       </footer>
