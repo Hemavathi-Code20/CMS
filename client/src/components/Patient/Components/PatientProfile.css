@@ -1,161 +1,144 @@
-/* General Styles for the Profile Page */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7fc;
-    margin: 0;
-    padding: 0;
-  }
-  
-  h1 {
-    text-align: center;
-    color: #4A90E2;
-    margin-top: 30px;
-  }
-  
-  div {
-    margin: 20px;
-  }
-  
-  button {
-    background-color: #4A90E2;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #357ABD;
-  }
-  
-  button:focus {
-    outline: none;
-  }
-  
-  /* Profile Card */
-  .profile-card {
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 30px;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .profile-card:hover {
-    transform: translateY(-10px);
-  }
-  
-  .profile-card p {
-    font-size: 16px;
-    color: #333;
-    margin: 8px 0;
-  }
-  
-  /* Modal Styles */
-  .ReactModal__Overlay {
-    background: rgba(0, 0, 0, 0.5) !important;
-    transition: opacity 0.3s ease;
-  }
-  
+.patientprofile-container {
+  min-height: 100vh;
+}
+.patient-profile {
+  max-width: 900px !important;
+  max-height: 600px !important;
+  margin-left: 12%;
+  margin-top: 5%;
+  padding: 50px;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 70px;
+}
+
+/* Edit button styling */
+.edit-button {
+  position: absolute;
+  top: 20px; /* Adjust distance from top */
+  right: 20px; /* Adjust distance from right */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #0056b3;
+  transition: color 0.3s ease;
+}
+
+.edit-button:hover {
+  font-size: 24px;
+  color: coral;
+}
+
+.field {
+  display: flex;
+  gap: 15px;
+  color: #555;
+  font-size: 20px !important;
+}
+
+.field i {
+  font-size: 20px;
+  color: #0056b3;
+}
+
+.field p {
+  margin: 0;
+}
+
+.ReactModal__Overlay {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.ReactModal__Content {
+  max-width: 1150px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.ReactModal__Content button {
+  margin-left: 95% !important;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: red;
+  cursor: pointer;
+}
+
+.ReactModal__Content button:hover {
+  transform: scale(1.2);
+}
+.ReactModal__Content form {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr) !important;
+  gap: 20px;
+  padding: 30px !important;
+}
+
+.ReactModal__Content label,
+select {
+  font-size: 15px;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+}
+
+.ReactModal__Content input,
+select {
+  padding: 8px 12px;
+  font-size: 1rem;
+  width: 150%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.2s;
+}
+
+.ReactModal__Content .profile-button {
+  width: 90% !important;
+  height: 40% !important;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 50% !important;
+  margin-left: 350% !important;
+}
+
+.ReactModal__Content button[type="button"]:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
   .ReactModal__Content {
-    background: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    width: 50%;
-    max-width: 600px;
-    margin: 10% auto;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transform: translateY(-100px);
-    transition: transform 0.3s ease-out;
+    max-width: 90%;
+    padding: 15px;
   }
-  
-  .ReactModal__Content--after-open {
-    transform: translateY(0);
+
+  .ReactModal__Content form {
+    grid-template-columns: 1fr; /* Switch to a single column layout on smaller screens */
   }
-  
-  .ReactModal__Content--before-close {
-    transform: translateY(-100px);
+
+  .ReactModal__Content h2 {
+    font-size: 1.5rem;
   }
-  
-  h2 {
-    text-align: center;
-    color: #4A90E2;
-    margin-bottom: 20px;
+
+  .ReactModal__Content button {
+    font-size: 1.5rem;
   }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+
+  .ReactModal__Content input {
+    font-size: 0.9rem;
   }
-  
-  label {
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
+
+  .ReactModal__Content button[type="button"] {
+    font-size: 0.9rem;
+    padding: 8px 15px;
   }
-  
-  input {
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    transition: border-color 0.3s ease;
-  }
-  
-  input:focus {
-    outline: none;
-    border-color: #4A90E2;
-  }
-  
-  /* Hover and Focus States for Input Fields */
-  input:hover, input:focus {
-    border-color: #4A90E2;
-    box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
-  }
-  
-  /* Button in Modal */
-  button[type="button"] {
-    background-color: #357ABD;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  button[type="button"]:hover {
-    background-color: #4A90E2;
-  }
-  
-  button[type="button"]:focus {
-    outline: none;
-  }
-  
-  /* Profile Information Sections (Improvement in Layout) */
-  .profile-info {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 30px;
-  }
-  
-  .profile-info p {
-    font-size: 16px;
-    color: #666;
-  }
-  
-  /* Flexbox for better layout */
-  .profile-info .label {
-    font-weight: bold;
-  }
-  
-  .profile-info .value {
-    font-style: italic;
-    color: #444;
-  }
-  
+}

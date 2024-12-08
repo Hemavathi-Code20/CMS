@@ -14,7 +14,6 @@ const PatientProfile = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editFormData, setEditFormData] = useState({
     fullname: "",
-    preferredPronouns: "",
     age: "",
     gender: "",
     phone: "",
@@ -40,7 +39,6 @@ const PatientProfile = () => {
         setProfile(data);
         setEditFormData({
           fullname: data.fullname || "",
-          preferredPronouns: data.preferredPronouns || "",
           age: data.age || "",
           gender: data.gender || "",
           phone: data.phone || "",
@@ -73,10 +71,10 @@ const PatientProfile = () => {
   const handleUpdate = async () => {
     try {
       console.log("Update data being sent:", editFormData);
-
-      // Format the location and insurance as objects before sending
       const updatedData = {
         ...editFormData,
+        generalDoctorName: editFormData.generalDoctor, // Fix this mapping
+        doctorSpeciality: editFormData.doctorSpecialty, // Fix this mapping
         location: {
           city: editFormData.city,
           state: editFormData.state,
@@ -87,6 +85,7 @@ const PatientProfile = () => {
           policyNumber: editFormData.policyNumber,
         },
       };
+      
 
       // Send the update request
       const response = await axios.put(
@@ -119,68 +118,75 @@ const PatientProfile = () => {
   if (!profile) return <p>No profile found.</p>;
 
   return (
-    <div>
-      <h1>Patient Profile</h1>
-      <p>Patient ID: {profile.patientId}</p>
-      <p>Full Name: {profile.fullname}</p>
-      <p>Preferred Pronouns: {profile.preferredPronouns || ""}</p>
-      <p>Age: {profile.age || ""}</p>
-      <p>Gender: {profile.gender || ""}</p>
-      <p>Contact Number: {profile.phone || ""}</p>
-      <p>Email: {profile.email || ""}</p>
-      <p>
-        Location:{" "}
-        {`${profile.location.city || ""}, ${profile.location.state || ""}, ${
-          profile.location.country || ""
-        }`}
-      </p>
-      <p>Occupation: {profile.occupation || ""}</p>
-      <p>General Doctor: {profile.generalDoctorName || ""}</p>
-      <p>Doctor Specialty: {profile.doctorSpeciality || ""}</p>
-      <p>
-        Insurance:{" "}
-        {profile.insuranceInformation.provider &&
-        profile.insuranceInformation.policyNumber
-          ? `${profile.insuranceInformation.provider} (Policy #${profile.insuranceInformation.policyNumber})`
-          : ""}
-      </p>
-      <button
-        onClick={() => setIsModalOpen(true)}
-        style={{
-          margin: "10px",
-          padding: "5px 10px",
-          background: "blue",
-          color: "white",
-        }}
-      >
-        Edit Profile
-      </button>
+    <div className="patientprofile-container">
+      <h1 style={{ textAlign: "center", color: "coral" }}>Patient Profile</h1>
+      <div className="patient-profile">
+        <button className="edit-button" onClick={() => setIsModalOpen(true)}>
+          <i className="fas fa-edit"></i>
+        </button>
+        <div className="field">
+          <i className="fas fa-id-badge"></i>
+          <p>Patient ID: {profile.patientId}</p>
+        </div>
+        <div className="field">
+          <i className="fas fa-user"></i>
+          <p>{profile.fullname}</p>
+        </div>
+        <div className="field">
+          <i className="fas fa-birthday-cake"></i>
+          <p>{profile.age || ""}</p>
+        </div>
+        <div className="field">
+          <i className="fas fa-male"></i>
+          <p>{profile.gender || ""}</p>
+        </div>
+        <div className="field">
+          <i className="fas fa-phone"></i>
+          <p>{profile.phone || ""}</p>
+        </div>
+        <div className="field">
+          <i className="fas fa-envelope"></i>
+          <p> {profile.email || ""}</p>
+        </div>
+        <div className="field full-width">
+          <i className="fas fa-map-marker-alt"></i>
+          <p>
+            {`${profile.location.city || ""}, ${
+              profile.location.state || ""
+            }, ${profile.location.country || ""}`}
+          </p>
+        </div>
+        <div className="field">
+          <i className="fas fa-briefcase"></i>
+          <p> {profile.occupation || ""}</p>
+        </div>
+        <div className="field">
+          <i className="fas fa-user-md"></i>
+          <p> {profile.generalDoctorName || ""}</p>
+        </div>
+        <div className="field">
+          <i className="fas fa-stethoscope"></i>
+          <p> {profile.doctorSpeciality || ""}</p>
+        </div>
+        <div className="field full-width">
+          <i className="fas fa-shield-alt"></i>
+          <p>
+            {profile.insuranceInformation.provider &&
+            profile.insuranceInformation.policyNumber
+              ? `${profile.insuranceInformation.provider} (Policy #${profile.insuranceInformation.policyNumber})`
+              : ""}
+          </p>
+        </div>
+      </div>
 
       <Modal
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
         contentLabel="Edit Profile"
       >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <h2>Edit Profile</h2>
-          <button
-            onClick={() => setIsModalOpen(false)}
-            style={{
-              background: "transparent",
-              border: "none",
-              fontSize: "1.5rem",
-              cursor: "pointer",
-              color: "red",
-            }}
-          >
-            &times;
-          </button>
+        <div>
+          <h2 style={{ textAlign: "center", color: "teal" }}>Edit Profile</h2>
+          <button onClick={() => setIsModalOpen(false)}>&times;</button>
         </div>
         <form>
           <label>
@@ -189,16 +195,6 @@ const PatientProfile = () => {
               type="text"
               name="fullname"
               value={editFormData.fullname}
-              onChange={handleEditChange}
-            />
-          </label>
-          <br />
-          <label>
-            Preferred Pronouns:
-            <input
-              type="text"
-              name="preferredPronouns"
-              value={editFormData.preferredPronouns}
               onChange={handleEditChange}
             />
           </label>
@@ -215,13 +211,18 @@ const PatientProfile = () => {
           <br />
           <label>
             Gender:
-            <input
-              type="text"
+            <select
               name="gender"
               value={editFormData.gender}
               onChange={handleEditChange}
-            />
+            >
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
           </label>
+
           <br />
           <label>
             Phone:
@@ -323,7 +324,11 @@ const PatientProfile = () => {
             />
           </label>
           <br />
-          <button type="button" onClick={handleUpdate}>
+          <button
+            type="button"
+            className="profile-button"
+            onClick={handleUpdate}
+          >
             Save Changes
           </button>
         </form>

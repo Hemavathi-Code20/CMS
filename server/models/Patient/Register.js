@@ -27,11 +27,6 @@ const patientSchema = new mongoose.Schema({
     type: String,
     default: '',
   },
-  preferredPronouns: {
-    type: String,
-    enum: ['He/Him', 'She/Her', 'They/Them', 'Other'], // Limited options for better consistency
-    default: 'Other',
-  },
   age: {
     type: Number,
     min: 0, // Age should not be negative
@@ -40,10 +35,6 @@ const patientSchema = new mongoose.Schema({
     type: String,
     enum: ['Male', 'Female', 'Other', 'Prefer not to say'], // Controlled options
     default: 'Prefer not to say',
-  },
-  contactNumber: {
-    type: String,
-    default: '',
   },
   location: {
     city: {

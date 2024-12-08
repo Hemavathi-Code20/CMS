@@ -36,6 +36,7 @@
 }
 
 .Info-content {
+  margin-left: 6%;
   flex-grow: 1;
   color: #333 !important;
   font-size: 1rem;
@@ -52,6 +53,7 @@
 
 .Info-edit,
 .Info-delete {
+  padding: 10px 20px;
   border: none;
   font-weight: bold;
   border-radius: 8px;
