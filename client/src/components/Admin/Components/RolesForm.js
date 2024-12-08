@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./formstyles.css";
+import "../styles/formstyles.css";
 
 const RolesForm = ({ onSubmit, initialData }) => {
   const formDataFromProps = initialData || {};

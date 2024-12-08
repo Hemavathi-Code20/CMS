@@ -19,12 +19,21 @@
   gap: 10px;
 }
 
+.maintenance-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 10px;
+}
+
+.maintenance-grid label,
 .fill-grid label {
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease-in-out;
 }
 
+.maintenance-grid input,
+.maintenance-grid select,
 .fill-grid input,
 .fill-grid select {
   font-size: 13px;

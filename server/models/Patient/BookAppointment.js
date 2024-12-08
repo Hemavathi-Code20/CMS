@@ -59,8 +59,6 @@ const BookAppointmentSchema = new mongoose.Schema({
     required: true,
   },
 
-  // Agreement
-  termsAndConditionsAccepted: { type: Boolean, required: true },
 });
 
 const BookAppointment = mongoose.model(

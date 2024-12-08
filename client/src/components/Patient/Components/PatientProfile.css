@@ -1,0 +1,161 @@
+/* General Styles for the Profile Page */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fc;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #4A90E2;
+    margin-top: 30px;
+  }
+  
+  div {
+    margin: 20px;
+  }
+  
+  button {
+    background-color: #4A90E2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #357ABD;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  /* Profile Card */
+  .profile-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .profile-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .profile-card p {
+    font-size: 16px;
+    color: #333;
+    margin: 8px 0;
+  }
+  
+  /* Modal Styles */
+  .ReactModal__Overlay {
+    background: rgba(0, 0, 0, 0.5) !important;
+    transition: opacity 0.3s ease;
+  }
+  
+  .ReactModal__Content {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 50%;
+    max-width: 600px;
+    margin: 10% auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-100px);
+    transition: transform 0.3s ease-out;
+  }
+  
+  .ReactModal__Content--after-open {
+    transform: translateY(0);
+  }
+  
+  .ReactModal__Content--before-close {
+    transform: translateY(-100px);
+  }
+  
+  h2 {
+    text-align: center;
+    color: #4A90E2;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #4A90E2;
+  }
+  
+  /* Hover and Focus States for Input Fields */
+  input:hover, input:focus {
+    border-color: #4A90E2;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+  }
+  
+  /* Button in Modal */
+  button[type="button"] {
+    background-color: #357ABD;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="button"]:hover {
+    background-color: #4A90E2;
+  }
+  
+  button[type="button"]:focus {
+    outline: none;
+  }
+  
+  /* Profile Information Sections (Improvement in Layout) */
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .profile-info p {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  /* Flexbox for better layout */
+  .profile-info .label {
+    font-weight: bold;
+  }
+  
+  .profile-info .value {
+    font-style: italic;
+    color: #444;
+  }
+  

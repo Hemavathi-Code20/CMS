@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import "./PatientDashboard.css";
+import "./styles/PatientDashboard.css";
 
 const PatientDashboard = () => {
   const [profile, setProfile] = useState(null);
@@ -71,7 +71,7 @@ const PatientDashboard = () => {
         </div>
       </section>
 
-      <section className="doctor-card-section full-page">
+      <section className="doctor-card-section">
         <h2>Meet Our Doctors</h2>
         <div className="doctor-cards">
           <div className="doctor-card">
@@ -138,12 +138,6 @@ const PatientDashboard = () => {
             <h3>Cardiology</h3>
             <p>
               Advanced heart care and treatment for cardiovascular conditions.
-            </p>
-          </div>
-          <div className="service">
-            <h3>Maternity Services</h3>
-            <p>
-              Dedicated support for pregnancy, childbirth, and postpartum care.
             </p>
           </div>
           <div className="service">

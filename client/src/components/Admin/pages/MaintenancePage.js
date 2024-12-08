@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { MdClose } from "react-icons/md";
 import MaintenanceForm from "../Components/MaintenanceForm";
 import MaintenanceList from "../Components/MaintenanceList";
-import "./mainpage.css";
+import "../styles/mainpage.css";
 
 const MaintenancePage = () => {
   const [refresh, setRefresh] = useState(false);

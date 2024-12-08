@@ -1,13 +1,13 @@
 import React from "react";
-import "../../styles/DoctorTable.css";
+import "../styles/Card.css";
 
 const DoctorTable = ({ doctors, onCardClick }) => {
   return (
-    <div className="doctor-table">
+    <div className="table-container">
       {doctors.map((doctor) => (
         <div
           key={doctor._id}
-          className="doctor-card"
+          className="card-container"
           onClick={() => onCardClick(doctor._id)}
         >
           <h3>{doctor.fullName}</h3>
@@ -16,7 +16,7 @@ const DoctorTable = ({ doctors, onCardClick }) => {
             alt={`${doctor.fullName} doctor`}
           />
           <p>{doctor.qualification}</p>
-          <p className="specialization">{doctor.specialization}</p>
+          <p className="role">{doctor.specialization}</p>
           <p>{doctor.department}</p>
         </div>
       ))}

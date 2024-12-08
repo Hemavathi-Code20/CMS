@@ -12,15 +12,8 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import {
-  FaArrowAltCircleRight,
-  FaArrowLeft,
-  FaArrowRight,
-  FaBars,
-  FaRegArrowAltCircleLeft,
-  FaTimes,
-} from "react-icons/fa"; 
-import "../styles/AdminDashboard.css";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import "./styles/AdminDashboard.css";
 import logo from "../../assets/logo.png";
 
 ChartJS.register(
@@ -125,7 +118,7 @@ const AdminDashboard = () => {
       }`}
     >
       <button
-        className="toggle-button"
+        className="toggle-buttons"
         onClick={(e) => {
           e.stopPropagation(); // Prevent closing sidebar when clicking toggle
           setIsSidebarVisible(!isSidebarVisible);

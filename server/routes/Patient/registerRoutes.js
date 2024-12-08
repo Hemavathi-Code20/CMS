@@ -103,7 +103,6 @@ router.get("/profile/:id", async (req, res) => {
       generalDoctorName: patient.generalDoctorName,
       doctorSpeciality: patient.doctorSpeciality,
       insuranceInformation: patient.insuranceInformation,
-      appointmentDates: patient.appointmentDates,
     });
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });

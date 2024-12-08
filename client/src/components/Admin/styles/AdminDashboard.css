@@ -61,14 +61,14 @@
   padding-left: 20px;
 }
 
-.toggle-button {
+.toggle-buttons {
   display: flex;
   align-items: center;
   position: absolute;
   top: 20px;
   right: 20px;
   background: linear-gradient(135deg, #008080, #3dfef4) !important;
-  color: white;
+  color: white !important;
   border: none;
   border-radius: 50%;
   width: 30px;

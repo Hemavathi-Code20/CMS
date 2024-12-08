@@ -51,6 +51,10 @@
   font-size: 13px;
   background: linear-gradient(135deg, #80a3fc, #fe4343) !important;
 }
+.modal-overlay {
+  overflow: hidden !important;
+}
+
 .modal-content {
   background-color: rgba(0, 0, 0, 0.1) !important;
   backdrop-filter: blur(5px) !important;
@@ -61,9 +65,13 @@
 }
 
 .close-button {
-  margin-left: 97%;
+  margin-left: 95%;
   color: #fff !important;
   cursor: pointer;
+  background: none;
+}
+
+.close-button:hover {
   background: none !important;
 }
 

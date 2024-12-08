@@ -3,7 +3,7 @@ import { MdClose } from "react-icons/md"; // Import the close icon
 import RolesForm from "../Components/RolesForm";
 import RolesTable from "../Components/RolesTable";
 import RolesDetail from "../Components/RolesDetail";
-import "./mainpage.css";
+import "../styles/mainpage.css";
 
 const RolesManagement = () => {
   const [roles, setRoles] = useState([]);

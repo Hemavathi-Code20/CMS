@@ -8,42 +8,23 @@
 .logo {
   width: 80px;
   height: 80px;
-  margin-left: 100%;
+  margin-left: 30%;
 }
 .navbar-links a {
   color: #333;
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   margin: 0 20px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
 }
-
-.navbar-links a::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: rgba(52, 152, 219, 0.5);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.4s ease, height 0.4s ease;
-}
-
-.navbar-links a:hover::after {
-  width: 300%;
-  height: 300%;
+.navbar-links a:hover {
+  color: #fff;
+  font-size: 1.1rem;
 }
 
 .hero-section {
   position: relative;
-  background-image: url("../../assets/patient.jpeg");
+  background-image: url("../../../assets/patient.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -109,41 +90,50 @@
 }
 
 .doctor-card-section {
-  padding: 20px;
+  padding: 30px;
+  min-height: 100vh;
 }
-
 .doctor-cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 50px;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 70px;
+  padding: 30px;
 }
-
-.doctor-card img {
-  border-radius: 50%;
-  margin-bottom: 15px;
-  transition: transform 0.3s, filter 0.3s;
+.doctor-card {
+  width: 22%;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
-
 .doctor-card:hover {
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
-
-.doctor-card:hover img {
-  transform: scale(1.1);
-  filter: brightness(1.1);
+.doctor-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
 }
-
 .doctor-card p {
-  font-size: 1rem !important;
-  color: rgb(252, 84, 84);
-  font-weight: 600;
+  color: #333;
+  font-size: 16px;
+  margin: 15px 0;
 }
 
-.doctor-card:hover h3 {
-  color: #3498db;
+.doctor-card h3 {
+  font-size: 20px;
+  margin: 15px 0;
+  color: #033f7b;
 }
+
 .services-section {
   min-height: 100vh;
   padding: 30px !important;
@@ -157,7 +147,7 @@
 }
 
 .service {
-  background: linear-gradient(130deg, #8ee8ff, #e8e7e7);
+  background: linear-gradient(130deg, #8ee8ff, #fcfbfb);
   padding: 20px;
   border-radius: 15px;
   width: 25%;
@@ -178,15 +168,10 @@
   transition: color 0.3s;
 }
 
-.service:hover h3 {
-  color: #27ae60;
-}
-
 .service p {
   color: #7f8c8d;
 }
 
-/* Features Section */
 .features-section {
   padding: 30px;
   min-height: 100vh;
@@ -201,10 +186,10 @@
 .feature-image {
   width: 100%;
   height: auto;
-  max-height: 150px; /* Adjust as needed */
-  object-fit: cover; /* Ensures the image covers the area */
-  border-radius: 8px; /* Optional, for rounded corners */
-  margin-bottom: 10px; /* Space between the image and text */
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 
 .feature {
@@ -275,7 +260,8 @@
 .footer {
   display: flex;
   flex-direction: row;
-  color: #333;
+  color: #fff;
+  background-color: #333;
   padding: 20px;
   font-size: 16px; /* Adjusted for better readability */
   justify-content: center; /* Center content horizontally */

@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/DoctorDetails.css";
+import "../styles/Info.css";
 
 const DoctorDetail = ({ doctor, onEdit, onDelete }) => {
   if (!doctor) {
@@ -7,15 +7,15 @@ const DoctorDetail = ({ doctor, onEdit, onDelete }) => {
   }
 
   return (
-    <div className="doctor-detail-container">
-      <h2 className="doctor-name">{doctor.fullName}</h2>
-      <div className="doctor-profile">
+    <div className="Info-container">
+      <h2 className="Info-name">{doctor.fullName}</h2>
+      <div className="Info-profile">
         <img
           src={doctor.profilePicture || "default-profile.png"}
           alt={`${doctor.fullName} profile`}
-          className="profile-picture"
+          className="Info-picture"
         />
-        <div className="doctor-info">
+        <div className="Info-content">
           <p>
             <b>Specialization:</b> {doctor.specialization}
           </p>
@@ -46,11 +46,11 @@ const DoctorDetail = ({ doctor, onEdit, onDelete }) => {
         </div>
       </div>
 
-      <div className="doctor-action-buttons">
-        <button onClick={onEdit} className="edit-button">
+      <div className="Info-action-buttons">
+        <button onClick={onEdit} className="Info-edit">
           Edit
         </button>
-        <button onClick={onDelete} className="delete-button">
+        <button onClick={onDelete} className="Info-delete">
           Delete
         </button>
       </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./formstyles.css";
+import "../styles/formstyles.css";
 
 const MaintenanceForm = ({ onAddSuccess, editData }) => {
   const [assetName, setAssetName] = useState("");
@@ -70,7 +70,7 @@ const MaintenanceForm = ({ onAddSuccess, editData }) => {
 
   return (
     <form className="fill-container" onSubmit={handleSubmit}>
-      <div className="fill-grid">
+      <div className="maintenance-grid">
         <label>
           Asset Name:{" "}
           <input

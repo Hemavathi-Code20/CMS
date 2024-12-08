@@ -81,25 +81,7 @@ const patientSchema = new mongoose.Schema({
       default: '',
     },
   },
-  appointmentDates: [
-    {
-      date: {
-        type: Date,
-        default: Date.now, // Automatically set to current date/time for new entries
-      },
-      doctorName: {
-        type: String,
-        default: '', // Store the doctor’s name per appointment
-      },
-    },
-  ],
 });
-
-// Automatically add the latest appointment to the `appointmentDates` list
-patientSchema.methods.addAppointment = function (date, doctorName) {
-  this.appointmentDates.push({ date, doctorName });
-  return this.save(); // Save the updated document
-};
 
 const Patient = mongoose.model('Patient', patientSchema);
 export default Patient;

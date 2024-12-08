@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import BookAppointment from "../Components/BookAppointment";
-import '../../styles/BookAppointmentPage.css'
 
 const BookAppointmentPage = () => {
   const [appointments, setAppointments] = useState([]);
@@ -14,7 +13,7 @@ const BookAppointmentPage = () => {
         console.error("No patient ID found");
         return;
       }
-      
+
       // Send the patientId as a query parameter to the backend
       const response = await axios.get(
         `http://localhost:5000/api/patient/bookappointments?patientId=${patientId}`
@@ -45,19 +44,25 @@ const BookAppointmentPage = () => {
 
   return (
     <div>
-      <h1>Patient Portal</h1>
+      <h2 style={{ textAlign: "center", color: "#4985fe" }}>Schedule Your Appointment</h2>
       <BookAppointment fetchAppointments={fetchAppointments} />
 
-      <h2>Your Booked Appointments</h2>
+      <h2 style={{ textAlign: "center", color:"teal" }}>
+      Upcoming Appointments
+      </h2>
       {appointments.length === 0 ? (
         <p>No appointments booked yet.</p>
       ) : (
         <table
           style={{
-            width: "100%",
-            border: "1px solid #ccc",
-            marginTop: "20px",
-            padding: "10px",
+            width: "90%",
+            marginTop: "5%",
+            fontSize: "16px",
+            textAlign: "center",
+            borderRadius: "10px",
+            overflow: "hidden",
+            marginBottom: "10%",
+            marginLeft: "5%",
           }}
         >
           <thead>
@@ -79,7 +84,6 @@ const BookAppointmentPage = () => {
                 <td>{appointment.preferredDate}</td>
                 <td>{appointment.preferredTimeSlot}</td>
                 <td>{appointment.status || "Pending"}</td>
-                {/* Add status update buttons if the appointment is not confirmed or canceled */}
               </tr>
             ))}
           </tbody>

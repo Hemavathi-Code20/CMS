@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { MdClose } from "react-icons/md"; 
+import { MdClose } from "react-icons/md";
 import DoctorTable from "../Components/DoctorTable";
 import DoctorForm from "../Components/DoctorForm";
 import DoctorDetail from "../Components/DoctorDetail";
-import "./mainpage.css";
+import "../styles/mainpage.css";
 
 const DoctorManagement = () => {
   const [doctors, setDoctors] = useState([]);
@@ -37,7 +37,7 @@ const DoctorManagement = () => {
         body: JSON.stringify(doctor),
       });
       if (res.ok) {
-        fetchDoctors(); 
+        fetchDoctors();
         closeAddModal();
       }
     } catch (error) {
@@ -56,7 +56,7 @@ const DoctorManagement = () => {
         }
       );
       if (res.ok) {
-        fetchDoctors(); 
+        fetchDoctors();
         closeAddModal();
       }
     } catch (error) {
@@ -70,7 +70,7 @@ const DoctorManagement = () => {
         method: "DELETE",
       });
       if (res.ok) {
-        fetchDoctors(); 
+        fetchDoctors();
         closeDetailModal();
       }
     } catch (error) {
@@ -80,18 +80,18 @@ const DoctorManagement = () => {
 
   const closeAddModal = () => {
     setIsAdding(false);
-    fetchDoctors(); 
+    fetchDoctors();
   };
 
   const closeDetailModal = () => {
     setShowDoctorDetail(false);
-    fetchDoctors(); 
+    fetchDoctors();
   };
 
   const handleEditClick = () => {
     if (selectedDoctor) {
       setIsAdding(true);
-      setShowDoctorDetail(false); 
+      setShowDoctorDetail(false);
     }
   };
 
@@ -125,10 +125,7 @@ const DoctorManagement = () => {
       {showDoctorDetail && selectedDoctor && (
         <div className="detail-modal-overlay">
           <div className="detail-modal-content">
-            <button
-              className="detail-close-button"
-              onClick={closeDetailModal}
-            >
+            <button className="detail-close-button" onClick={closeDetailModal}>
               <MdClose size={24} />
             </button>
             <DoctorDetail

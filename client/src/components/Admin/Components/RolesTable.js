@@ -1,13 +1,13 @@
 import React from "react";
-import "../../styles/RolesTable.css";
+import "../styles/Card.css";
 
 const RolesTable = ({ roles, onCardClick }) => {
   return (
-    <div className="roles-table">
+    <div className="table-container">
       {roles.map((role) => (
         <div
           key={role._id}
-          className="role-card"
+          className="card-container"
           onClick={() => onCardClick(role._id)}
         >
           <h3>{role.fullName}</h3>
@@ -16,7 +16,7 @@ const RolesTable = ({ roles, onCardClick }) => {
             alt={`${role.fullName} profile`}
           />
           <p>{role.role}</p>
-          <p className="department">{role.department}</p>
+          <p className="role">{role.department}</p>
           <p>{role.designation}</p>
         </div>
       ))}

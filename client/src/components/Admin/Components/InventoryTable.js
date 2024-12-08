@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/InventoryTable.css";
+import "../styles/InventoryTable.css";
 
 const InventoryTable = ({ items, onUpdateItem, onDeleteItem }) => {
   const handleEdit = (item) => {

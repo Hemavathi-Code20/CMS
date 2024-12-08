@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/RolesDetail.css";
+import "../styles/Info.css";
 
 const RolesDetail = ({ role, onEdit, onDelete }) => {
   if (!role) {
@@ -7,15 +7,15 @@ const RolesDetail = ({ role, onEdit, onDelete }) => {
   }
 
   return (
-    <div className="role-detail-container">
-      <h2 className="role-name">{role.fullName}</h2>
-      <div className="role-profile">
+    <div className="Info-container">
+      <h2 className="Info-name">{role.fullName}</h2>
+      <div className="Info-profile">
         <img
           src={role.profilePicture || "default-profile.png"}
           alt={`${role.fullName} profile`}
-          className="profile-picture"
+          className="Info-picture"
         />
-        <div className="role-info">
+        <div className="Info-content">
           <p>
             <b>Full Name:</b> {role.fullName}
           </p>
@@ -58,11 +58,11 @@ const RolesDetail = ({ role, onEdit, onDelete }) => {
         </div>
       </div>
 
-      <div className="role-action-buttons">
-        <button onClick={onEdit} className="edit-button">
+      <div className="Info-action-buttons">
+        <button onClick={onEdit} className="Info-edit">
           Edit
         </button>
-        <button onClick={onDelete} className="delete-button">
+        <button onClick={onDelete} className="Info-delete">
           Delete
         </button>
       </div>

@@ -19,7 +19,6 @@ const FixAppointmentSchema = new mongoose.Schema({
   symptoms: { type: String },
   department: { type: String, required: true },
   preferredCommunicationMethod: { type: String, required: true },
-  termsAndConditionsAccepted: { type: Boolean, required: true },
   status: { type: String, default: "Pending" },
 });
 

@@ -3,7 +3,7 @@ import { MdClose } from "react-icons/md";
 import InventoryForm from "../Components/InventoryForm";
 import InventoryTable from "../Components/InventoryTable";
 import axios from "axios";
-import "./mainpage.css";
+import "../styles/mainpage.css";
 
 const InventoryPage = () => {
   const [inventory, setInventory] = useState([]);

@@ -19,7 +19,6 @@ router.post("/bookappointments", async (req, res) => {
     symptoms,
     department,
     preferredCommunicationMethod,
-    termsAndConditionsAccepted,
   } = req.body;
   try {
     const newAppointment = new FixAppointment({
@@ -37,7 +36,6 @@ router.post("/bookappointments", async (req, res) => {
       symptoms,
       department,
       preferredCommunicationMethod,
-      termsAndConditionsAccepted,
     });
     await newAppointment.save();
     res.status(201).json({

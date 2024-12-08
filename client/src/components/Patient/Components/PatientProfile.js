@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Modal from "react-modal";
+import "./PatientProfile.css";
 
 Modal.setAppElement("#root");
 
@@ -119,50 +120,68 @@ const PatientProfile = () => {
 
   return (
     <div>
-      <h2>Patient Profile</h2>
-      {/* Render profile information */}
+      <h1>Patient Profile</h1>
       <p>Patient ID: {profile.patientId}</p>
       <p>Full Name: {profile.fullname}</p>
-      <p>Preferred Pronouns: {profile.preferredPronouns || "Not provided"}</p>
-      <p>Age: {profile.age || "Not provided"}</p>
-      <p>Gender: {profile.gender || "Not provided"}</p>
-      <p>Contact Number: {profile.phone || "Not provided"}</p>
-      <p>Email: {profile.email || "Not provided"}</p>
-      <p>Location: {`${profile.location.city || "Not provided"}, ${profile.location.state || "Not provided"}, ${profile.location.country || "Not provided"}`}</p>
-      <p>Occupation: {profile.occupation || "Not provided"}</p>
-      <p>General Doctor: {profile.generalDoctorName || "Not provided"}</p>
-      <p>Doctor Specialty: {profile.doctorSpeciality || "Not provided"}</p>
+      <p>Preferred Pronouns: {profile.preferredPronouns || ""}</p>
+      <p>Age: {profile.age || ""}</p>
+      <p>Gender: {profile.gender || ""}</p>
+      <p>Contact Number: {profile.phone || ""}</p>
+      <p>Email: {profile.email || ""}</p>
       <p>
-        Insurance: {profile.insuranceInformation.provider && profile.insuranceInformation.policyNumber
-          ? `${profile.insuranceInformation.provider} (Policy #${profile.insuranceInformation.policyNumber})`
-          : "Not provided"}
+        Location:{" "}
+        {`${profile.location.city || ""}, ${profile.location.state || ""}, ${
+          profile.location.country || ""
+        }`}
       </p>
-      <div>
-        <h3>Appointment Dates</h3>
-        {profile.appointmentDates && profile.appointmentDates.length > 0 ? (
-          <ul>
-            {profile.appointmentDates.map((date, index) => (
-              <li key={index}>{new Date(date.date).toLocaleDateString()}</li>
-            ))}
-          </ul>
-        ) : (
-          <p>No appointment dates available.</p>
-        )}
-      </div>
+      <p>Occupation: {profile.occupation || ""}</p>
+      <p>General Doctor: {profile.generalDoctorName || ""}</p>
+      <p>Doctor Specialty: {profile.doctorSpeciality || ""}</p>
+      <p>
+        Insurance:{" "}
+        {profile.insuranceInformation.provider &&
+        profile.insuranceInformation.policyNumber
+          ? `${profile.insuranceInformation.provider} (Policy #${profile.insuranceInformation.policyNumber})`
+          : ""}
+      </p>
       <button
         onClick={() => setIsModalOpen(true)}
-        style={{ margin: "10px", padding: "5px 10px", background: "blue", color: "white" }}
+        style={{
+          margin: "10px",
+          padding: "5px 10px",
+          background: "blue",
+          color: "white",
+        }}
       >
         Edit Profile
       </button>
 
-      {/* Modal for profile editing */}
       <Modal
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
         contentLabel="Edit Profile"
       >
-        <h2>Edit Profile</h2>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <h2>Edit Profile</h2>
+          <button
+            onClick={() => setIsModalOpen(false)}
+            style={{
+              background: "transparent",
+              border: "none",
+              fontSize: "1.5rem",
+              cursor: "pointer",
+              color: "red",
+            }}
+          >
+            &times;
+          </button>
+        </div>
         <form>
           <label>
             Full Name:
