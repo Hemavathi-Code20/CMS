@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "../styles/Login.css";
 
 const Login = () => {
   const [formData, setFormData] = useState({ patientId: "", password: "" });
@@ -31,31 +32,35 @@ const Login = () => {
   };
 
   return (
-    <div className="login-form">
-      <h2>Patient Login</h2>
-      {error && <p className="error">{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="patientId"
-          placeholder="Patient ID"
-          value={formData.patientId}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Login</button>
-      </form>
-      <p>
-        Don't have an account? <a href="/patient/register">Register here</a>
-      </p>
+    <div className="patient-background-container">
+      <div className="patient-login-form">
+        <h2>Patient Login</h2>
+        {error && <p className="error">{error}</p>}
+        <form onSubmit={handleSubmit} className="patient-login">
+          <input
+            type="text"
+            name="patientId"
+            placeholder="Patient ID"
+            value={formData.patientId}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <button type="submit" className="patient-login-button">
+            Login
+          </button>
+        </form>
+        <p>
+          Don't have an account? <a href="/patient/register">Register here</a>
+        </p>
+      </div>
     </div>
   );
 };

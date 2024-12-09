@@ -29,24 +29,27 @@ ChartJS.register(
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
-  const sidebarRef = useRef(null); // Create a reference for the sidebar
+  const sidebarRef = useRef(null); // Reference for sidebar
   const [dashboardData, setDashboardData] = useState([]);
   const [stats, setStats] = useState({
     doctors: 10,
-    patients: 100,
-    appointments: 45,
     inventory: 20,
+    appointments: 45,
+    maintenance: 20,
+    user: 30,
   });
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
   const token = localStorage.getItem("token");
 
+  // Redirect to login if token is missing
   useEffect(() => {
     if (!token) {
       navigate("/login");
     }
   }, [token, navigate]);
 
+  // Set mock data for the line chart
   useEffect(() => {
     setDashboardData([
       { date: "Monday", value: 20 },
@@ -62,6 +65,7 @@ const AdminDashboard = () => {
     navigate("/login");
   };
 
+  // Close sidebar when clicking outside
   const handleOutsideClick = (event) => {
     if (
       sidebarRef.current &&
@@ -100,9 +104,10 @@ const AdminDashboard = () => {
         label: "Statistics",
         data: [
           stats.doctors,
-          stats.patients,
-          stats.appointments,
           stats.inventory,
+          stats.appointments,
+          stats.maintenance,
+          stats.user,
         ],
         backgroundColor: ["#007bff", "#28a745", "#ffc107", "#dc3545"],
         borderColor: ["#0056b3", "#1e7e34", "#d39e00", "#c82333"],
@@ -117,22 +122,24 @@ const AdminDashboard = () => {
         isSidebarVisible ? "" : "sidebar-hidden"
       }`}
     >
+      {/* Sidebar Toggle Button */}
       <button
         className="toggle-buttons"
         onClick={(e) => {
-          e.stopPropagation(); // Prevent closing sidebar when clicking toggle
+          e.stopPropagation(); // Prevent sidebar from closing when clicking toggle
           setIsSidebarVisible(!isSidebarVisible);
         }}
       >
         {isSidebarVisible ? <FaArrowLeft /> : <FaArrowRight />}
       </button>
 
+      {/* Sidebar */}
       <aside
         ref={sidebarRef}
         className={`sidebar ${isSidebarVisible ? "visible" : ""}`}
       >
         <div className="sidebar-logo">
-          <img src={logo} alt="logo-image" />
+          <img src={logo} alt="logo" />
         </div>
         <ul className="sidebar-menu">
           <li onClick={() => navigate("/doctor-management")}>Doctors</li>
@@ -146,15 +153,45 @@ const AdminDashboard = () => {
         </ul>
       </aside>
 
+      {/* Main Content */}
       <main className="main-content">
         <h2>Admin Dashboard</h2>
+
+        {/* Statistics Cards */}
         <div className="stats-grid">
-          <div className="stat-card">Doctors: {stats.doctors}</div>
-          <div className="stat-card">Patients: {stats.patients}</div>
-          <div className="stat-card">Appointments: {stats.appointments}</div>
-          <div className="stat-card">Inventory: {stats.inventory}</div>
+          <div
+            className="stat-card"
+            onClick={() => navigate("/doctor-management")}
+          >
+            Doctors: {stats.doctors}
+          </div>
+          <div
+            className="stat-card"
+            onClick={() => navigate("/roles-management")}
+          >
+            User: {stats.user}
+          </div>
+          <div
+            className="stat-card"
+            onClick={() => navigate("/inventory-management")}
+          >
+            Inventory: {stats.inventory}
+          </div>
+          <div
+            className="stat-card"
+            onClick={() => navigate("/manage-appointments")}
+          >
+            Appointments: {stats.appointments}
+          </div>
+          <div
+            className="stat-card"
+            onClick={() => navigate("/maintenance-management")}
+          >
+            Maintenance: {stats.maintenance}
+          </div>
         </div>
 
+        {/* Charts */}
         <div className="charts-section">
           <div className="chart-container">
             <h2>Weekly Appointments</h2>

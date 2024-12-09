@@ -1,49 +1,36 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import logo from "../../assets/logo.png";
+import doctorbg from "../../assets/bg-doctor.jpeg";
+import "./styles/DoctorDashboard.css";
 
 const DoctorDashboard = () => {
-  return (
-    <div style={{ padding: "20px" }}>
-      <h1>Doctor Dashboard</h1>
-      <p>Manage your patient appointments and records here.</p>
-      
-      <div>
-        <Link to="/appointments">
-          <button
-            style={{
-              padding: "10px 20px",
-              fontSize: "16px",
-              cursor: "pointer",
-              margin: "10px 0",
-              backgroundColor: "#4CAF50",
-              color: "white",
-              border: "none",
-              borderRadius: "5px"
-            }}
-          >
-            View Appointments
-          </button>
-        </Link>
-      </div>
+  const navigate = useNavigate();
 
-      <div>
-        <Link to="/doctor-dashboard/manage-record">
-          <button
-            style={{
-              padding: "10px 20px",
-              fontSize: "16px",
-              cursor: "pointer",
-              margin: "10px 0",
-              backgroundColor: "#008CBA",
-              color: "white",
-              border: "none",
-              borderRadius: "5px"
-            }}
-          >
-            Manage Patient Records
-          </button>
-        </Link>
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // Remove the token from local storage
+    navigate("/login", { state: { role: "doctor" } }); // Navigate to the login page for the doctor
+  };
+
+  return (
+    <div className="doctor-dashboard">
+      <div className="doctor-bg-image">
+        <img src={doctorbg} alt="home-bg" className="doctor-bgimg" />
       </div>
+      <nav className="doctor-navbar">
+        <div className="doctor-logo">
+          <img src={logo} alt="Logo" className="doctor-logo" />
+        </div>
+        <div className="doctor-navbar-links">
+          <Link to="/appointments">View Appointments</Link>
+          <Link to="/doctor-dashboard/manage-record">
+            Manage Patient Records
+          </Link>
+          <button className="logout-btn" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
+      </nav>
     </div>
   );
 };

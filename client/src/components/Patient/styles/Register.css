@@ -54,13 +54,11 @@ form input {
 .register-buttons {
   width: 25%;
   height: 40px;
-  background: linear-gradient(120deg, #84fab0, #8fd3f4);
-  color: grey !important;
+  background: teal !important;
   text-transform: uppercase;
   border: none;
   border-radius: 5px;
   font-size: 15px !important;
-  font-weight: bold;
   cursor: pointer;
   transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
 }

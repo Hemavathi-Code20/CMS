@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import "./styles/PatientDashboard.css";
 
@@ -8,6 +8,7 @@ const PatientDashboard = () => {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const patientId = localStorage.getItem("patientId");
@@ -34,6 +35,14 @@ const PatientDashboard = () => {
     fetchProfile();
   }, []);
 
+  const handleLogout = () => {
+    // Clear the patient ID from localStorage
+    localStorage.removeItem("patientId");
+
+    // Redirect to the patient register page
+    navigate("/patient/register");
+  };
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
 
@@ -49,6 +58,9 @@ const PatientDashboard = () => {
           <Link to={`/patient/profile/${profile.patientId}/edit`}>
             Edit Profile
           </Link>
+          <button onClick={handleLogout} className="pateint-logout-button">
+            Logout
+          </button>
         </div>
       </nav>
 
