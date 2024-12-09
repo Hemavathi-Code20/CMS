@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Modal from "react-modal";
-import "./PatientProfile.css";
+import "../styles/PatientProfile.css";
 
 Modal.setAppElement("#root");
 
@@ -24,6 +24,7 @@ const PatientProfile = () => {
     occupation: "",
     generalDoctor: "",
     doctorSpecialty: "",
+    blood: "",
     insuranceProvider: "",
     policyNumber: "",
   });
@@ -47,6 +48,7 @@ const PatientProfile = () => {
           state: data.location.state || "",
           country: data.location.country || "",
           occupation: data.occupation || "",
+          blood: data.bloodType || "",
           generalDoctor: data.generalDoctorName || "",
           doctorSpecialty: data.doctorSpeciality || "",
           insuranceProvider: data.insuranceInformation.provider || "",
@@ -73,6 +75,7 @@ const PatientProfile = () => {
       console.log("Update data being sent:", editFormData);
       const updatedData = {
         ...editFormData,
+        bloodType: editFormData.blood,
         generalDoctorName: editFormData.generalDoctor, // Fix this mapping
         doctorSpeciality: editFormData.doctorSpecialty, // Fix this mapping
         location: {
@@ -85,7 +88,6 @@ const PatientProfile = () => {
           policyNumber: editFormData.policyNumber,
         },
       };
-      
 
       // Send the update request
       const response = await axios.put(
@@ -159,6 +161,10 @@ const PatientProfile = () => {
         <div className="field">
           <i className="fas fa-briefcase"></i>
           <p> {profile.occupation || ""}</p>
+        </div>
+        <div className="field">
+          <i className="fas fa-tint"></i>
+          <p> {profile.bloodType || ""}</p>
         </div>
         <div className="field">
           <i className="fas fa-user-md"></i>
@@ -282,6 +288,25 @@ const PatientProfile = () => {
               value={editFormData.occupation}
               onChange={handleEditChange}
             />
+          </label>
+          <br />
+          <label>
+            Blood-Type:
+            <select
+              name="blood"
+              value={editFormData.blood}
+              onChange={handleEditChange}
+            >
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+              <option value="Other">Other</option>
+            </select>
           </label>
           <br />
           <label>

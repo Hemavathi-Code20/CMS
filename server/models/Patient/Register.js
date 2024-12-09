@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const patientSchema = new mongoose.Schema({
   patientId: {
@@ -21,11 +21,11 @@ const patientSchema = new mongoose.Schema({
   },
   phone: {
     type: String,
-    default: '',
+    default: "",
   },
   address: {
     type: String,
-    default: '',
+    default: "",
   },
   age: {
     type: Number,
@@ -33,46 +33,51 @@ const patientSchema = new mongoose.Schema({
   },
   gender: {
     type: String,
-    enum: ['Male', 'Female', 'Other', 'Prefer not to say'], // Controlled options
-    default: 'Prefer not to say',
+    enum: ["Male", "Female", "Other", "Prefer not to say"], // Controlled options
+    default: "Prefer not to say",
+  },
+  bloodType: {
+    type: String,
+    enum: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-", "Other"], // Dropdown options for blood type
+    default: "O+", // Default to O+
   },
   location: {
     city: {
       type: String,
-      default: '',
+      default: "",
     },
     state: {
       type: String,
-      default: '',
+      default: "",
     },
     country: {
       type: String,
-      default: '',
+      default: "",
     },
   },
   occupation: {
     type: String,
-    default: '',
+    default: "",
   },
   generalDoctorName: {
     type: String,
-    default: '', // This can be updated every visit
+    default: "", // This can be updated every visit
   },
   doctorSpeciality: {
     type: String,
-    default: '',
+    default: "",
   },
   insuranceInformation: {
     provider: {
       type: String,
-      default: '',
+      default: "",
     },
     policyNumber: {
       type: String,
-      default: '',
+      default: "",
     },
   },
 });
 
-const Patient = mongoose.model('Patient', patientSchema);
+const Patient = mongoose.model("Patient", patientSchema);
 export default Patient;

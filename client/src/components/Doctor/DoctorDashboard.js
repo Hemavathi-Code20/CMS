@@ -1,3 +1,4 @@
+// src/components/doctor/DoctorDashboard.js
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
@@ -8,8 +9,8 @@ const DoctorDashboard = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("token"); // Remove the token from local storage
-    navigate("/login", { state: { role: "doctor" } }); // Navigate to the login page for the doctor
+    localStorage.removeItem("token");
+    navigate("/login", { state: { role: "doctor" } });
   };
 
   return (
@@ -26,6 +27,11 @@ const DoctorDashboard = () => {
           <Link to="/doctor-dashboard/manage-record">
             Manage Patient Records
           </Link>
+          {/* Link to view a specific patient's profile */}
+          <Link to={`/doctor-dashboard/patient-records/`}>
+            View Patient Record
+          </Link>
+
           <button className="logout-btn" onClick={handleLogout}>
             Logout
           </button>

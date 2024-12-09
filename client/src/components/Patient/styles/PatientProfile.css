@@ -1,0 +1,16 @@
+/* src/styles/DoctorPatientProfile.css */
+.doctor-patient-profile {
+  padding: 20px;
+}
+
+.profile-info {
+  margin-top: 20px;
+}
+
+.field {
+  margin-bottom: 15px;
+}
+
+.field strong {
+  font-weight: bold;
+}
