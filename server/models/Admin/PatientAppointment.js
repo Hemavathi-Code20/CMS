@@ -1,18 +1,13 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const PatientAppointmentSchema = new mongoose.Schema({
-  patientID: { type: String, required: true },
-  patientName: { type: String, required: true },
-  gender: { type: String, required: true },
+  patientID: { type: String, required: true, unique: true },
+  fullName: { type: String, required: true },
   contactNumber: { type: String, required: true },
-  location: { type: String },
-  appointmentDate: { type: Date, required: true },
-  appointmentTime: { type: String, required: true },
-  appointmentType: { type: String, required: true }, // in-person/online
-  doctorName: { type: String, required: true },
-  doctorspeciality: { type: String },
-  appointmentStatus: { type: String, default: 'Upcoming' }, // Upcoming, Cancelled, Completed, Rescheduled
+  appointmentType: { type: String, required: true },
+  preferredDoctor: { type: String },
+  preferredDate: { type: String, required: true },
+  preferredTimeSlot: { type: String, required: true },
 });
 
-// Use export default for ES Modules syntax
-export default mongoose.model('PatientAppointment', PatientAppointmentSchema);
+export default mongoose.model("PatientAppointment", PatientAppointmentSchema);

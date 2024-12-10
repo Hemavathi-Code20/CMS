@@ -143,7 +143,7 @@ const AdminDashboard = () => {
         </div>
         <ul className="sidebar-menu">
           <li onClick={() => navigate("/doctor-management")}>Doctors</li>
-          <li onClick={() => navigate("/manage-appointments")}>Appointments</li>
+          <li onClick={() => navigate("/appointment-details")}>Appointments</li>
           <li onClick={() => navigate("/inventory-management")}>Inventory</li>
           <li onClick={() => navigate("/maintenance-management")}>
             Maintenance
@@ -179,7 +179,7 @@ const AdminDashboard = () => {
           </div>
           <div
             className="stat-card"
-            onClick={() => navigate("/manage-appointments")}
+            onClick={() => navigate("/admin/appointments")}
           >
             Appointments: {stats.appointments}
           </div>

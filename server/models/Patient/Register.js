@@ -33,13 +33,11 @@ const patientSchema = new mongoose.Schema({
   },
   gender: {
     type: String,
-    enum: ["Male", "Female", "Other", "Prefer not to say"], // Controlled options
-    default: "Prefer not to say",
+    enum: ["Male", "Female", "Other", "Prefer not to say"], 
   },
   bloodType: {
     type: String,
-    enum: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-", "Other"], // Dropdown options for blood type
-    default: "O+", // Default to O+
+    enum: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-", "Other"], 
   },
   location: {
     city: {

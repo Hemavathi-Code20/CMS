@@ -53,12 +53,18 @@
 
 .hero-content h1 {
   font-size: 1.3rem;
+  text-align: start;
   line-height: 2;
   margin-bottom: 10%;
   animation: slideInLeft 1s ease-out;
-  width: 500px !important;
+  width: 505px !important;
 }
-
+.quote-text{
+  text-align: start;
+  color: #fe4343;
+  font-size: 1.3rem !important;
+  text-transform: uppercase;
+}
 .hero-buttons .button {
   display: inline-block;
   padding: 15px 30px;

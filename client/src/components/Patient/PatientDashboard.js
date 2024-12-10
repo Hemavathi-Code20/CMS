@@ -8,7 +8,7 @@ const PatientDashboard = () => {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   useEffect(() => {
     const patientId = localStorage.getItem("patientId");
@@ -69,10 +69,7 @@ const PatientDashboard = () => {
         <div className="hero-content">
           <h1>
             Compassionate care, advanced medicine because
-            <span style={{ color: "#fe4343", textTransform: "uppercase" }}>
-              {" "}
-              you matter most.
-            </span>
+            <span className="quote-text"> you matter most.</span>
           </h1>
 
           <div className="hero-buttons">

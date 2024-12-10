@@ -1,0 +1,45 @@
+.admin-appointments {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .appointments-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .appointment-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    width: 300px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .appointment-header {
+    margin-bottom: 15px;
+  }
+  
+  .appointment-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .appointment-details p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+  }
+  
+  .appointment-details strong {
+    color: #555;
+  }
+  
