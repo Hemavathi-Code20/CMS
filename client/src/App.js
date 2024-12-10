@@ -15,8 +15,6 @@ import MaintenancePage from "./components/Admin/pages/MaintenancePage";
 import RolesManagement from "./components/Admin/pages/RolesManagement";
 import AppointmentPage from "./components/Doctor/pages/AppointmentPage";
 import BookAppointmentPage from "./components/Patient/pages/BookAppointmentPage";
-import ManageRecordPage from "./components/Doctor/pages/ManageRecordPage";
-import PatientRecordPage from "./components/Patient/pages/PatientRecordPage";
 import PatientProfile from "./components/Patient/Components/PatientProfile";
 import PatientList from "./components/Doctor/Components/PatientList";
 import AppointmentDetails from "./components/Admin/Components/AppointmentDetails";
@@ -96,18 +94,14 @@ function App() {
 
         {/* Doctor Routes */}
         <Route path="/appointments" element={<AppointmentPage />} />
+
         <Route
-          path="/doctor-dashboard/manage-record"
-          element={<ManageRecordPage />}
+          path="/doctor-dashboard/patient-list"
+          element={<PatientList />}
         />
-        <Route path="/doctor-dashboard/patient-list" element={<PatientList />} />
 
         {/* Patient Routes */}
         <Route path="/book-appointment" element={<BookAppointmentPage />} />
-        <Route
-          path="/patient-dashboard/view-record"
-          element={<PatientRecordPage />}
-        />
 
         {/* Redirect to login if route is not found */}
         <Route path="*" element={<Login />} />

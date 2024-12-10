@@ -60,6 +60,8 @@ button.button-login {
   margin-left: 34%;
   width: 30%;
   padding: 12px;
+  font-weight: bold;
+  color: #fff;
   background-color: teal !important;
   border: none;
   border-radius: 5px;
