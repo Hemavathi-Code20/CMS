@@ -62,7 +62,7 @@ function App() {
           }
         />
         <Route
-          path="/appointment-details"
+          path="/appointment-management"
           element={
             <ProtectedRoute role="admin">
               <AppointmentDetails />

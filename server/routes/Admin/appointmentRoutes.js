@@ -1,14 +1,14 @@
 import express from "express";
-import PatientAppointment from "../../models/Admin/PatientAppointment.js";
-import FixAppointment from "../../models/Doctor/FixAppointment.js"; // Assuming this is where the doctor confirms appointments
+import FixAppointment from "../../models/Doctor/FixAppointment.js"; // Doctor confirmed appointments
+import PatientAppointment from "../../models/Admin/PatientAppointment.js"; // Admin view model
 
 const router = express.Router();
 
-// Get all confirmed appointments for admin view
+// Get all confirmed appointments for admin view (from doctor confirmed appointments)
 router.get("/confirmed", async (req, res) => {
   try {
-    // Fetch all confirmed appointments from the PatientAppointment collection
-    const confirmedAppointments = await PatientAppointment.find({ appointmentStatus: "Confirmed" });
+    // Fetch all doctor-confirmed appointments
+    const confirmedAppointments = await FixAppointment.find({ status: "Confirmed" });
 
     // If no confirmed appointments, return a message
     if (confirmedAppointments.length === 0) {
