@@ -101,7 +101,7 @@ function App() {
           element={<ManageRecordPage />}
         />
         <Route
-          path="/patient/profile/:patientId"
+          path="/doctor/patient/:id"
           element={<PatientDocument />}
         />
 

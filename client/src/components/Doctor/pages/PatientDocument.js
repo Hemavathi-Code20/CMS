@@ -1,84 +1,82 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "../styles/PatientDocument.css";
+import axios from "axios";
 
 const PatientDocument = () => {
-  const { patientId } = useParams(); // Get the patient ID from the URL
-  const [profile, setProfile] = useState(null);
+  const { id } = useParams(); // Get patient ID from URL parameters
+  const [patientData, setPatientData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const fetchProfile = async () => {
+    const fetchPatientDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/patient/profile/${patientId}`
+          `http://localhost:5000/api/doctor/patient/${id}`
         );
-        setProfile(response.data);
+        setPatientData(response.data);
         setLoading(false);
       } catch (err) {
-        // Provide a more specific error message if possible
-        setError(err.response?.data?.message || "Error fetching profile");
+        console.error("Error fetching patient details:", err);
+        setError("Failed to fetch patient details.");
         setLoading(false);
       }
     };
 
-    fetchProfile();
-  }, [patientId]);
+    fetchPatientDetails();
+  }, [id]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
-  if (!profile) return <p>No profile found.</p>;
-
-  // Provide default values in case the nested data doesn't exist
-  const location = profile.location || {};
-  const insurance = profile.insuranceInformation || {};
 
   return (
-    <div className="doctor-patient-profile">
-      <h1>Patient Profile</h1>
-      <div className="profile-info">
-        <div className="field">
-          <strong>Patient ID:</strong> {profile.patientId}
-        </div>
-        <div className="field">
-          <strong>Name:</strong> {profile.fullname}
-        </div>
-        <div className="field">
-          <strong>Age:</strong> {profile.age || "N/A"}
-        </div>
-        <div className="field">
-          <strong>Gender:</strong> {profile.gender}
-        </div>
-        <div className="field">
-          <strong>Phone:</strong> {profile.phone || "N/A"}
-        </div>
-        <div className="field">
-          <strong>Email:</strong> {profile.email}
-        </div>
-        <div className="field">
+    <div className="patient-document">
+      <h1 style={{ textAlign: "center", color: "teal" }}>Patient Details</h1>
+      <div className="details-container">
+        <p>
+          <strong>Patient ID:</strong> {patientData.patientId}
+        </p>
+        <p>
+          <strong>Full Name:</strong> {patientData.fullname}
+        </p>
+        <p>
+          <strong>Age:</strong> {patientData.age || "N/A"}
+        </p>
+        <p>
+          <strong>Gender:</strong> {patientData.gender || "N/A"}
+        </p>
+        <p>
+          <strong>Phone:</strong> {patientData.phone || "N/A"}
+        </p>
+        <p>
+          <strong>Email:</strong> {patientData.email}
+        </p>
+        <p>
           <strong>Location:</strong>{" "}
-          {`${location.city || "N/A"}, ${location.state || "N/A"}, ${location.country || "N/A"}`}
-        </div>
-        <div className="field">
-          <strong>Occupation:</strong> {profile.occupation || "N/A"}
-        </div>
-        <div className="field">
-          <strong>Blood Type:</strong> {profile.bloodType}
-        </div>
-        <div className="field">
-          <strong>General Doctor:</strong> {profile.generalDoctorName || "N/A"}
-        </div>
-        <div className="field">
-          <strong>Doctor Specialty:</strong> {profile.doctorSpeciality || "N/A"}
-        </div>
-        <div className="field">
-          <strong>Insurance:</strong> 
-          {insurance.provider
-            ? `${insurance.provider} (Policy # ${insurance.policyNumber})`
+          {`${patientData.location.city || ""}, ${
+            patientData.location.state || ""
+          }, ${patientData.location.country || ""}`}
+        </p>
+        <p>
+          <strong>Blood Type:</strong> {patientData.bloodType}
+        </p>
+        <p>
+          <strong>Occupation:</strong> {patientData.occupation || "N/A"}
+        </p>
+        <p>
+          <strong>General Doctor:</strong>{" "}
+          {patientData.generalDoctorName || "N/A"}
+        </p>
+        <p>
+          <strong>Doctor Specialty:</strong>{" "}
+          {patientData.doctorSpeciality || "N/A"}
+        </p>
+        <p>
+          <strong>Insurance:</strong>{" "}
+          {patientData.insuranceInformation.provider
+            ? `${patientData.insuranceInformation.provider} (Policy #: ${patientData.insuranceInformation.policyNumber})`
             : "N/A"}
-        </div>
+        </p>
       </div>
     </div>
   );
