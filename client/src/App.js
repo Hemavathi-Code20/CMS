@@ -20,6 +20,7 @@ import ManageRecordPage from "./components/Doctor/pages/ManageRecordPage";
 import PatientRecordPage from "./components/Patient/pages/PatientRecordPage";
 import PatientProfile from "./components/Patient/Components/PatientProfile";
 import PatientDocument from "./components/Doctor/pages/PatientDocument";
+import PatientList from "./components/Doctor/Components/PatientList";
 
 function App() {
   return (
@@ -100,11 +101,11 @@ function App() {
           path="/doctor-dashboard/manage-record"
           element={<ManageRecordPage />}
         />
+        <Route path="/doctor/patient/:id" element={<PatientDocument />} />
         <Route
-          path="/doctor/patient/:id"
-          element={<PatientDocument />}
+          path="/doctor-dashboard/patient-list"
+          element={<PatientList />}
         />
-
         {/* Patient Routes */}
         <Route path="/book-appointment" element={<BookAppointmentPage />} />
         <Route

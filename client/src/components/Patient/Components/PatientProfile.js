@@ -128,7 +128,7 @@ const PatientProfile = () => {
         </button>
         <div className="field">
           <i className="fas fa-id-badge"></i>
-          <p>Patient ID: {profile.patientId}</p>
+          <p> {profile.patientId}</p>
         </div>
         <div className="field">
           <i className="fas fa-user"></i>
@@ -189,12 +189,19 @@ const PatientProfile = () => {
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
         contentLabel="Edit Profile"
+        className="edit-profile-modal"
+        overlayClassName="modal-overlay"
       >
-        <div>
-          <h2 style={{ textAlign: "center", color: "teal" }}>Edit Profile</h2>
-          <button onClick={() => setIsModalOpen(false)}>&times;</button>
+        <div className="modal-header">
+          <h2>Edit Profile</h2>
+          <button
+            className="close-button"
+            onClick={() => setIsModalOpen(false)}
+          >
+            &times;
+          </button>
         </div>
-        <form>
+        <form className="edit-profile-form">
           <label>
             Full Name:
             <input
@@ -204,7 +211,6 @@ const PatientProfile = () => {
               onChange={handleEditChange}
             />
           </label>
-          <br />
           <label>
             Age:
             <input
@@ -214,7 +220,6 @@ const PatientProfile = () => {
               onChange={handleEditChange}
             />
           </label>
-          <br />
           <label>
             Gender:
             <select
@@ -228,8 +233,6 @@ const PatientProfile = () => {
               <option value="other">Other</option>
             </select>
           </label>
-
-          <br />
           <label>
             Phone:
             <input
@@ -239,7 +242,6 @@ const PatientProfile = () => {
               onChange={handleEditChange}
             />
           </label>
-          <br />
           <label>
             Email:
             <input
@@ -249,7 +251,6 @@ const PatientProfile = () => {
               onChange={handleEditChange}
             />
           </label>
-          <br />
           <label>
             City:
             <input
@@ -259,7 +260,6 @@ const PatientProfile = () => {
               onChange={handleEditChange}
             />
           </label>
-          <br />
           <label>
             State:
             <input
@@ -269,7 +269,6 @@ const PatientProfile = () => {
               onChange={handleEditChange}
             />
           </label>
-          <br />
           <label>
             Country:
             <input
@@ -279,7 +278,6 @@ const PatientProfile = () => {
               onChange={handleEditChange}
             />
           </label>
-          <br />
           <label>
             Occupation:
             <input
@@ -289,7 +287,6 @@ const PatientProfile = () => {
               onChange={handleEditChange}
             />
           </label>
-          <br />
           <label>
             Blood-Type:
             <select
@@ -308,7 +305,6 @@ const PatientProfile = () => {
               <option value="Other">Other</option>
             </select>
           </label>
-          <br />
           <label>
             General Doctor:
             <input
@@ -318,7 +314,6 @@ const PatientProfile = () => {
               onChange={handleEditChange}
             />
           </label>
-          <br />
           <label>
             Doctor Specialty:
             <input
@@ -327,18 +322,7 @@ const PatientProfile = () => {
               value={editFormData.doctorSpecialty}
               onChange={handleEditChange}
             />
-          </label>
-          <br />
-          <label>
-            Insurance Provider:
-            <input
-              type="text"
-              name="insuranceProvider"
-              value={editFormData.insuranceProvider}
-              onChange={handleEditChange}
-            />
-          </label>
-          <br />
+          </label>{" "}
           <label>
             Policy Number:
             <input
@@ -348,10 +332,18 @@ const PatientProfile = () => {
               onChange={handleEditChange}
             />
           </label>
-          <br />
+          <label>
+            Insurance Provider:
+            <input
+              type="text"
+              name="insuranceProvider"
+              value={editFormData.insuranceProvider}
+              onChange={handleEditChange}
+            />
+          </label>
           <button
             type="button"
-            className="profile-button"
+            className="save-changes-button"
             onClick={handleUpdate}
           >
             Save Changes

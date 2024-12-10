@@ -7,6 +7,7 @@ const PatientDocument = () => {
   const [patientData, setPatientData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchPatientDetails = async () => {
@@ -26,57 +27,92 @@ const PatientDocument = () => {
     fetchPatientDetails();
   }, [id]);
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
 
   return (
     <div className="patient-document">
       <h1 style={{ textAlign: "center", color: "teal" }}>Patient Details</h1>
+
       <div className="details-container">
-        <p>
-          <strong>Patient ID:</strong> {patientData.patientId}
-        </p>
-        <p>
-          <strong>Full Name:</strong> {patientData.fullname}
-        </p>
-        <p>
-          <strong>Age:</strong> {patientData.age || "N/A"}
-        </p>
-        <p>
-          <strong>Gender:</strong> {patientData.gender || "N/A"}
-        </p>
-        <p>
-          <strong>Phone:</strong> {patientData.phone || "N/A"}
-        </p>
-        <p>
-          <strong>Email:</strong> {patientData.email}
-        </p>
-        <p>
-          <strong>Location:</strong>{" "}
-          {`${patientData.location.city || ""}, ${
-            patientData.location.state || ""
-          }, ${patientData.location.country || ""}`}
-        </p>
-        <p>
-          <strong>Blood Type:</strong> {patientData.bloodType}
-        </p>
-        <p>
-          <strong>Occupation:</strong> {patientData.occupation || "N/A"}
-        </p>
-        <p>
-          <strong>General Doctor:</strong>{" "}
-          {patientData.generalDoctorName || "N/A"}
-        </p>
-        <p>
-          <strong>Doctor Specialty:</strong>{" "}
-          {patientData.doctorSpeciality || "N/A"}
-        </p>
-        <p>
-          <strong>Insurance:</strong>{" "}
-          {patientData.insuranceInformation.provider
-            ? `${patientData.insuranceInformation.provider} (Policy #: ${patientData.insuranceInformation.policyNumber})`
-            : "N/A"}
-        </p>
+        <table>
+          <tbody>
+            <tr>
+              <td><strong>Patient ID:</strong></td>
+              <td>{patientData.patientId}</td>
+            </tr>
+            <tr>
+              <td><strong>Full Name:</strong></td>
+              <td>{patientData.fullname}</td>
+            </tr>
+            <tr>
+              <td><strong>Age:</strong></td>
+              <td>{patientData.age || "N/A"}</td>
+            </tr>
+            <tr>
+              <td><strong>Gender:</strong></td>
+              <td>{patientData.gender || "N/A"}</td>
+            </tr>
+            <tr>
+              <td><strong>Phone:</strong></td>
+              <td>{patientData.phone || "N/A"}</td>
+            </tr>
+            <tr>
+              <td><strong>Email:</strong></td>
+              <td>{patientData.email}</td>
+            </tr>
+            <tr>
+              <td><strong>Location:</strong></td>
+              <td>{`${patientData.location.city || ""}, ${
+                patientData.location.state || ""
+              }, ${patientData.location.country || ""}`}</td>
+            </tr>
+            <tr>
+              <td><strong>Blood Type:</strong></td>
+              <td>{patientData.bloodType}</td>
+            </tr>
+            <tr>
+              <td><strong>Occupation:</strong></td>
+              <td>{patientData.occupation || "N/A"}</td>
+            </tr>
+            <tr>
+              <td><strong>General Doctor:</strong></td>
+              <td>{patientData.generalDoctorName || "N/A"}</td>
+            </tr>
+            <tr>
+              <td><strong>Doctor Specialty:</strong></td>
+              <td>{patientData.doctorSpeciality || "N/A"}</td>
+            </tr>
+            <tr>
+              <td><strong>Insurance:</strong></td>
+              <td>{patientData.insuranceInformation.provider ? `${patientData.insuranceInformation.provider} (Policy #: ${patientData.insuranceInformation.policyNumber})` : "N/A"}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        {/* Button to open the modal */}
+        <button onClick={openModal}>View More Details</button>
+
+        {/* Modal for detailed patient information */}
+        {isModalOpen && (
+          <div className="modal">
+            <div className="modal-content">
+              <span className="close" onClick={closeModal}>&times;</span>
+              <h2>More Patient Details</h2>
+              <p><strong>Address:</strong> {patientData.address || "N/A"}</p>
+              <p><strong>Medical History:</strong> {patientData.medicalHistory || "N/A"}</p>
+              <p><strong>Prescribed Medication:</strong> {patientData.medications || "N/A"}</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

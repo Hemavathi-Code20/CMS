@@ -1,0 +1,58 @@
+/* PatientList.css */
+.doctor-content {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .patient-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .patient-card {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease-out forwards;
+  }
+  
+  .patient-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .patient-card p {
+    margin: 8px 0;
+  }
+  
+  .patient-card .view-details {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-top: 10px;
+    background-color: #4caf50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .patient-card .view-details:hover {
+    background-color: #45a049;
+  }
+  
+  /* Animation for card loading */
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
