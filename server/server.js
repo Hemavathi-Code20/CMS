@@ -16,17 +16,8 @@ import PatientDocumentRoutes from "./routes/Doctor/PatientdocumentRoutes.js";
 
 const app = express();
 
-// CORS Configuration: Allow both localhost and production origin
-app.use(
-  cors({
-    origin: [
-      "http://localhost:3000", // For local development
-      "https://capable-tanuki-c7d826.netlify.app", // For production
-    ],
-    methods: "GET,POST,PUT,DELETE",
-    allowedHeaders: "Content-Type,Authorization",
-  })
-);
+
+app.use(cors({ origin: "*" }));
 
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));

@@ -22,13 +22,19 @@ const Login = () => {
     try {
       const { data } = await axios.post(
         "https://clinic-management-7k6q.onrender.com/api/auth/login",
-        credentials
+        credentials,
+        {
+          headers: {
+            "Content-Type": "application/json", 
+          },
+        }
       );
       localStorage.setItem("token", data.token);
       if (data.role === "admin") navigate("/admin");
       else if (data.role === "doctor") navigate("/doctor");
-    } catch {
-      setError("Invalid credentials");
+    } catch (err) {
+      console.error("Login Error:", err.response || err);
+      setError(err.response ? err.response.data.message : "Network Error");
     }
   };
 
