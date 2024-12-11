@@ -4,7 +4,7 @@
 }
 
 /* Heading Styles */
-h1 {
+.patientprofile-container h1 {
   font-size: 2rem;
   color: coral;
   margin-bottom: 20px;
@@ -13,7 +13,7 @@ h1 {
 }
 
 /* Edit Button */
-.edit-button {
+.patient-edit-button {
   position: absolute;
   top: 5%;
   right: 10px;
@@ -21,7 +21,7 @@ h1 {
   cursor: pointer;
 }
 
-.edit-button i {
+.patient-edit-button i {
   background: none !important;
   color: coral !important;
   font-size: 1.5rem;
@@ -39,7 +39,7 @@ h1 {
   margin-left: 10%;
 }
 
-.field {
+.patient-field {
   display: flex;
   flex-direction: row;
   align-items: center; /* Ensure icons and text are aligned on the same line */
@@ -47,13 +47,13 @@ h1 {
   gap: 20px; /* Adds space between icon and text */
 }
 
-.field i {
+.patient-field i {
   color: rgb(45, 48, 103) !important;
   font-size: 1.5rem;
   color: rgba(22, 38, 77, 0.361); /* Lighter icon color */
 }
 
-.field p {
+.patient-field p {
   font-size: 1rem;
   color: #555;
   margin: 0;
@@ -91,18 +91,18 @@ h1 {
 }
 
 /* Form styles */
-.edit-profile-form {
+.edit-profile-patientform {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   padding: 10px;
   margin-top: 30px;
 }
-.edit-profile-form label {
+.edit-profile-patientform label {
   color: #333;
 }
-.edit-profile-form input,
-.edit-profile-form select {
+.edit-profile-patientform input,
+.edit-profile-patientform select {
   padding: 8px;
   font-size: 14px;
   border: 1px solid #ccc;
@@ -112,7 +112,7 @@ h1 {
 }
 
 /* Save button styles */
-.save-changes-button {
+.save-changes-patientbutton {
   margin-top: 100px;
   width: 40%;
   padding: 10px 15px;

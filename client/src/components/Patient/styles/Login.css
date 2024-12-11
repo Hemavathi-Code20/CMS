@@ -54,6 +54,8 @@
 .patient-login-button {
   width: 25%;
   height: 40px;
+  color: #fff;
+  font-weight: 600;
   background: teal !important;
   text-transform: uppercase;
   border: none;

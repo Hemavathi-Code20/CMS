@@ -121,36 +121,36 @@ const PatientProfile = () => {
 
   return (
     <div className="patientprofile-container">
-      <h1 style={{ textAlign: "center", color: "coral" }}>Patient Profile</h1>
+      <h1>Patient Profile</h1>
       <div className="patient-profile">
-        <button className="edit-button" onClick={() => setIsModalOpen(true)}>
+        <button className="patient-edit-button" onClick={() => setIsModalOpen(true)}>
           <i className="fas fa-edit"></i>
         </button>
-        <div className="field">
+        <div className="patient-field">
           <i className="fas fa-id-badge"></i>
           <p> {profile.patientId}</p>
         </div>
-        <div className="field">
+        <div className="patient-field">
           <i className="fas fa-user"></i>
           <p>{profile.fullname}</p>
         </div>
-        <div className="field">
+        <div className="patient-field">
           <i className="fas fa-birthday-cake"></i>
           <p>{profile.age || ""}</p>
         </div>
-        <div className="field">
+        <div className="patient-field">
           <i className="fas fa-male"></i>
           <p>{profile.gender || ""}</p>
         </div>
-        <div className="field">
+        <div className="patient-field">
           <i className="fas fa-phone"></i>
           <p>{profile.phone || ""}</p>
         </div>
-        <div className="field">
+        <div className="patient-field">
           <i className="fas fa-envelope"></i>
           <p> {profile.email || ""}</p>
         </div>
-        <div className="field full-width">
+        <div className="patient-field full-width">
           <i className="fas fa-map-marker-alt"></i>
           <p>
             {`${profile.location.city || ""}, ${
@@ -158,23 +158,23 @@ const PatientProfile = () => {
             }, ${profile.location.country || ""}`}
           </p>
         </div>
-        <div className="field">
+        <div className="patient-field">
           <i className="fas fa-briefcase"></i>
           <p> {profile.occupation || ""}</p>
         </div>
-        <div className="field">
+        <div className="patient-field">
           <i className="fas fa-tint"></i>
           <p> {profile.bloodType || ""}</p>
         </div>
-        <div className="field">
+        <div className="patient-field">
           <i className="fas fa-user-md"></i>
           <p> {profile.generalDoctorName || ""}</p>
         </div>
-        <div className="field">
+        <div className="patient-field">
           <i className="fas fa-stethoscope"></i>
           <p> {profile.doctorSpeciality || ""}</p>
         </div>
-        <div className="field full-width">
+        <div className="patient-field full-width">
           <i className="fas fa-shield-alt"></i>
           <p>
             {profile.insuranceInformation.provider &&
@@ -201,7 +201,7 @@ const PatientProfile = () => {
             &times;
           </button>
         </div>
-        <form className="edit-profile-form">
+        <form className="edit-profile-patientform">
           <label>
             Full Name:
             <input
@@ -343,7 +343,7 @@ const PatientProfile = () => {
           </label>
           <button
             type="button"
-            className="save-changes-button"
+            className="save-changes-patientbutton"
             onClick={handleUpdate}
           >
             Save Changes
