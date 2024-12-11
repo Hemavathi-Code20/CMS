@@ -29,10 +29,7 @@ app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 const startServer = async () => {
   try {
-    await mongoose.connect(config.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(config.MONGO_URI);
     console.log("MongoDB connected");
 
     await initializeUsers();
