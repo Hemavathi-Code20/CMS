@@ -53,7 +53,7 @@ const InventoryForm = ({ onAddItem, onUpdateItem, selectedItem }) => {
   };
 
   return (
-    <form className="fill-container" onSubmit={handleSubmit}>
+    <form className="fill-main" onSubmit={handleSubmit}>
       <div className="fill-grid">
         <label>
           Item Name:{" "}

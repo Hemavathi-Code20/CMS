@@ -70,7 +70,7 @@ const RolesForm = ({ onSubmit, initialData }) => {
   };
 
   return (
-    <form className="fill-container" onSubmit={handleSubmit}>
+    <form className="fill-main" onSubmit={handleSubmit}>
       <div className="fill-grid">
         <label>
           Profile Picture:

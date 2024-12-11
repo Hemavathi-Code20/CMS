@@ -69,7 +69,7 @@ const MaintenanceForm = ({ onAddSuccess, editData }) => {
   };
 
   return (
-    <form className="fill-container" onSubmit={handleSubmit}>
+    <form className="fill-main" onSubmit={handleSubmit}>
       <div className="maintenance-grid">
         <label>
           Asset Name:{" "}

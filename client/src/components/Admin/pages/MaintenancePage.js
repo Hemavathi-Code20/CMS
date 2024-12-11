@@ -36,7 +36,7 @@ const MaintenancePage = () => {
 
       {isModalOpen && (
         <div className="modal-overlay">
-          <div className="modal-content">
+          <div className="modal-container">
             <button className="close-button" onClick={closeModal}>
               <MdClose size={24} />
             </button>

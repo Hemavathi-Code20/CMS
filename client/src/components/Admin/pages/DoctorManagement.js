@@ -110,7 +110,7 @@ const DoctorManagement = () => {
 
       {isAdding && (
         <div className="modal-overlay">
-          <div className="modal-content">
+          <div className="modal-container">
             <button className="close-button" onClick={closeAddModal}>
               <MdClose size={24} />
             </button>

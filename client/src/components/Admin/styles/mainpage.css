@@ -52,29 +52,56 @@
   background: linear-gradient(135deg, #80a3fc, #fe4343) !important;
 }
 .modal-overlay {
-  overflow: hidden !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  z-index: 1000;
 }
 
-.modal-content {
-  background-color: rgba(0, 0, 0, 0.1) !important;
-  backdrop-filter: blur(5px) !important;
+.modal-container {
+  padding: 50px !important;
+  background-color: white;
+  max-width: 1000px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: pop-up 0.3s ease-out;
   border-radius: 10px;
   width: 100% !important;
-  height: 100% !important;
-  overflow: hidden !important;
+  height: auto !important;
+  max-height: 80vh !important;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .close-button {
-  margin-left: 95%;
-  color: #fff !important;
-  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 20px;
   background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .close-button:hover {
   background: none !important;
 }
-
+@keyframes pop-up {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 .detail-modal-overlay {
   position: fixed;
   top: 0;
