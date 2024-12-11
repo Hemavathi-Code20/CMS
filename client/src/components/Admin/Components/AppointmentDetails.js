@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../styles/AppointmentDetails.css"; // Your CSS file for styling
+import "../styles/AppointmentDetails.css";
 
 const AppointmentDetails = () => {
   const [appointments, setAppointments] = useState([]);
@@ -8,11 +8,10 @@ const AppointmentDetails = () => {
   useEffect(() => {
     const fetchConfirmedAppointments = async () => {
       try {
-        // Fetch confirmed doctor appointments from the admin endpoint
         const response = await axios.get(
           "http://localhost:5000/api/admin/appointments/confirmed"
         );
-        setAppointments(response.data); // Populate the appointments state
+        setAppointments(response.data);
       } catch (error) {
         console.error("Error fetching confirmed appointments:", error.message);
       }
@@ -23,7 +22,7 @@ const AppointmentDetails = () => {
 
   return (
     <div className="admin-appointments">
-      <h2>Confirmed Appointments</h2>
+      <h2> Appointments</h2>
       {appointments.length === 0 ? (
         <p>No confirmed appointments available.</p>
       ) : (
@@ -33,7 +32,7 @@ const AppointmentDetails = () => {
               <div className="admin-appointment-header">
                 <h3>{appointment.fullName}</h3>
                 <p>
-                  <strong>Status:</strong>{" "}
+                  <strong>Status :</strong>{" "}
                   <span style={{ color: "green" }}>{appointment.status}</span>
                 </p>
               </div>

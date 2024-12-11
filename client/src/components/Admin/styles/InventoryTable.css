@@ -36,6 +36,53 @@ button {
   font-size: 15px;
   cursor: pointer;
 }
+
 button:hover {
   font-size: 16px;
+}
+
+@media (max-width: 1024px) {
+  thead th {
+    padding: 10px 15px;
+  }
+
+  tbody td {
+    padding: 20px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  table {
+    font-size: 12px;
+  }
+
+  thead th {
+    padding: 8px 10px;
+  }
+
+  tbody td {
+    padding: 15px 8px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  table {
+    font-size: 10px;
+  }
+
+  thead th {
+    padding: 6px 8px;
+  }
+
+  tbody td {
+    padding: 10px 5px;
+  }
+
+  button {
+    font-size: 13px;
+  }
 }

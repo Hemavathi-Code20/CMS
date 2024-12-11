@@ -56,7 +56,7 @@ const InventoryForm = ({ onAddItem, onUpdateItem, selectedItem }) => {
     <form className="fill-main" onSubmit={handleSubmit}>
       <div className="fill-grid">
         <label>
-          Item Name:{" "}
+          Item Name :{" "}
           <input
             type="text"
             id="itemName"
@@ -68,7 +68,7 @@ const InventoryForm = ({ onAddItem, onUpdateItem, selectedItem }) => {
         </label>
 
         <label>
-          Item Code:{" "}
+          Item Code :{" "}
           <input
             type="text"
             id="itemCode"
@@ -80,7 +80,7 @@ const InventoryForm = ({ onAddItem, onUpdateItem, selectedItem }) => {
         </label>
 
         <label>
-          Category:{" "}
+          Category :{" "}
           <select
             id="category"
             name="category"
@@ -107,7 +107,7 @@ const InventoryForm = ({ onAddItem, onUpdateItem, selectedItem }) => {
         </label>
 
         <label>
-          Supplier Name:{" "}
+          Supplier Name :{" "}
           <input
             type="text"
             id="supplierName"
@@ -119,7 +119,7 @@ const InventoryForm = ({ onAddItem, onUpdateItem, selectedItem }) => {
         </label>
 
         <label>
-          Quantity:{" "}
+          Quantity :{" "}
           <input
             type="number"
             id="quantity"
@@ -131,7 +131,7 @@ const InventoryForm = ({ onAddItem, onUpdateItem, selectedItem }) => {
         </label>
 
         <label>
-          Unit Price:{" "}
+          Unit Price :{" "}
           <input
             type="number"
             id="unitPrice"
@@ -143,7 +143,7 @@ const InventoryForm = ({ onAddItem, onUpdateItem, selectedItem }) => {
         </label>
 
         <label>
-          Expiry Date:{" "}
+          Expiry Date :{" "}
           <input
             type="date"
             id="expiryDate"
@@ -155,7 +155,7 @@ const InventoryForm = ({ onAddItem, onUpdateItem, selectedItem }) => {
         </label>
 
         <label>
-          Supplier Contact:{" "}
+          Supplier Contact :{" "}
           <input
             type="text"
             id="supplierContact"
@@ -167,7 +167,7 @@ const InventoryForm = ({ onAddItem, onUpdateItem, selectedItem }) => {
         </label>
 
         <label>
-          Stock Status:{" "}
+          Stock Status :{" "}
           <select
             id="stockStatus"
             name="stockStatus"
@@ -183,7 +183,7 @@ const InventoryForm = ({ onAddItem, onUpdateItem, selectedItem }) => {
         </label>
 
         <label>
-          Purchase Date:{" "}
+          Purchase Date :{" "}
           <input
             type="date"
             id="purchaseDate"
@@ -194,7 +194,7 @@ const InventoryForm = ({ onAddItem, onUpdateItem, selectedItem }) => {
         </label>
 
         <label>
-          Reorder Level:{" "}
+          Reorder Level :{" "}
           <input
             type="number"
             id="reorderLevel"

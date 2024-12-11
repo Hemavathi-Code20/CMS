@@ -71,7 +71,7 @@ const DoctorForm = ({ onSubmit, initialData }) => {
     <form className="fill-main" onSubmit={handleSubmit}>
       <div className="fill-grid">
         <label>
-          Profile Picture:
+          Profile Picture :
           <input
             type="file"
             name="profilePicture"
@@ -80,7 +80,7 @@ const DoctorForm = ({ onSubmit, initialData }) => {
           />
         </label>
         <label>
-          Doctor ID:
+          Doctor ID :
           <input
             type="text"
             name="doctorId"
@@ -90,7 +90,7 @@ const DoctorForm = ({ onSubmit, initialData }) => {
           />
         </label>
         <label>
-          Full Name:
+          Full Name :
           <input
             type="text"
             name="fullName"
@@ -100,7 +100,7 @@ const DoctorForm = ({ onSubmit, initialData }) => {
           />
         </label>
         <label>
-          Gender:
+          Gender :
           <select
             name="gender"
             value={formData.gender}
@@ -114,7 +114,7 @@ const DoctorForm = ({ onSubmit, initialData }) => {
           </select>
         </label>
         <label>
-          Contact Number:
+          Contact Number :
           <input
             type="text"
             name="contactNumber"
@@ -124,7 +124,7 @@ const DoctorForm = ({ onSubmit, initialData }) => {
           />
         </label>
         <label>
-          Department:
+          Department :
           <select
             name="department"
             value={formData.department}
@@ -151,7 +151,7 @@ const DoctorForm = ({ onSubmit, initialData }) => {
           </select>
         </label>
         <label>
-          Specialization:
+          Specialization :
           <select
             name="specialization"
             value={formData.specialization}
@@ -185,7 +185,7 @@ const DoctorForm = ({ onSubmit, initialData }) => {
           </select>
         </label>
         <label>
-          Qualification:
+          Qualification :
           <input
             type="text"
             name="qualification"
@@ -195,7 +195,7 @@ const DoctorForm = ({ onSubmit, initialData }) => {
           />
         </label>
         <label>
-          Years of Experience:
+          Years of Experience :
           <input
             type="number"
             name="yearsOfExperience"
@@ -205,7 +205,7 @@ const DoctorForm = ({ onSubmit, initialData }) => {
           />
         </label>
         <label>
-          Email Address:
+          Email Address :
           <input
             type="email"
             name="email"
@@ -215,7 +215,7 @@ const DoctorForm = ({ onSubmit, initialData }) => {
           />
         </label>
         <label>
-          Availability:
+          Availability :
           <select
             name="availability"
             value={formData.availability}
@@ -229,7 +229,7 @@ const DoctorForm = ({ onSubmit, initialData }) => {
           </select>
         </label>
         <label>
-          Consultation Method:
+          Consultation Method :
           <select
             name="consultationMethod"
             value={formData.consultationMethod}
@@ -243,7 +243,7 @@ const DoctorForm = ({ onSubmit, initialData }) => {
           </select>
         </label>
         <label>
-          Doctor's Fee:
+          Doctor's Fee :
           <input
             type="number"
             name="doctorsFee"

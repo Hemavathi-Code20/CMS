@@ -15,6 +15,7 @@
   grid-template-columns: repeat(2, 1fr) !important;
   gap: 20px;
 }
+
 .maintenance-grid label,
 .fill-grid label {
   display: flex;
@@ -62,9 +63,11 @@ label {
   font-size: 14px;
   transition: color 0.3s ease;
 }
+
 label:hover {
   color: rgb(90, 89, 89);
 }
+
 .en-button {
   padding: 10px 15px;
   color: #fff;
@@ -92,4 +95,45 @@ label:hover {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+@media (max-width: 1024px) {
+  .fill-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px;
+  }
+
+  .maintenance-grid {
+    grid-template-columns: repeat(1, 1fr) !important;
+    gap: 10px;
+  }
+
+  .fill-grid input,
+  .fill-grid select {
+    width: 80%;
+  }
+
+  .en-button {
+    margin-top: 4%;
+    width: 100%;
+    padding: 12px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fill-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+
+  .maintenance-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+
+  .fill-grid input,
+  .fill-grid select {
+    width: 80%;
+  }
 }

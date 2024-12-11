@@ -31,7 +31,7 @@ const Register = () => {
       alert(
         `Registration successful! Your Patient ID: ${response.data.patientId}`
       );
-      localStorage.setItem("patientId", response.data.patientId); // Save patientId in localStorage
+      localStorage.setItem("patientId", response.data.patientId); 
       navigate("/patient-dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "An error occurred");

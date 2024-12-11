@@ -3,7 +3,6 @@ import Doctor from "../../models/Admin/Doctor.js";
 
 const router = express.Router();
 
-// Get all doctors
 router.get("/", async (req, res) => {
   try {
     const doctors = await Doctor.find();
@@ -13,7 +12,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Add doctor
 router.post("/", async (req, res) => {
   try {
     const doctor = new Doctor(req.body);
@@ -24,17 +22,19 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Update doctor
 router.put("/:id", async (req, res) => {
   try {
-    const updatedDoctor = await Doctor.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const updatedDoctor = await Doctor.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
     res.json(updatedDoctor);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 });
 
-// Delete doctor
 router.delete("/:id", async (req, res) => {
   try {
     await Doctor.findByIdAndDelete(req.params.id);

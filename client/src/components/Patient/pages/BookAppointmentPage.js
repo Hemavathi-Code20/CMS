@@ -4,9 +4,8 @@ import BookAppointment from "../Components/BookAppointment";
 
 const BookAppointmentPage = () => {
   const [appointments, setAppointments] = useState([]);
-  const patientId = localStorage.getItem("patientId"); // Retrieve the patient's ID from localStorage
+  const patientId = localStorage.getItem("patientId");
 
-  // Fetch the patient's booked appointments
   const fetchAppointments = async () => {
     try {
       if (!patientId) {
@@ -14,11 +13,10 @@ const BookAppointmentPage = () => {
         return;
       }
 
-      // Send the patientId as a query parameter to the backend
       const response = await axios.get(
         `http://localhost:5000/api/patient/bookappointments?patientId=${patientId}`
       );
-      console.log("Appointments fetched:", response.data); // Log to check the data returned
+      console.log("Appointments fetched:", response.data);
       setAppointments(response.data);
     } catch (error) {
       console.error("Error fetching appointments:", error);
@@ -27,12 +25,11 @@ const BookAppointmentPage = () => {
 
   useEffect(() => {
     if (patientId) {
-      fetchAppointments(); // Fetch the appointments when patientId is available
+      fetchAppointments();
     }
   }, [patientId]);
 
   const handleStatusChange = (id, newStatus) => {
-    // Update the status of the appointment directly in the UI (optimistic UI update)
     setAppointments((prevAppointments) =>
       prevAppointments.map((appointment) =>
         appointment._id === id
@@ -44,11 +41,13 @@ const BookAppointmentPage = () => {
 
   return (
     <div>
-      <h2 style={{ textAlign: "center", color: "#4985fe" }}>Schedule Your Appointment</h2>
+      <h2 style={{ textAlign: "center", color: "#4985fe" }}>
+        Schedule Your Appointment
+      </h2>
       <BookAppointment fetchAppointments={fetchAppointments} />
 
-      <h2 style={{ textAlign: "center", color:"teal" }}>
-      Upcoming Appointments
+      <h2 style={{ textAlign: "center", color: "teal" }}>
+        Upcoming Appointments
       </h2>
       {appointments.length === 0 ? (
         <p>No appointments booked yet.</p>

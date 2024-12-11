@@ -27,7 +27,6 @@ const MaintenanceForm = ({ onAddSuccess, editData }) => {
     e.preventDefault();
     try {
       if (isEditMode) {
-        // Update maintenance
         await axios.put(
           `http://localhost:5000/api/admin/maintenance/${editData._id}`,
           {
@@ -41,7 +40,6 @@ const MaintenanceForm = ({ onAddSuccess, editData }) => {
         );
         alert("Maintenance updated successfully");
       } else {
-        // Create new maintenance
         await axios.post("http://localhost:5000/api/admin/maintenance", {
           assetName,
           scheduledDate: new Date(scheduledDate),
@@ -53,15 +51,14 @@ const MaintenanceForm = ({ onAddSuccess, editData }) => {
         alert("Maintenance scheduled successfully");
       }
 
-      onAddSuccess(); // Refresh list after add/update
-      // Reset form fields
+      onAddSuccess();
       setAssetName("");
       setScheduledDate("");
       setTechnician("");
       setMaintenanceType("routine");
       setMaintenanceFrequency("monthly");
       setStatus("scheduled");
-      setIsEditMode(false); // Reset edit mode
+      setIsEditMode(false);
     } catch (error) {
       console.error("Error submitting maintenance:", error);
       alert(error.response?.data?.error || "Error scheduling maintenance");
@@ -72,7 +69,7 @@ const MaintenanceForm = ({ onAddSuccess, editData }) => {
     <form className="fill-main" onSubmit={handleSubmit}>
       <div className="maintenance-grid">
         <label>
-          Asset Name:{" "}
+          Asset Name :{" "}
           <input
             type="text"
             value={assetName}
@@ -82,7 +79,7 @@ const MaintenanceForm = ({ onAddSuccess, editData }) => {
         </label>
 
         <label>
-          Scheduled Date:{" "}
+          Scheduled Date :{" "}
           <input
             type="date"
             value={scheduledDate}
@@ -92,7 +89,7 @@ const MaintenanceForm = ({ onAddSuccess, editData }) => {
         </label>
 
         <label>
-          Technician Name:{" "}
+          Technician Name :{" "}
           <input
             type="text"
             value={technician}
@@ -102,7 +99,7 @@ const MaintenanceForm = ({ onAddSuccess, editData }) => {
         </label>
 
         <label>
-          Maintenance Type:{" "}
+          Maintenance Type :{" "}
           <select
             value={maintenanceType}
             onChange={(e) => setMaintenanceType(e.target.value)}
@@ -114,7 +111,7 @@ const MaintenanceForm = ({ onAddSuccess, editData }) => {
         </label>
 
         <label>
-          Maintenance Frequency:{" "}
+          Maintenance Frequency :{" "}
           <select
             value={maintenanceFrequency}
             onChange={(e) => setMaintenanceFrequency(e.target.value)}
@@ -126,7 +123,7 @@ const MaintenanceForm = ({ onAddSuccess, editData }) => {
         </label>
 
         <label>
-          Status:{" "}
+          Status :{" "}
           <select value={status} onChange={(e) => setStatus(e.target.value)}>
             <option value="scheduled">Scheduled</option>
             <option value="in-progress">In-progress</option>

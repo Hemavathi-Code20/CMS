@@ -15,7 +15,6 @@
   animation: slideIn 0.5s ease-in-out;
 }
 
-/* Form animation */
 @keyframes slideIn {
   from {
     transform: translateY(-50px);

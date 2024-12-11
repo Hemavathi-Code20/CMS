@@ -25,7 +25,7 @@ const MaintenanceList = ({ refresh, onEditClick }) => {
     try {
       await axios.delete(`http://localhost:5000/api/admin/maintenance/${id}`);
       alert("Maintenance record deleted successfully");
-      fetchMaintenanceData(); // Refresh the list after deletion
+      fetchMaintenanceData();
     } catch (error) {
       console.error("Error deleting record:", error);
       alert("Failed to delete the record.");
@@ -33,7 +33,7 @@ const MaintenanceList = ({ refresh, onEditClick }) => {
   };
 
   const handleEdit = (item) => {
-    onEditClick(item); // Pass the selected item for editing
+    onEditClick(item);
   };
 
   return (

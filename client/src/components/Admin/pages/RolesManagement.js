@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { MdClose } from "react-icons/md"; // Import the close icon
+import { MdClose } from "react-icons/md";
 import RolesForm from "../Components/RolesForm";
 import RolesTable from "../Components/RolesTable";
 import RolesDetail from "../Components/RolesDetail";
@@ -37,7 +37,7 @@ const RolesManagement = () => {
         body: JSON.stringify(role),
       });
       if (res.ok) {
-        fetchRoles(); // Refresh the list after adding
+        fetchRoles();
         closeAddModal();
       }
     } catch (error) {
@@ -56,7 +56,7 @@ const RolesManagement = () => {
         }
       );
       if (res.ok) {
-        fetchRoles(); // Refresh the list after updating
+        fetchRoles();
         closeAddModal();
       }
     } catch (error) {
@@ -70,7 +70,7 @@ const RolesManagement = () => {
         method: "DELETE",
       });
       if (res.ok) {
-        fetchRoles(); // Refresh the list after deleting
+        fetchRoles();
         closeDetailModal();
       }
     } catch (error) {
@@ -80,18 +80,18 @@ const RolesManagement = () => {
 
   const closeAddModal = () => {
     setIsAdding(false);
-    fetchRoles(); // Ensure the list is updated
+    fetchRoles();
   };
 
   const closeDetailModal = () => {
     setShowRoleDetail(false);
-    fetchRoles(); // Ensure the list is updated
+    fetchRoles();
   };
 
   const handleEditClick = () => {
     if (selectedRole) {
       setIsAdding(true);
-      setShowRoleDetail(false); // Close RolesDetail modal if open
+      setShowRoleDetail(false);
     }
   };
 
@@ -125,10 +125,7 @@ const RolesManagement = () => {
       {showRoleDetail && selectedRole && (
         <div className="detail-modal-overlay">
           <div className="detail-modal-content">
-            <button
-              className="detail-close-button"
-              onClick={closeDetailModal}
-            >
+            <button className="detail-close-button" onClick={closeDetailModal}>
               <MdClose size={24} />
             </button>
             <RolesDetail

@@ -86,6 +86,7 @@
 }
 
 .stat-card {
+  cursor: pointer;
   background: linear-gradient(45deg, #007bff, #00d4ff);
   color: white;
   width: 92%;

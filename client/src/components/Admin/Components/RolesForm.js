@@ -11,7 +11,6 @@ const RolesForm = ({ onSubmit, initialData }) => {
     role: formDataFromProps.role || "",
     accessLevel: formDataFromProps.accessLevel || "",
     employeeId: formDataFromProps.employeeId || "",
-    department: formDataFromProps.department || "",
     designation: formDataFromProps.designation || "",
     specialization: formDataFromProps.specialization || "",
     workShift: formDataFromProps.workShift || "",
@@ -40,7 +39,7 @@ const RolesForm = ({ onSubmit, initialData }) => {
     reader.onloadend = () => {
       setFormData((prevItem) => ({
         ...prevItem,
-        profilePicture: reader.result, // Save image as base64 string
+        profilePicture: reader.result,
       }));
     };
     if (file) {
@@ -50,16 +49,15 @@ const RolesForm = ({ onSubmit, initialData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(formData); // Submit either for adding or updating role
+    onSubmit(formData);
     setFormData({
-      profilePicture: "", // Reset image field
+      profilePicture: "",
       fullName: "",
       email: "",
       phone: "",
       role: "",
       accessLevel: "",
       employeeId: "",
-      department: "",
       designation: "",
       specialization: "",
       workShift: "",
@@ -73,7 +71,7 @@ const RolesForm = ({ onSubmit, initialData }) => {
     <form className="fill-main" onSubmit={handleSubmit}>
       <div className="fill-grid">
         <label>
-          Profile Picture:
+          Profile Picture :
           <input
             type="file"
             name="profilePicture"
@@ -83,7 +81,7 @@ const RolesForm = ({ onSubmit, initialData }) => {
         </label>
 
         <label>
-          Full Name:
+          Full Name :
           <input
             type="text"
             name="fullName"
@@ -94,7 +92,7 @@ const RolesForm = ({ onSubmit, initialData }) => {
         </label>
 
         <label>
-          Email Address:
+          Email Address :
           <input
             type="email"
             name="email"
@@ -105,7 +103,7 @@ const RolesForm = ({ onSubmit, initialData }) => {
         </label>
 
         <label>
-          Phone Number:
+          Phone Number :
           <input
             type="text"
             name="phone"
@@ -115,7 +113,7 @@ const RolesForm = ({ onSubmit, initialData }) => {
         </label>
 
         <label>
-          Role:
+          Role :
           <select
             name="role"
             value={formData.role}
@@ -142,7 +140,7 @@ const RolesForm = ({ onSubmit, initialData }) => {
         </label>
 
         <label>
-          Access Level:
+          Access Level :
           <select
             name="accessLevel"
             value={formData.accessLevel}
@@ -157,7 +155,7 @@ const RolesForm = ({ onSubmit, initialData }) => {
         </label>
 
         <label>
-          Employee ID:
+          Employee ID :
           <input
             type="text"
             name="employeeId"
@@ -167,17 +165,7 @@ const RolesForm = ({ onSubmit, initialData }) => {
         </label>
 
         <label>
-          Department:
-          <input
-            type="text"
-            name="department"
-            value={formData.department}
-            onChange={handleChange}
-          />
-        </label>
-
-        <label>
-          Designation/Position:
+          Designation/Position :
           <input
             type="text"
             name="designation"
@@ -187,7 +175,7 @@ const RolesForm = ({ onSubmit, initialData }) => {
         </label>
 
         <label>
-          Specialization:
+          Specialization :
           <input
             type="text"
             name="specialization"
@@ -197,7 +185,7 @@ const RolesForm = ({ onSubmit, initialData }) => {
         </label>
 
         <label>
-          Work Shift:
+          Work Shift :
           <input
             type="text"
             name="workShift"
@@ -207,7 +195,7 @@ const RolesForm = ({ onSubmit, initialData }) => {
         </label>
 
         <label>
-          Availability:
+          Availability :
           <input
             type="text"
             name="availability"
@@ -217,7 +205,7 @@ const RolesForm = ({ onSubmit, initialData }) => {
         </label>
 
         <label>
-          Account Status:
+          Account Status :
           <select
             name="accountStatus"
             value={formData.accountStatus}
@@ -230,7 +218,7 @@ const RolesForm = ({ onSubmit, initialData }) => {
         </label>
 
         <label>
-          Joining Date:
+          Joining Date :
           <input
             type="date"
             name="joiningDate"

@@ -9,7 +9,6 @@ const rolesSchema = new mongoose.Schema(
     role: { type: String, required: true },
     accessLevel: { type: String, required: true },
     employeeId: { type: String, unique: true },
-    department: { type: String },
     designation: { type: String },
     specialization: { type: String },
     workShift: { type: String },

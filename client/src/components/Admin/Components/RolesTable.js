@@ -16,7 +16,7 @@ const RolesTable = ({ roles, onCardClick }) => {
             alt={`${role.fullName} profile`}
           />
           <p>{role.role}</p>
-          <p className="role">{role.department}</p>
+          <p className="role">{role.specialization}</p>
           <p>{role.designation}</p>
         </div>
       ))}

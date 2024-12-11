@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../styles/PatientList.css"; // Ensure the styles for card and animations
+import "../styles/PatientList.css";
 
 const PatientList = () => {
-  const [patients, setPatients] = useState([]); // This holds the list of patients
+  const [patients, setPatients] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [selectedPatientId, setSelectedPatientId] = useState(null); // For modal state
+  const [selectedPatientId, setSelectedPatientId] = useState(null);
   const [patientDetails, setPatientDetails] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -15,7 +15,7 @@ const PatientList = () => {
       try {
         const response = await axios.get(
           "http://localhost:5000/api/doctor/patients"
-        ); // Adjust the URL if needed
+        );
         setPatients(response.data);
         setLoading(false);
       } catch (err) {
@@ -43,7 +43,7 @@ const PatientList = () => {
 
   const openModal = (id) => {
     setSelectedPatientId(id);
-    fetchPatientDetails(id); // Load the patient details when modal opens
+    fetchPatientDetails(id);
   };
 
   const closeModal = () => {
@@ -54,7 +54,7 @@ const PatientList = () => {
 
   return (
     <div className="doctor-patient-content">
-      <h1>Patient List</h1>
+      <h1 style={{ textAlign: "center", color: "teal" }}>Patient List</h1>
 
       <section className="patient-list">
         {loading ? (
@@ -69,7 +69,7 @@ const PatientList = () => {
               <div key={patient.patientId} className="patient-card">
                 <h3>{patient.fullname}</h3>
                 <p>
-                  <strong style={{ color: "coral" }}>Patient ID:</strong>{" "}
+                  <strong style={{ color: "coral" }}>Patient ID :</strong>{" "}
                   {patient.patientId}
                 </p>
                 <button
@@ -84,7 +84,6 @@ const PatientList = () => {
         )}
       </section>
 
-      {/* Modal Section */}
       {isModalOpen && patientDetails && (
         <div className="modal-overlay">
           <div className="modal-container">
@@ -97,31 +96,31 @@ const PatientList = () => {
             <div className="modal-body">
               <div className="details-grid">
                 <div className="detail-item">
-                  <label>Patient ID:</label>
+                  <label>Patient ID :</label>
                   <span>{patientDetails.patientId}</span>
                 </div>
                 <div className="detail-item">
-                  <label>Full Name:</label>
+                  <label>Full Name :</label>
                   <span>{patientDetails.fullname}</span>
                 </div>
                 <div className="detail-item">
-                  <label>Age:</label>
+                  <label>Age :</label>
                   <span>{patientDetails.age || "N/A"}</span>
                 </div>
                 <div className="detail-item">
-                  <label>Gender:</label>
+                  <label>Gender :</label>
                   <span>{patientDetails.gender || "N/A"}</span>
                 </div>
                 <div className="detail-item">
-                  <label>Phone:</label>
+                  <label>Phone :</label>
                   <span>{patientDetails.phone || "N/A"}</span>
                 </div>
                 <div className="detail-item">
-                  <label>Email:</label>
+                  <label>Email :</label>
                   <span>{patientDetails.email}</span>
                 </div>
                 <div className="detail-item">
-                  <label>Location:</label>
+                  <label>Location :</label>
                   <span>
                     {`${patientDetails.location.city || ""}, ${
                       patientDetails.location.state || ""
@@ -129,23 +128,23 @@ const PatientList = () => {
                   </span>
                 </div>
                 <div className="detail-item">
-                  <label>Blood Type:</label>
+                  <label>Blood Type :</label>
                   <span>{patientDetails.bloodType}</span>
                 </div>
                 <div className="detail-item">
-                  <label>Occupation:</label>
+                  <label>Occupation :</label>
                   <span>{patientDetails.occupation || "N/A"}</span>
                 </div>
                 <div className="detail-item">
-                  <label>General Doctor:</label>
+                  <label>General Doctor :</label>
                   <span>{patientDetails.generalDoctorName || "N/A"}</span>
                 </div>
                 <div className="detail-item">
-                  <label>Doctor Specialty:</label>
+                  <label>Doctor Specialty :</label>
                   <span>{patientDetails.doctorSpeciality || "N/A"}</span>
                 </div>
                 <div className="detail-item">
-                  <label>Insurance:</label>
+                  <label>Insurance :</label>
                   <span>
                     {patientDetails.insuranceInformation?.provider
                       ? `${patientDetails.insuranceInformation.provider} (Policy #: ${patientDetails.insuranceInformation.policyNumber})`

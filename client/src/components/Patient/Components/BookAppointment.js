@@ -10,7 +10,7 @@ const BookAppointment = () => {
     contactNumber: "",
     appointmentType: "",
     consultationMode: "",
-    preferredDoctor:"",
+    preferredDoctor: "",
     preferredDate: "",
     urgencyLevel: "",
     preferredTimeSlot: "",
@@ -20,9 +20,8 @@ const BookAppointment = () => {
     preferredCommunicationMethod: "",
   });
 
-  // Assuming patientId is stored in localStorage or passed as a prop (for example purposes)
   useEffect(() => {
-    const patientId = localStorage.getItem("patientId"); // Or get it from props or contex
+    const patientId = localStorage.getItem("patientId");
     if (patientId) {
       setFormData((prevData) => ({ ...prevData, patientId }));
     }
@@ -46,7 +45,7 @@ const BookAppointment = () => {
       );
       alert(response.data.message || "Appointment booked successfully!");
       setFormData({
-        patientId: formData.patientId, // Keep patientId after form reset
+        patientId: formData.patientId,
         fullName: "",
         gender: "",
         contactNumber: "",
@@ -68,7 +67,7 @@ const BookAppointment = () => {
     <form className="appointment-container" onSubmit={handleSubmit}>
       <div className="grid-appointment">
         <label>
-          Patient ID:{" "}
+          Patient ID :{" "}
           <input
             type="text"
             name="patientId"
@@ -78,7 +77,7 @@ const BookAppointment = () => {
         </label>
 
         <label>
-          Full Name:{" "}
+          Full Name :{" "}
           <input
             type="text"
             name="fullName"
@@ -89,7 +88,7 @@ const BookAppointment = () => {
         </label>
 
         <label>
-          Gender:{" "}
+          Gender :{" "}
           <select
             name="gender"
             value={formData.gender}
@@ -104,7 +103,7 @@ const BookAppointment = () => {
         </label>
 
         <label>
-          Contact Number:{" "}
+          Contact Number :{" "}
           <input
             type="text"
             name="contactNumber"
@@ -115,7 +114,7 @@ const BookAppointment = () => {
         </label>
 
         <label>
-          Appointment Type:{" "}
+          Appointment Type :{" "}
           <select
             name="appointmentType"
             value={formData.appointmentType}
@@ -130,7 +129,7 @@ const BookAppointment = () => {
         </label>
 
         <label>
-          Consultation Mode:{" "}
+          Consultation Mode :{" "}
           <select
             name="consultationMode"
             value={formData.consultationMode}
@@ -144,7 +143,7 @@ const BookAppointment = () => {
         </label>
 
         <label>
-          Preferred Doctor:{" "}
+          Preferred Doctor :{" "}
           <input
             type="text"
             name="preferredDoctor"
@@ -154,7 +153,7 @@ const BookAppointment = () => {
         </label>
 
         <label>
-          Urgency Level:{" "}
+          Urgency Level :{" "}
           <select
             name="urgencyLevel"
             value={formData.urgencyLevel}
@@ -169,7 +168,7 @@ const BookAppointment = () => {
         </label>
 
         <label>
-          Preferred Date:{" "}
+          Preferred Date :{" "}
           <input
             type="date"
             name="preferredDate"
@@ -180,7 +179,7 @@ const BookAppointment = () => {
         </label>
 
         <label>
-          Preferred Time Slot:{" "}
+          Preferred Time Slot :{" "}
           <input
             type="time"
             name="preferredTimeSlot"
@@ -191,7 +190,7 @@ const BookAppointment = () => {
         </label>
 
         <label>
-          Reason for Appointment:{" "}
+          Reason for Appointment :{" "}
           <textarea
             name="reasonForAppointment"
             value={formData.reasonForAppointment}
@@ -201,7 +200,7 @@ const BookAppointment = () => {
         </label>
 
         <label>
-          Symptoms:{" "}
+          Symptoms :{" "}
           <textarea
             name="symptoms"
             value={formData.symptoms}
@@ -210,7 +209,7 @@ const BookAppointment = () => {
         </label>
 
         <label>
-          Department:{" "}
+          Department :{" "}
           <select
             name="department"
             value={formData.department}
@@ -237,7 +236,7 @@ const BookAppointment = () => {
         </label>
 
         <label>
-          Preferred Communication Method:{" "}
+          Preferred Communication Method :{" "}
           <select
             name="preferredCommunicationMethod"
             value={formData.preferredCommunicationMethod}

@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
-import Login from "./components/Login"; // Generic login page
+import Login from "./components/Login";
 import PatientLogin from "./components/Patient/pages/Login";
 import PatientRegister from "./components/Patient/pages/Register";
 import Register from "./components/Patient/pages/Register";
@@ -23,14 +23,12 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Public Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/patient/login" element={<PatientLogin />} />
         <Route path="/patient/register" element={<PatientRegister />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Protected Routes */}
         <Route
           path="/admin"
           element={
@@ -50,7 +48,6 @@ function App() {
         <Route path="/patient-dashboard" element={<PatientDashboard />} />
         <Route path="/patient/profile/:id/edit" element={<PatientProfile />} />
 
-        {/* Admin Routes */}
         <Route
           path="/doctor-management"
           element={
@@ -92,7 +89,6 @@ function App() {
           }
         />
 
-        {/* Doctor Routes */}
         <Route path="/appointments" element={<AppointmentPage />} />
 
         <Route
@@ -100,10 +96,8 @@ function App() {
           element={<PatientList />}
         />
 
-        {/* Patient Routes */}
         <Route path="/book-appointment" element={<BookAppointmentPage />} />
 
-        {/* Redirect to login if route is not found */}
         <Route path="*" element={<Login />} />
       </Routes>
     </Router>

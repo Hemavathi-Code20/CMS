@@ -157,50 +157,50 @@ const FixAppointment = () => {
             <div className="modal-layout">
               <div className="modal-left">
                 <div className="input-group">
-                  <strong>Name:</strong> {selectedAppointment.fullName}
+                  <strong>Name :</strong> {selectedAppointment.fullName}
                 </div>
                 <div className="input-group">
-                  <strong>Gender:</strong> {selectedAppointment.gender}
+                  <strong>Gender :</strong> {selectedAppointment.gender}
                 </div>
                 <div className="input-group">
-                  <strong>Contact:</strong> {selectedAppointment.contactNumber}
+                  <strong>Contact :</strong> {selectedAppointment.contactNumber}
                 </div>
                 <div className="input-group">
-                  <strong>Appointment Type:</strong>{" "}
+                  <strong>Appointment Type :</strong>{" "}
                   {selectedAppointment.appointmentType}
                 </div>
                 <div className="input-group">
-                  <strong>Consultation Mode:</strong>{" "}
+                  <strong>Consultation Mode :</strong>{" "}
                   {selectedAppointment.consultationMode}
                 </div>
                 <div className="input-group">
-                  <strong>Preferred Doctor:</strong>{" "}
+                  <strong>Preferred Doctor :</strong>{" "}
                   {selectedAppointment.preferredDoctor}
                 </div>
                 <div className="input-group">
-                  <strong>Urgency Level:</strong>{" "}
+                  <strong>Urgency Level :</strong>{" "}
                   {selectedAppointment.urgencyLevel}
                 </div>
                 <div className="input-group">
-                  <strong>Preferred Date:</strong>{" "}
+                  <strong>Preferred Date :</strong>{" "}
                   {selectedAppointment.preferredDate}
                 </div>
                 <div className="input-group">
-                  <strong>Preferred TimeSlot:</strong>{" "}
+                  <strong>Preferred TimeSlot :</strong>{" "}
                   {selectedAppointment.preferredTimeSlot}
                 </div>
                 <div className="input-group">
-                  <strong>Reason:</strong>{" "}
+                  <strong>Reason :</strong>{" "}
                   {selectedAppointment.reasonForAppointment}
                 </div>
                 <div className="input-group">
-                  <strong>Symptoms:</strong> {selectedAppointment.symptoms}
+                  <strong>Symptoms :</strong> {selectedAppointment.symptoms}
                 </div>
                 <div className="input-group">
-                  <strong>Department:</strong> {selectedAppointment.department}
+                  <strong>Department :</strong> {selectedAppointment.department}
                 </div>
                 <div className="input-group">
-                  <strong>Preferred Communication Method:</strong>{" "}
+                  <strong>Preferred Communication Method :</strong>{" "}
                   {selectedAppointment.preferredCommunicationMethod}
                 </div>
               </div>
@@ -238,7 +238,6 @@ const FixAppointment = () => {
               )}
             </div>
 
-            {/* Action Buttons - Always visible */}
             <div className="modal-actions">
               <button
                 onClick={() =>

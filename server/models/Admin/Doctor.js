@@ -18,16 +18,16 @@ const DoctorSchema = new mongoose.Schema({
       "Pediatrics",
       "General Medicine",
       "Dermatology",
-      "Oncology", // Added
-      "Gynecology", // Added
-      "Psychiatry", // Added
-      "Endocrinology", // Added
-      "ENT", // Added (Ear, Nose, Throat)
-      "Urology", // Added
-      "Rheumatology", // Added
-      "Plastic Surgery", // Added
-      "Gastroenterology", // Added
-      "Pulmonology", // Added
+      "Oncology",
+      "Gynecology",
+      "Psychiatry",
+      "Endocrinology",
+      "ENT",
+      "Urology",
+      "Rheumatology",
+      "Plastic Surgery",
+      "Gastroenterology",
+      "Pulmonology",
     ],
   },
   specialization: {
@@ -38,22 +38,22 @@ const DoctorSchema = new mongoose.Schema({
       "Dermatology",
       "Dentistry",
       "Psychiatry",
-      "Cardiac Surgery", // Added
-      "Orthopedic Surgery", // Added
-      "Neuro Surgery", // Added
-      "Pediatric Surgery", // Added
-      "Plastic Surgery", // Added
-      "Internal Medicine", // Added
-      "Radiology", // Added
-      "Pathology", // Added
-      "Anesthesiology", // Added
-      "Ophthalmology", // Added
-      "ENT Surgery", // Added (Ear, Nose, Throat)
-      "Obstetrics & Gynecology", // Added
-      "Gastroenterology", // Added
-      "Pulmonology", // Added
-      "General Surgery", // Added
-      "Oncological Surgery", // Added
+      "Cardiac Surgery",
+      "Orthopedic Surgery",
+      "Neuro Surgery",
+      "Pediatric Surgery",
+      "Plastic Surgery",
+      "Internal Medicine",
+      "Radiology",
+      "Pathology",
+      "Anesthesiology",
+      "Ophthalmology",
+      "ENT Surgery",
+      "Obstetrics & Gynecology",
+      "Gastroenterology",
+      "Pulmonology",
+      "General Surgery",
+      "Oncological Surgery",
     ],
   },
   qualification: String,
@@ -65,7 +65,7 @@ const DoctorSchema = new mongoose.Schema({
   },
   consultationMethod: {
     type: String,
-    enum: ["In-person", "Online", "Both"], // Added "Both" option
+    enum: ["In-person", "Online", "Both"],
   },
   doctorsFee: Number,
 });

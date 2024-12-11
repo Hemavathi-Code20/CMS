@@ -7,7 +7,7 @@ import "../styles/PatientProfile.css";
 Modal.setAppElement("#root");
 
 const PatientProfile = () => {
-  const { id } = useParams(); // Get the patient ID from the route parameter
+  const { id } = useParams();
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -76,8 +76,8 @@ const PatientProfile = () => {
       const updatedData = {
         ...editFormData,
         bloodType: editFormData.blood,
-        generalDoctorName: editFormData.generalDoctor, // Fix this mapping
-        doctorSpeciality: editFormData.doctorSpecialty, // Fix this mapping
+        generalDoctorName: editFormData.generalDoctor,
+        doctorSpeciality: editFormData.doctorSpecialty,
         location: {
           city: editFormData.city,
           state: editFormData.state,
@@ -89,7 +89,6 @@ const PatientProfile = () => {
         },
       };
 
-      // Send the update request
       const response = await axios.put(
         `http://localhost:5000/api/patient/profile/${profile.patientId}`,
         updatedData
@@ -97,9 +96,7 @@ const PatientProfile = () => {
 
       console.log("Response from server:", response.data);
 
-      // Update state with the new data
       if (response.status === 200) {
-        // Fetch the updated profile to ensure frontend reflects backend changes
         const updatedProfileResponse = await axios.get(
           `http://localhost:5000/api/patient/profile/${profile.patientId}`
         );
@@ -123,7 +120,10 @@ const PatientProfile = () => {
     <div className="patientprofile-container">
       <h1>Patient Profile</h1>
       <div className="patient-profile">
-        <button className="patient-edit-button" onClick={() => setIsModalOpen(true)}>
+        <button
+          className="patient-edit-button"
+          onClick={() => setIsModalOpen(true)}
+        >
           <i className="fas fa-edit"></i>
         </button>
         <div className="patient-field">
@@ -203,7 +203,7 @@ const PatientProfile = () => {
         </div>
         <form className="edit-profile-patientform">
           <label>
-            Full Name:
+            Full Name :
             <input
               type="text"
               name="fullname"
@@ -212,7 +212,7 @@ const PatientProfile = () => {
             />
           </label>
           <label>
-            Age:
+            Age :
             <input
               type="number"
               name="age"
@@ -221,7 +221,7 @@ const PatientProfile = () => {
             />
           </label>
           <label>
-            Gender:
+            Gender :
             <select
               name="gender"
               value={editFormData.gender}
@@ -234,7 +234,7 @@ const PatientProfile = () => {
             </select>
           </label>
           <label>
-            Phone:
+            Phone :
             <input
               type="text"
               name="phone"
@@ -243,7 +243,7 @@ const PatientProfile = () => {
             />
           </label>
           <label>
-            Email:
+            Email :
             <input
               type="email"
               name="email"
@@ -252,7 +252,7 @@ const PatientProfile = () => {
             />
           </label>
           <label>
-            City:
+            City :
             <input
               type="text"
               name="city"
@@ -261,7 +261,7 @@ const PatientProfile = () => {
             />
           </label>
           <label>
-            State:
+            State :
             <input
               type="text"
               name="state"
@@ -270,7 +270,7 @@ const PatientProfile = () => {
             />
           </label>
           <label>
-            Country:
+            Country :
             <input
               type="text"
               name="country"
@@ -279,7 +279,7 @@ const PatientProfile = () => {
             />
           </label>
           <label>
-            Occupation:
+            Occupation :
             <input
               type="text"
               name="occupation"
@@ -288,7 +288,7 @@ const PatientProfile = () => {
             />
           </label>
           <label>
-            Blood-Type:
+            Blood-Type :
             <select
               name="blood"
               value={editFormData.blood}
@@ -306,7 +306,7 @@ const PatientProfile = () => {
             </select>
           </label>
           <label>
-            General Doctor:
+            General Doctor :
             <input
               type="text"
               name="generalDoctor"
@@ -315,7 +315,7 @@ const PatientProfile = () => {
             />
           </label>
           <label>
-            Doctor Specialty:
+            Doctor Specialty :
             <input
               type="text"
               name="doctorSpecialty"
@@ -324,7 +324,7 @@ const PatientProfile = () => {
             />
           </label>{" "}
           <label>
-            Policy Number:
+            Policy Number :
             <input
               type="text"
               name="policyNumber"
@@ -333,7 +333,7 @@ const PatientProfile = () => {
             />
           </label>
           <label>
-            Insurance Provider:
+            Insurance Provider :
             <input
               type="text"
               name="insuranceProvider"

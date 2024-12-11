@@ -77,11 +77,13 @@ h2 {
   position: relative;
   transition: width 0.3s ease-in-out;
 }
+
 h4 {
   text-align: center !important;
   font-size: 20px !important;
   color: #1d3557;
 }
+
 .modal-expanded {
   width: 120% !important;
 }
@@ -95,10 +97,12 @@ h4 {
   border: none;
   cursor: pointer;
 }
+
 .close-modal:hover {
   font-size: 30px !important;
   background: none !important;
 }
+
 .modal-layout {
   display: flex;
   justify-content: space-between;
@@ -177,4 +181,71 @@ h4 {
   border-radius: 5px;
   cursor: pointer;
   margin-left: 56%;
+}
+
+@media (max-width: 1024px) {
+  .modal-content {
+    width: 70% !important;
+    height: 40% !important;
+  }
+
+  .appointment-card {
+    width: 250px;
+  }
+
+  .input-group input,
+  .input-group select {
+    width: 80%;
+  }
+
+  .submit-reschedule {
+    margin-left: 40%;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 90% !important;
+  }
+
+  .appointment-card {
+    width: 220px;
+  }
+
+  .input-group input,
+  .input-group select {
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  .submit-reschedule {
+    margin-left: 40%;
+  }
+}
+
+@media (max-width: 480px) {
+  .appointments-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .appointment-card {
+    width: 100%;
+    margin: 10px;
+  }
+
+  .modal-content {
+    width: 95% !important;
+  }
+
+  .input-group input,
+  .input-group select {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .submit-reschedule {
+    margin-left: 0;
+    width: 100%;
+  }
 }

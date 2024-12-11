@@ -93,7 +93,6 @@
   background: none !important;
 }
 
-/* Modal overlay for DoctorDetail */
 .role-detail-modal-overlay {
   position: fixed;
   top: 0;
@@ -107,21 +106,19 @@
   z-index: 1000;
   backdrop-filter: blur(8px);
 }
-/* Modal content styling for DoctorDetail */
 .role-detail-modal-content {
   border-radius: 12px;
   width: 100% !important;
   max-width: 800px;
-  max-height: 90vh; /* Set a max height to prevent expanding too much */
+  max-height: 90vh;
   background-color: #ffffff;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   animation: bounceIn 0.5s ease-in-out;
-  overflow-y: auto; /* Allows for scrolling if content exceeds max-height */
+  overflow-y: auto;
   padding: 20px;
   position: relative;
 }
 
-/* Close button styling for DoctorDetail */
 .role-detail-close-button {
   position: absolute;
   top: 15px;
@@ -134,12 +131,10 @@
   outline: none;
 }
 
-/* Add some basic padding and margin for the content */
 .role-detail-modal-content .role-detail {
   padding: 10px;
 }
 
-/* Animation keyframes for bounce effect */
 @keyframes bounceIn {
   0% {
     transform: scale(0.8);

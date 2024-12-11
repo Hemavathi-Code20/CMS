@@ -1,45 +1,40 @@
 import express from "express";
-import Patient from "../../models/Patient/Register.js"; // Adjust the path if necessary
+import Patient from "../../models/Patient/Register.js";
 
 const router = express.Router();
 
-// Route to get the list of all patients
 router.get("/patients", async (req, res) => {
   try {
-    // Fetch all patients from the database
-    const patients = await Patient.find();  // Fetch all patients
-    
+    const patients = await Patient.find();
+
     if (!patients || patients.length === 0) {
       return res.status(404).json({ message: "No patients found" });
     }
 
-    // Return the list of patients, excluding sensitive data
-    res.status(200).json(patients.map(patient => ({
-      patientId: patient.patientId,
-      fullname: patient.fullname,
-      email: patient.email,
-      phone: patient.phone,
-      // Add any other relevant fields here
-    })));
+    res.status(200).json(
+      patients.map((patient) => ({
+        patientId: patient.patientId,
+        fullname: patient.fullname,
+        email: patient.email,
+        phone: patient.phone,
+      }))
+    );
   } catch (error) {
     console.error("Error fetching patients:", error);
     res.status(500).json({ message: "Server error", error: error.message });
   }
 });
 
-// Get patient details by ID
 router.get("/patient/:id", async (req, res) => {
-  const { id } = req.params;  // Extract the patient ID from the route
+  const { id } = req.params;
 
   try {
-    // Find the patient using the patientId from the database
     const patient = await Patient.findOne({ patientId: id });
-    
+
     if (!patient) {
       return res.status(404).json({ message: "Patient not found" });
     }
 
-    // Return patient details (excluding sensitive data like password)
     res.status(200).json({
       patientId: patient.patientId,
       fullname: patient.fullname,

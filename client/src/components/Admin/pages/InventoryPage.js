@@ -8,8 +8,8 @@ import "../styles/mainpage.css";
 const InventoryPage = () => {
   const [inventory, setInventory] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
-  const [isAdding, setIsAdding] = useState(false); // State to track modal visibility
-  const [loading, setLoading] = useState(true); // State to track loading
+  const [isAdding, setIsAdding] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchInventory();
@@ -35,7 +35,7 @@ const InventoryPage = () => {
         "http://localhost:5000/api/admin/inventory",
         newItem
       );
-      fetchInventory(); // Refresh inventory after adding
+      fetchInventory();
       closeModal();
     } catch (error) {
       console.error("Error adding item:", error);
@@ -48,7 +48,7 @@ const InventoryPage = () => {
         `http://localhost:5000/api/admin/inventory/${updatedItem._id}`,
         updatedItem
       );
-      fetchInventory(); // Refresh inventory after updating
+      fetchInventory();
       closeModal();
     } catch (error) {
       console.error("Error updating item:", error);
@@ -58,7 +58,7 @@ const InventoryPage = () => {
   const deleteItem = async (id) => {
     try {
       await axios.delete(`http://localhost:5000/api/admin/inventory/${id}`);
-      fetchInventory(); // Refresh inventory after deleting
+      fetchInventory();
     } catch (error) {
       console.error("Error deleting item:", error);
     }

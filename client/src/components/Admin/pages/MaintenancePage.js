@@ -7,18 +7,18 @@ import "../styles/mainpage.css";
 const MaintenancePage = () => {
   const [refresh, setRefresh] = useState(false);
   const [editData, setEditData] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to track modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleRefresh = () => setRefresh((prev) => !prev);
 
   const handleEditClick = (data) => {
-    setEditData(data); // Set the selected record for editing
-    setIsModalOpen(true); // Open the modal
+    setEditData(data);
+    setIsModalOpen(true);
   };
 
   const closeModal = () => {
-    setIsModalOpen(false); // Close the modal
-    setEditData(null); // Clear edit data
+    setIsModalOpen(false);
+    setEditData(null);
   };
 
   return (
@@ -27,8 +27,8 @@ const MaintenancePage = () => {
       <button
         className="record-button"
         onClick={() => {
-          setEditData(null); // Clear any previous data
-          setIsModalOpen(true); // Open the modal
+          setEditData(null);
+          setIsModalOpen(true);
         }}
       >
         Manage Maintenance

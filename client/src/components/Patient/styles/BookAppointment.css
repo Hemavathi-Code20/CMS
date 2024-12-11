@@ -36,9 +36,11 @@ label {
   font-size: 14px;
   transition: color 0.3s ease;
 }
+
 label:hover {
   color: rgb(90, 89, 89);
 }
+
 .appointment-button {
   padding: 10px 15px;
   color: #fff;
@@ -56,4 +58,39 @@ label:hover {
 .appointment-button:hover {
   font-size: 14px;
   background: linear-gradient(135deg, #3dfef4, #008080) !important;
+}
+
+@media (max-width: 1024px) {
+  .grid-appointment {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .appointment-button {
+    margin-top: 5%;
+    margin-left: 85%;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-appointment {
+    grid-template-columns: 1fr !important;
+  }
+  .appointment-container {
+    padding: 30px;
+  }
+  .appointment-button {
+    margin-top: 5%;
+    margin-left: 75%;
+  }
+}
+
+@media (max-width: 480px) {
+  .appointment-container {
+    padding: 20px;
+  }
+  .appointment-button {
+    margin-top: 5%;
+    margin-left: 50%;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
 }

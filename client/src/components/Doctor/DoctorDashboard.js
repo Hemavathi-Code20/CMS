@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import doctorbg from "../../assets/bg-doctor.jpeg";
+import doctorbg from "../../assets/home-bg.jpg";
 import "./styles/DoctorDashboard.css";
 
 const DoctorDashboard = () => {
@@ -23,9 +23,6 @@ const DoctorDashboard = () => {
         </div>
         <div className="doctor-navbar-links">
           <Link to="/appointments">View Appointments</Link>
-          <Link to="/doctor-dashboard/manage-record">
-            Manage Patient Records
-          </Link>
 
           <Link to="/doctor-dashboard/patient-list">View Patient List</Link>
           <button className="logout-btn" onClick={handleLogout}>

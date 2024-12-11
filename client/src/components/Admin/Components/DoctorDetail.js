@@ -17,31 +17,31 @@ const DoctorDetail = ({ doctor, onEdit, onDelete }) => {
         />
         <div className="Info-content">
           <p>
-            <b>Specialization:</b> {doctor.specialization}
+            <b>Specialization :</b> {doctor.specialization}
           </p>
           <p>
-            <b>Contact:</b> {doctor.contactNumber}
+            <b>Contact :</b> {doctor.contactNumber}
           </p>
           <p>
-            <b>Years of Experience:</b> {doctor.yearsOfExperience}
+            <b>Years of Experience :</b> {doctor.yearsOfExperience}
           </p>
           <p>
-            <b>Department:</b> {doctor.department}
+            <b>Department :</b> {doctor.department}
           </p>
           <p>
-            <b>Qualifications:</b> {doctor.qualification}
+            <b>Qualifications :</b> {doctor.qualification}
           </p>
           <p>
-            <b>Gender:</b> {doctor.gender}
+            <b>Gender :</b> {doctor.gender}
           </p>
           <p>
-            <b>Availability:</b> {doctor.availability}
+            <b>Availability :</b> {doctor.availability}
           </p>
           <p>
-            <b>Consultation Method:</b> {doctor.consultationMethod}
+            <b>Consultation Method :</b> {doctor.consultationMethod}
           </p>
           <p>
-            <b>Doctor's Fee:</b> ${doctor.doctorsFee}
+            <b>Doctor's Fee :</b> ${doctor.doctorsFee}
           </p>
         </div>
       </div>

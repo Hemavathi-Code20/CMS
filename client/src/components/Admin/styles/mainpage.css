@@ -4,6 +4,7 @@
   padding: 1rem;
   overflow: hidden;
 }
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -14,6 +15,7 @@
     transform: translateY(0);
   }
 }
+
 .management-page h1 {
   text-transform: uppercase;
   text-align: center;
@@ -47,10 +49,12 @@
   cursor: pointer;
   padding: 12px 20px;
 }
+
 .record-button:hover {
   font-size: 13px;
   background: linear-gradient(135deg, #80a3fc, #fe4343) !important;
 }
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -92,6 +96,7 @@
 .close-button:hover {
   background: none !important;
 }
+
 @keyframes pop-up {
   from {
     transform: scale(0.9);
@@ -102,6 +107,7 @@
     opacity: 1;
   }
 }
+
 .detail-modal-overlay {
   position: fixed;
   top: 0;
@@ -128,6 +134,7 @@
   padding: 20px;
   position: relative;
 }
+
 @keyframes bounceIn {
   0% {
     transform: scale(0.8);
@@ -141,6 +148,7 @@
     transform: scale(1);
   }
 }
+
 .detail-close-button {
   position: absolute;
   top: 15px;
@@ -155,4 +163,82 @@
 
 .detail-modal-content {
   padding: 10px;
+}
+
+@media (max-width: 1024px) {
+  .management-page h1 {
+    font-size: 22px;
+  }
+
+  .record-button {
+    padding: 10px 18px;
+    font-size: 12px;
+  }
+
+  .modal-container {
+    padding: 30px;
+  }
+
+  .modal-overlay {
+    padding: 20px;
+  }
+
+  .detail-modal-content {
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .management-page h1 {
+    font-size: 20px;
+  }
+
+  .record-button {
+    padding: 10px 15px;
+    font-size: 11px;
+  }
+
+  .modal-container {
+    padding: 20px;
+  }
+
+  .modal-overlay {
+    padding: 15px;
+  }
+
+  .detail-modal-content {
+    max-width: 600px;
+  }
+
+  .close-button {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .management-page h1 {
+    font-size: 18px;
+  }
+
+  .record-button {
+    padding: 8px 12px;
+    font-size: 10px;
+  }
+
+  .modal-container {
+    padding: 15px;
+  }
+
+  .modal-overlay {
+    padding: 10px;
+  }
+
+  .detail-modal-content {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .close-button {
+    font-size: 16px;
+  }
 }

@@ -1,9 +1,7 @@
-/* General Styles */
 .patientprofile-container {
   min-height: 100vh;
 }
 
-/* Heading Styles */
 .patientprofile-container h1 {
   font-size: 2rem;
   color: coral;
@@ -12,7 +10,6 @@
   text-align: center;
 }
 
-/* Edit Button */
 .patient-edit-button {
   position: absolute;
   top: 5%;
@@ -27,7 +24,6 @@
   font-size: 1.5rem;
 }
 
-/* Patient Profile Layout */
 .patient-profile {
   margin-top: 8%;
   width: 100% !important;
@@ -42,15 +38,15 @@
 .patient-field {
   display: flex;
   flex-direction: row;
-  align-items: center; /* Ensure icons and text are aligned on the same line */
+  align-items: center;
   justify-content: flex-start;
-  gap: 20px; /* Adds space between icon and text */
+  gap: 20px;
 }
 
 .patient-field i {
   color: rgb(45, 48, 103) !important;
   font-size: 1.5rem;
-  color: rgba(22, 38, 77, 0.361); /* Lighter icon color */
+  color: rgba(22, 38, 77, 0.361);
 }
 
 .patient-field p {
@@ -58,13 +54,11 @@
   color: #555;
   margin: 0;
 }
-/* Modal overlay styles */
 .modal-overlay {
   background-color: rgba(0, 0, 0, 0.5) !important;
   backdrop-filter: blur(5px) !important;
 }
 
-/* Modal content styles */
 .edit-profile-modal {
   background-color: #fff;
   width: 100%;
@@ -90,7 +84,6 @@
   background: none;
 }
 
-/* Form styles */
 .edit-profile-patientform {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -111,7 +104,6 @@
   margin-left: 3%;
 }
 
-/* Save button styles */
 .save-changes-patientbutton {
   margin-top: 100px;
   width: 40%;

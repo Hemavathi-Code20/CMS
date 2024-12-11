@@ -36,10 +36,8 @@ const PatientDashboard = () => {
   }, []);
 
   const handleLogout = () => {
-    // Clear the patient ID from localStorage
     localStorage.removeItem("patientId");
 
-    // Redirect to the patient register page
     navigate("/patient/register");
   };
 
@@ -54,7 +52,6 @@ const PatientDashboard = () => {
         </div>
         <div className="navbar-links">
           <Link to="/book-appointment">Book Appointment</Link>
-          <Link to="/patient-dashboard/view-record">View Medical Records</Link>
           <Link to={`/patient/profile/${profile.patientId}/edit`}>
             Edit Profile
           </Link>
@@ -64,7 +61,6 @@ const PatientDashboard = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <section className="hero-section full-page">
         <div className="hero-content">
           <h1>

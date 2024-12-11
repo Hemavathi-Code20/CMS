@@ -1,12 +1,14 @@
 .patient-list {
   min-height: 100vh;
 }
+
 .patient-cards {
   display: flex;
   flex-wrap: wrap;
   gap: 70px;
   padding: 50px;
 }
+
 .patient-card {
   padding: 20px;
   width: 25%;
@@ -16,10 +18,12 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
+
 .patient-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
 }
+
 .patient-card h3 {
   font-size: 20px;
   margin: 15px 0;
@@ -46,13 +50,13 @@
   background-color: #45a049;
 }
 
-/* Animation for card loading */
 @keyframes fadeInUp {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 .modal-container {
   background-color: #fff;
   width: 100%;
@@ -81,6 +85,27 @@
 }
 
 .detail-item label {
- color: rgb(45, 48, 103);
+  color: rgb(45, 48, 103);
 }
 
+@media (max-width: 1024px) {
+  .patient-card {
+    width: 45%;
+  }
+
+  .details-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .patient-card {
+    width: 100%;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

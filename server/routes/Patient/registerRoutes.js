@@ -4,31 +4,25 @@ import bcrypt from "bcrypt";
 
 const router = express.Router();
 
-// Helper function to generate PATIENTID
 const generatePatientId = () => {
   const prefix = "PAT";
-  const uniqueId = String(Date.now()).padStart(7, "0"); // Generates a unique numeric ID
+  const uniqueId = String(Date.now()).padStart(7, "0");
   return `${prefix}${uniqueId}`;
 };
 
-// Register a new patient
 router.post("/patientregister", async (req, res) => {
   const { fullname, email, password } = req.body;
 
   try {
-    // Check if patient already exists
     const existingPatient = await Patient.findOne({ email });
     if (existingPatient) {
       return res.status(400).json({ message: "Patient already exists" });
     }
 
-    // Generate a unique PATIENTID
     const patientId = generatePatientId();
 
-    // Hash the password before saving
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create a new patient instance
     const newPatient = new Patient({
       patientId,
       fullname,
@@ -36,7 +30,6 @@ router.post("/patientregister", async (req, res) => {
       password: hashedPassword,
     });
 
-    // Save the new patient to the database
     await newPatient.save();
 
     res.status(201).json({
@@ -50,18 +43,15 @@ router.post("/patientregister", async (req, res) => {
   }
 });
 
-// Login route for patients
 router.post("/login", async (req, res) => {
   const { patientId, password } = req.body;
 
   try {
-    // Find the patient by patientId
     const patient = await Patient.findOne({ patientId });
     if (!patient) {
       return res.status(404).json({ message: "Patient not found" });
     }
 
-    // Check if the provided password matches the stored password
     const isPasswordValid = await bcrypt.compare(password, patient.password);
     if (!isPasswordValid) {
       return res.status(401).json({ message: "Invalid password" });
@@ -78,7 +68,6 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// Get Patient Profile
 router.get("/profile/:id", async (req, res) => {
   const { id } = req.params;
 
@@ -98,7 +87,7 @@ router.get("/profile/:id", async (req, res) => {
       gender: patient.gender,
       contactNumber: patient.contactNumber,
       location: patient.location,
-      bloodType:patient.bloodType,
+      bloodType: patient.bloodType,
       occupation: patient.occupation,
       generalDoctorName: patient.generalDoctorName,
       doctorSpeciality: patient.doctorSpeciality,
@@ -109,7 +98,6 @@ router.get("/profile/:id", async (req, res) => {
   }
 });
 
-// Update Patient Profile
 router.put("/profile/:id", async (req, res) => {
   const { id } = req.params;
   const {
@@ -129,7 +117,6 @@ router.put("/profile/:id", async (req, res) => {
   } = req.body;
 
   try {
-    // Update the patient profile with proper nested objects
     const updatedPatient = await Patient.findOneAndUpdate(
       { patientId: id },
       {
@@ -140,12 +127,12 @@ router.put("/profile/:id", async (req, res) => {
         age,
         gender,
         contactNumber,
-        location: location || {}, 
+        location: location || {},
         bloodType,
         occupation,
         generalDoctorName,
         doctorSpeciality,
-        insuranceInformation: insuranceInformation || {}, // Ensure insuranceInformation is updated properly
+        insuranceInformation: insuranceInformation || {},
       },
       { new: true }
     );

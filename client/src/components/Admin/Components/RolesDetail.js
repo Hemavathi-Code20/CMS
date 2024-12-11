@@ -17,43 +17,40 @@ const RolesDetail = ({ role, onEdit, onDelete }) => {
         />
         <div className="Info-content">
           <p>
-            <b>Full Name:</b> {role.fullName}
+            <b>Full Name :</b> {role.fullName}
           </p>
           <p>
-            <b>Email:</b> {role.email}
+            <b>Email :</b> {role.email}
           </p>
           <p>
-            <b>Phone:</b> {role.phone}
+            <b>Phone :</b> {role.phone}
           </p>
           <p>
-            <b>Role:</b> {role.role}
+            <b>Role :</b> {role.role}
           </p>
           <p>
-            <b>Access Level:</b> {role.accessLevel}
+            <b>Access Level :</b> {role.accessLevel}
           </p>
           <p>
-            <b>Employee ID:</b> {role.employeeId}
+            <b>Employee ID :</b> {role.employeeId}
           </p>
           <p>
-            <b>Department:</b> {role.department}
+            <b>Designation/Position :</b> {role.designation}
           </p>
           <p>
-            <b>Designation/Position:</b> {role.designation}
+            <b>Specialization :</b> {role.specialization}
           </p>
           <p>
-            <b>Specialization:</b> {role.specialization}
+            <b>Work Shift :</b> {role.workShift}
           </p>
           <p>
-            <b>Work Shift:</b> {role.workShift}
+            <b>Availability :</b> {role.availability}
           </p>
           <p>
-            <b>Availability:</b> {role.availability}
+            <b>Account Status :</b> {role.accountStatus}
           </p>
           <p>
-            <b>Account Status:</b> {role.accountStatus}
-          </p>
-          <p>
-            <b>Joining Date:</b> {role.joiningDate}
+            <b>Joining Date :</b> {role.joiningDate}
           </p>
         </div>
       </div>

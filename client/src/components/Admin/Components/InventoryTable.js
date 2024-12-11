@@ -13,7 +13,7 @@ const InventoryTable = ({ items, onUpdateItem, onDeleteItem }) => {
   const formatDate = (date) => {
     if (!date) return "-";
     const d = new Date(date);
-    return d.toLocaleDateString("en-CA"); // This ensures the format is YYYY-MM-DD.
+    return d.toLocaleDateString("en-CA");
   };
 
   return (
@@ -44,7 +44,7 @@ const InventoryTable = ({ items, onUpdateItem, onDeleteItem }) => {
             <td>{item.quantity}</td>
             <td>{item.unitPrice}</td>
             <td>{formatDate(item.expiryDate)}</td>
-            <td>{formatDate(item.purchaseDate)}</td> {/* Updated here */}
+            <td>{formatDate(item.purchaseDate)}</td>
             <td>{item.reorderLevel !== undefined ? item.reorderLevel : "-"}</td>
             <td>{item.supplierContact}</td>
             <td>{item.stockStatus}</td>

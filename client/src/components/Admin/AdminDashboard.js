@@ -29,7 +29,7 @@ ChartJS.register(
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
-  const sidebarRef = useRef(null); // Reference for sidebar
+  const sidebarRef = useRef(null);
   const [dashboardData, setDashboardData] = useState([]);
   const [stats, setStats] = useState({
     doctors: 10,
@@ -42,14 +42,12 @@ const AdminDashboard = () => {
 
   const token = localStorage.getItem("token");
 
-  // Redirect to login if token is missing
   useEffect(() => {
     if (!token) {
       navigate("/login");
     }
   }, [token, navigate]);
 
-  // Set mock data for the line chart
   useEffect(() => {
     setDashboardData([
       { date: "Monday", value: 20 },
@@ -65,7 +63,6 @@ const AdminDashboard = () => {
     navigate("/login");
   };
 
-  // Close sidebar when clicking outside
   const handleOutsideClick = (event) => {
     if (
       sidebarRef.current &&
@@ -122,18 +119,16 @@ const AdminDashboard = () => {
         isSidebarVisible ? "" : "sidebar-hidden"
       }`}
     >
-      {/* Sidebar Toggle Button */}
       <button
         className="toggle-buttons"
         onClick={(e) => {
-          e.stopPropagation(); // Prevent sidebar from closing when clicking toggle
+          e.stopPropagation();
           setIsSidebarVisible(!isSidebarVisible);
         }}
       >
         {isSidebarVisible ? <FaArrowLeft /> : <FaArrowRight />}
       </button>
 
-      {/* Sidebar */}
       <aside
         ref={sidebarRef}
         className={`sidebar ${isSidebarVisible ? "visible" : ""}`}
@@ -143,7 +138,9 @@ const AdminDashboard = () => {
         </div>
         <ul className="sidebar-menu">
           <li onClick={() => navigate("/doctor-management")}>Doctors</li>
-          <li onClick={() => navigate("/appointment-management")}>Appointments</li>
+          <li onClick={() => navigate("/appointment-management")}>
+            Appointments
+          </li>
           <li onClick={() => navigate("/inventory-management")}>Inventory</li>
           <li onClick={() => navigate("/maintenance-management")}>
             Maintenance
@@ -153,11 +150,9 @@ const AdminDashboard = () => {
         </ul>
       </aside>
 
-      {/* Main Content */}
       <main className="main-content">
         <h2>Admin Dashboard</h2>
 
-        {/* Statistics Cards */}
         <div className="stats-grid">
           <div
             className="stat-card"
@@ -191,7 +186,6 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        {/* Charts */}
         <div className="charts-section">
           <div className="chart-container">
             <h2>Weekly Appointments</h2>

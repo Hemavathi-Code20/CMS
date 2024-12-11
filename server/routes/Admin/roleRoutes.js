@@ -3,7 +3,6 @@ import Roles from "../../models/Admin/Roles.js";
 
 const router = express.Router();
 
-//Create
 router.post("/", async (req, res) => {
   try {
     const newRole = new Roles(req.body);
@@ -14,7 +13,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-//Get
 router.get("/", async (req, res) => {
   try {
     const newRoles = await Roles.find();
@@ -24,7 +22,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-//Update
 router.put("/:id", async (req, res) => {
   try {
     const updatedRoles = await Roles.findByIdAndUpdate(
@@ -38,7 +35,6 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-//Delete
 router.delete("/:id", async (req, res) => {
   try {
     await Roles.findByIdAndDelete(req.params.id);

@@ -29,15 +29,15 @@ const patientSchema = new mongoose.Schema({
   },
   age: {
     type: Number,
-    min: 0, // Age should not be negative
+    min: 0,
   },
   gender: {
     type: String,
-    enum: ["Male", "Female", "Other", "Prefer not to say"], 
+    enum: ["Male", "Female", "Other", "Prefer not to say"],
   },
   bloodType: {
     type: String,
-    enum: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-", "Other"], 
+    enum: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-", "Other"],
   },
   location: {
     city: {
@@ -59,7 +59,7 @@ const patientSchema = new mongoose.Schema({
   },
   generalDoctorName: {
     type: String,
-    default: "", // This can be updated every visit
+    default: "",
   },
   doctorSpeciality: {
     type: String,

@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 const BookAppointmentSchema = new mongoose.Schema({
-  // Patient Information
   patientId: {
     type: String,
     required: true,
@@ -11,7 +10,6 @@ const BookAppointmentSchema = new mongoose.Schema({
   gender: { type: String, required: true },
   contactNumber: { type: String, required: true },
 
-  // Appointment Details
   appointmentType: {
     type: String,
     enum: ["New Consultation", "Follow-Up", "Teleconsultation"],
@@ -58,7 +56,6 @@ const BookAppointmentSchema = new mongoose.Schema({
     enum: ["Call", "Email", "SMS"],
     required: true,
   },
-
 });
 
 const BookAppointment = mongoose.model(
