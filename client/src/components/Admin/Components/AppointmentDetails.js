@@ -9,7 +9,7 @@ const AppointmentDetails = () => {
     const fetchConfirmedAppointments = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/admin/appointments/confirmed"
+          "https://clinic-management-7k6q.onrender.com/api/admin/appointments/confirmed"
         );
         setAppointments(response.data);
       } catch (error) {

@@ -14,7 +14,7 @@ const BookAppointmentPage = () => {
       }
 
       const response = await axios.get(
-        `http://localhost:5000/api/patient/bookappointments?patientId=${patientId}`
+        `https://clinic-management-7k6q.onrender.com/api/patient/bookappointments?patientId=${patientId}`
       );
       console.log("Appointments fetched:", response.data);
       setAppointments(response.data);
