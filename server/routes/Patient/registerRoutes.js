@@ -1,6 +1,6 @@
 import express from "express";
 import Patient from "../../models/Patient/Register.js";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 const router = express.Router();
 
