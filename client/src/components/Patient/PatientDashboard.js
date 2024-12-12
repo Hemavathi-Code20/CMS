@@ -22,7 +22,7 @@ const PatientDashboard = () => {
     const fetchProfile = async () => {
       try {
         const response = await axios.get(
-          `https://clinic-management-7k6q.onrender.com/api/patient/profile/${patientId}`
+          `http://localhost:5000/api/patient/profile/${patientId}`
         );
         setProfile(response.data);
       } catch (err) {

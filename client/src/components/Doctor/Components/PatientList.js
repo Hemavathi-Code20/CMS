@@ -14,7 +14,7 @@ const PatientList = () => {
     const fetchPatients = async () => {
       try {
         const response = await axios.get(
-          "https://clinic-management-7k6q.onrender.com/api/doctor/patients"
+          "http://localhost:5000/api/doctor/patients"
         );
         setPatients(response.data);
         setLoading(false);
@@ -31,7 +31,7 @@ const PatientList = () => {
   const fetchPatientDetails = async (id) => {
     try {
       const response = await axios.get(
-        `https://clinic-management-7k6q.onrender.com/api/doctor/patient/${id}`
+        `http://localhost:5000/api/doctor/patient/${id}`
       );
       setPatientDetails(response.data);
       setIsModalOpen(true);

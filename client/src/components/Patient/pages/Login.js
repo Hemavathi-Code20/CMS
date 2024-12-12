@@ -17,7 +17,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://clinic-management-7k6q.onrender.com/api/patient/login",
+        "http://localhost:5000/api/patient/login",
         formData
       );
       if (response.data.success) {

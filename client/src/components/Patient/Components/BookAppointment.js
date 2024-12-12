@@ -40,7 +40,7 @@ const BookAppointment = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://clinic-management-7k6q.onrender.com/api/patient/bookappointments",
+        "http://localhost:5000/api/patient/bookappointments",
         formData
       );
       alert(response.data.message || "Appointment booked successfully!");
