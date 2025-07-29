@@ -25,7 +25,7 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/patient/patientregister",
+        "https://clinic-management-lrw8.onrender.com/api/patient/patientregister",
         formData
       );
       alert(
