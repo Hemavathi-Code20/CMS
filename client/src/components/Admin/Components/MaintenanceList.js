@@ -8,7 +8,7 @@ const MaintenanceList = ({ refresh, onEditClick }) => {
   const fetchMaintenanceData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/admin/maintenance"
+        "https://clinic-management-lrw8.onrender.com/api/admin/maintenance"
       );
       setMaintenanceList(response.data);
     } catch (error) {
@@ -23,7 +23,7 @@ const MaintenanceList = ({ refresh, onEditClick }) => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/admin/maintenance/${id}`);
+      await axios.delete(`https://clinic-management-lrw8.onrender.com/api/admin/maintenance/${id}`);
       alert("Maintenance record deleted successfully");
       fetchMaintenanceData();
     } catch (error) {
