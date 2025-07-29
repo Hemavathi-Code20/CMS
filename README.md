@@ -78,6 +78,4 @@ A robust full-stack MERN application designed to streamline clinic operations th
 
 6. **Open the app in your browser at: http://localhost:3000**
 
-### 📄 License
-This project is licensed under the MIT License.
 
