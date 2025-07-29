@@ -1,18 +1,18 @@
 # 🏥 Clinic Management System
 
-A robust full-stack MERN application designed to streamline clinic operations with role-based dashboards for **Patients**, **Doctors**, and **Admins**. The system allows appointment booking, schedule management, medical record tracking, inventory control, and secure authentication.
+A robust full-stack MERN application designed to streamline clinic operations through dedicated dashboards for **Admins**, **Doctors**, and **Patients**. The system facilitates appointment booking, schedule management, medical record tracking, inventory control, and secure user access.
 
 ---
 
 ## 🚀 Features
 
-- 🔐 Secure login using JWT
-- 🩺 Doctor dashboard to manage appointments and view patient records
-- 🧑‍⚕️ Patient panel to book appointments and update profiles
-- 🛠️ Admin panel for full user, doctor, and appointment management
-- 📦 Inventory tracking and system logs
+- 🔐 Secure login and authentication using JWT
+- 🩺 Doctor dashboard to view, manage, and reschedule appointments
+- 👤 Patient dashboard to book appointments, track history, and update profiles
+- 🛠️ Admin panel for managing users, doctors, appointments, inventory, and logs
+- 📦 Inventory management with real-time tracking
 - 🌐 RESTful API integration using Node.js and Express
-- 🧪 Tested with Postman
+- 🧪 Tested using Postman for API reliability
 
 ---
 
@@ -21,7 +21,7 @@ A robust full-stack MERN application designed to streamline clinic operations wi
 - **Frontend:** React.js, Redux
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB
-- **Authentication:** JWT
+- **Authentication:** JWT (JSON Web Token)
 - **API Testing:** Postman
 
 ---
@@ -36,6 +36,7 @@ A robust full-stack MERN application designed to streamline clinic operations wi
 - **Username:** `doctor`
 - **Password:** `password`
 
+> 📌 *For Patient access, registration is done manually*
 
 ---
 
@@ -44,10 +45,36 @@ A robust full-stack MERN application designed to streamline clinic operations wi
 ### Prerequisites
 
 - Node.js and npm installed
-- MongoDB running locally or via Atlas
+- MongoDB running locally or via MongoDB Atlas
 
 ### Installation
 
-1. Clone the repo:
+1. **Clone the Repository:**
+
    ```bash
    git clone https://github.com/your-username/clinic-management-system.git
+   cd clinic-management-system
+
+2. **Install Client Dependencies:**
+
+   cd client
+   npm install
+
+3. **Install Server Dependencies:**
+
+   cd ../server
+   npm install
+
+4. **Add Environment Variables:**
+
+   MONGO_URI=your_mongodb_uri
+   JWT_SECRET=your_jwt_secret
+   PORT=5000
+
+5. **Run the Application:**
+
+   Backend (server) : npm run dev
+   Frontend (client) : npm start
+
+
+
