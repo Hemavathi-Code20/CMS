@@ -29,14 +29,13 @@ A robust full-stack MERN application designed to streamline clinic operations wi
 ## 🔐 Demo Login Credentials
 
 ### 🛠️ Admin Panel
-- **Username:** `admin@example.com`
-- **Password:** `admin123`
+- **Username:** `admin`
+- **Password:** `password`
 
 ### 🩺 Doctor Panel
-- **Username:** `doctor@example.com`
-- **Password:** `doctor123`
+- **Username:** `doctor`
+- **Password:** `password`
 
-*(You can add more dummy credentials if needed)*
 
 ---
 
