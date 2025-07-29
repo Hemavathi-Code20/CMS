@@ -21,7 +21,7 @@ const Login = () => {
 
     try {
       const { data } = await axios.post(
-        "https://clinic-management-lrw8.onrender.com/api/auth/login",
+        "http://localhost:5000/api/auth/login",
         credentials,
         {
           headers: {

@@ -19,7 +19,7 @@ const InventoryPage = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        "https://clinic-management-lrw8.onrender.com/api/admin/inventory"
+        "http://localhost:5000/api/admin/inventory"
       );
       setInventory(response.data);
     } catch (error) {
@@ -32,7 +32,7 @@ const InventoryPage = () => {
   const addItem = async (newItem) => {
     try {
       const response = await axios.post(
-        "https://clinic-management-lrw8.onrender.com/api/admin/inventory",
+        "http://localhost:5000/api/admin/inventory",
         newItem
       );
       fetchInventory();
@@ -45,7 +45,7 @@ const InventoryPage = () => {
   const updateItem = async (updatedItem) => {
     try {
       await axios.put(
-        `https://clinic-management-lrw8.onrender.com/api/admin/inventory/${updatedItem._id}`,
+        `http://localhost:5000/api/admin/inventory/${updatedItem._id}`,
         updatedItem
       );
       fetchInventory();
@@ -57,7 +57,7 @@ const InventoryPage = () => {
 
   const deleteItem = async (id) => {
     try {
-      await axios.delete(`https://clinic-management-lrw8.onrender.com/api/admin/inventory/${id}`);
+      await axios.delete(`http://localhost:5000/api/admin/inventory/${id}`);
       fetchInventory();
     } catch (error) {
       console.error("Error deleting item:", error);
