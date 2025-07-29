@@ -73,8 +73,11 @@ A robust full-stack MERN application designed to streamline clinic operations th
 
 5. **Run the Application:**
 
-    - Backend (server) : npm run dev
-    - Frontend (client) : npm start
+    - Backend: npm run dev
+    - Frontend: npm start
 
+6. **Open the app in your browser at: http://localhost:3000**
 
+### 📄 License
+This project is licensed under the MIT License.
 
