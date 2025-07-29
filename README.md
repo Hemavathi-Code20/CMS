@@ -57,24 +57,24 @@ A robust full-stack MERN application designed to streamline clinic operations th
 
 2. **Install Client Dependencies:**
 
-   cd client
-   npm install
+    - cd client
+    - npm install
 
 3. **Install Server Dependencies:**
 
-   cd ../server
-   npm install
+    - cd server
+    - npm install
 
 4. **Add Environment Variables:**
 
-   MONGO_URI=your_mongodb_uri
-   JWT_SECRET=your_jwt_secret
-   PORT=5000
+    - MONGO_URI=your_mongodb_uri
+    - JWT_SECRET=your_jwt_secret
+    - PORT=5000
 
 5. **Run the Application:**
 
-   Backend (server) : npm run dev
-   Frontend (client) : npm start
+    - Backend (server) : npm run dev
+    - Frontend (client) : npm start
 
 
 
